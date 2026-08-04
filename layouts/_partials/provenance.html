@@ -1,14 +1,25 @@
-{{ if or .Params.original_date .Params.original_url .Params.edited }}
+{{ $ko := eq .Language.Lang "ko" }}
+{{ if or .Params.original_date .Params.original_url .Params.edited .Params.translated_from .Params.provenance_note }}
 <aside class="provenance">
   <p>
-    {{ if eq .Language.Lang "ko" }}게시{{ else }}Published{{ end }}: {{ .Date.Format "2006-01-02" }}.
-    {{ with .Params.original_date }}
-      {{ if eq $.Language.Lang "ko" }}원 게시{{ else }}Originally published{{ end }}: {{ . }}{{ with $.Params.original_url }} · <a href="{{ . }}" rel="noopener">{{ if eq $.Language.Lang "ko" }}원본{{ else }}original{{ end }}</a>{{ end }}.
+    {{ if $ko }}게시{{ else }}Published{{ end }}: {{ .Date.Format "2006-01-02" }}.
+    {{ if .Params.translated_from }}
+      {{ $src := "" }}{{ range .Translations }}{{ if eq .Language.Lang $.Params.translated_from }}{{ $src = .Permalink }}{{ end }}{{ end }}
+      {{ if $ko }}
+        {{ with $src }}<a href="{{ . }}">{{ end }}{{ if eq .Params.translated_from "en" }}영어{{ else }}한국어{{ end }} 원문{{ if $src }}</a>{{ end }}의 번역판{{ with .Params.original_date }} (원문 첫 게시: {{ . }}{{ with $.Params.original_platform }}, {{ . }}{{ end }}){{ end }}.
+      {{ else }}
+        Translated from the {{ if eq .Params.translated_from "ko" }}Korean{{ else }}English{{ end }} {{ with $src }}<a href="{{ . }}">original</a>{{ else }}original{{ end }}{{ with .Params.original_date }} (first published {{ . }}{{ with $.Params.original_platform }} in {{ . }}{{ end }}){{ end }}.
+      {{ end }}
+    {{ else }}
+      {{ with .Params.original_date }}
+        {{ if $ko }}원 게시{{ else }}Originally published{{ end }}: {{ . }}{{ with $.Params.original_platform }}, {{ . }}{{ end }}{{ with $.Params.original_url }} · <a href="{{ . }}" rel="noopener">{{ if $ko }}원본{{ else }}original{{ end }}</a>{{ end }}.
+      {{ end }}
     {{ end }}
-    {{ if .Params.edited }}{{ if eq .Language.Lang "ko" }}원문에서 일부 수정.{{ else }}Lightly edited from the original.{{ end }}{{ end }}
+    {{ if .Params.edited }}{{ if $ko }}원문에서 일부 수정.{{ else }}Lightly edited from the original.{{ end }}{{ end }}
   </p>
+  {{ with .Params.provenance_note }}<p>{{ . }}</p>{{ end }}
   {{ with .Params.social_url }}
-  <p>{{ if eq $.Language.Lang "ko" }}이 글의 소셜 스레드{{ else }}Discussion thread{{ end }}: <a href="{{ . }}" rel="noopener">{{ . }}</a></p>
+  <p>{{ if $ko }}이 글의 소셜 스레드{{ else }}Discussion thread{{ end }}: <a href="{{ . }}" rel="noopener">{{ . }}</a></p>
   {{ end }}
 </aside>
 {{ end }}

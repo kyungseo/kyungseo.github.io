@@ -4,7 +4,9 @@
     <h1>{{ .Title }}</h1>
     <div class="post-meta">
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
-      {{ partial "series-badge.html" . }}
+      {{ range .Translations }}
+      <a class="lang-link" href="{{ .Permalink }}" lang="{{ .Language.LanguageCode }}">{{ if eq .Language.Lang "ko" }}한국어판 보기{{ else }}Read in English{{ end }}</a>
+      {{ end }}
     </div>
   </header>
 
