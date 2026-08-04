@@ -4,5 +4,10 @@
     <a href="{{ "posts" | relLangURL }}">{{ if eq .Language.Lang "ko" }}글{{ else }}Posts{{ end }}</a>
     <a href="{{ "series" | relLangURL }}">{{ if eq .Language.Lang "ko" }}시리즈{{ else }}Series{{ end }}</a>
     <a href="{{ "tags" | relLangURL }}">{{ if eq .Language.Lang "ko" }}태그{{ else }}Tags{{ end }}</a>
+    {{ with .Site.Home.Translations }}
+    <span class="lang-switch">
+      {{ range . }}<a href="{{ .Permalink }}" lang="{{ .Language.LanguageCode }}" title="{{ if eq .Language.Lang "ko" }}한국어 홈으로{{ else }}English home{{ end }}">{{ .Language.LanguageName }}</a>{{ end }}
+    </span>
+    {{ end }}
   </div>
 </nav>
