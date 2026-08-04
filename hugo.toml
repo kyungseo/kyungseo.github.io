@@ -1,0 +1,38 @@
+baseURL = "https://kyungseo.github.io/"
+title = "kyungseo"
+defaultContentLanguage = "ko"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
+timeZone = "Asia/Seoul"
+
+[languages]
+  [languages.ko]
+    languageCode = "ko-KR"
+    languageName = "한국어"
+    weight = 1
+  [languages.en]
+    languageCode = "en-US"
+    languageName = "English"
+    weight = 2
+
+[permalinks]
+  [permalinks.page]
+    posts = "/posts/:slug/"
+
+[taxonomies]
+  tag = "tags"
+  series = "series"
+
+[markup]
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+  [markup.highlight]
+    noClasses = false
+
+[outputs]
+  home = ["html", "rss", "sitemap"]
+  section = ["html", "rss"]
+
+[params]
+  description = "글과 기록"

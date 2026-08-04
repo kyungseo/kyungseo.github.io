@@ -1,0 +1,16 @@
+{{ $page := . }}
+{{ with .GetTerms "series" }}
+{{ $term := index . 0 }}
+{{ $pages := $term.Pages.ByDate }}
+{{ $curr := 0 }}
+{{ range $i, $p := $pages }}{{ if eq $p.Permalink $page.Permalink }}{{ $curr = $i }}{{ end }}{{ end }}
+<nav class="series-nav">
+  <p class="series-position">
+    {{ if eq $page.Language.Lang "ko" }}시리즈 「{{ $term.LinkTitle }}」 {{ len $pages }}편 중 {{ add $curr 1 }}편{{ else }}Part {{ add $curr 1 }} of {{ len $pages }} in “{{ $term.LinkTitle }}”{{ end }}
+  </p>
+  <div class="series-links">
+    {{ if gt $curr 0 }}{{ $prev := index $pages (sub $curr 1) }}<a class="prev" href="{{ $prev.Permalink }}">← {{ $prev.Title }}</a>{{ end }}
+    {{ if lt (add $curr 1) (len $pages) }}{{ $next := index $pages (add $curr 1) }}<a class="next" href="{{ $next.Permalink }}">{{ $next.Title }} →</a>{{ end }}
+  </div>
+</nav>
+{{ end }}

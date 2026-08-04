@@ -1,0 +1,3 @@
+{{ with .GetTerms "series" }}
+{{ range . }}<a class="series-badge" href="{{ .Permalink }}">{{ .LinkTitle }}</a>{{ end }}
+{{ end }}

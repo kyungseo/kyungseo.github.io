@@ -1,0 +1,2 @@
+<p>© {{ now.Year }} kyungseo ·
+{{ with .OutputFormats.Get "rss" }}<a href="{{ .Permalink }}">RSS</a>{{ else }}{{ with .Site.Home.OutputFormats.Get "rss" }}<a href="{{ .Permalink }}">RSS</a>{{ end }}{{ end }}</p>
