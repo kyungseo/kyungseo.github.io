@@ -3,7 +3,7 @@ title: "{{ replace .File.ContentBaseName "-" " " | title }}"
 slug: "{{ .File.ContentBaseName }}"
 date: {{ .Date }}
 draft: true
-format: essay        # essay | note (pubstead style-guide 형식 로드맵 참조)
+format: essay        # essay | note
 tags: []
 series: []           # 시리즈 slug — 없으면 빈 배열
 summary: ""
