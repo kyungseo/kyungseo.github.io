@@ -71,6 +71,12 @@ time { color: var(--fg-muted); font-size: 0.875rem; }
 .nav-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-left: auto; font-size: 0.9375rem; }
 .lang-switch { border-left: 1px solid var(--border); padding-left: 1rem; }
 
+/* home intro — 좁은 화면은 자연 줄바꿈, 넓은 화면만 의도된 행 구분 */
+.intro br { display: none; }
+@media (min-width: 40rem) {
+  .intro br { display: inline; }
+}
+
 /* post list */
 .post-list ul { list-style: none; padding: 0; }
 .post-list li { margin: 1.5rem 0; }
