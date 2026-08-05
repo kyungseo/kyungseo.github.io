@@ -6,12 +6,14 @@
   </button>
   <button type="button" class="copy-link" data-url="{{ .Permalink }}"
           data-label="{{ if $ko }}링크 복사{{ else }}Copy link{{ end }}"
-          data-done="{{ if $ko }}복사됨 ✓{{ else }}Copied ✓{{ end }}">
+          data-done="{{ if $ko }}복사됨 ✓{{ else }}Copied ✓{{ end }}"
+          data-fail="{{ if $ko }}복사 실패 — 주소창에서 복사해 주세요{{ else }}Copy failed — use the address bar{{ end }}">
     {{ if $ko }}링크 복사{{ else }}Copy link{{ end }}
   </button>
   <a href="https://github.com/kyungseo/kyungseo.github.io/discussions" rel="noopener">
-    {{ if $ko }}GitHub에서 의견 남기기 →{{ else }}Leave a comment on GitHub →{{ end }}
+    {{ if $ko }}GitHub Discussions에서 대화하기 →{{ else }}Join the discussion on GitHub →{{ end }}
   </a>
+  <span class="copy-status visually-hidden" aria-live="polite"></span>
 </div>
 <script>
 (function () {
@@ -23,12 +25,19 @@
     });
   }
   var c = document.querySelector('.copy-link');
+  var live = document.querySelector('.copy-status');
+  function announce(msg) { if (live) live.textContent = msg; }
   if (c) {
     if (navigator.clipboard) {
       c.addEventListener('click', function () {
         navigator.clipboard.writeText(c.dataset.url).then(function () {
           c.textContent = c.dataset.done;
+          announce(c.dataset.done);
           setTimeout(function () { c.textContent = c.dataset.label; }, 1600);
+        }).catch(function () {
+          c.textContent = c.dataset.fail;
+          announce(c.dataset.fail);
+          setTimeout(function () { c.textContent = c.dataset.label; }, 2600);
         });
       });
     } else { c.hidden = true; }

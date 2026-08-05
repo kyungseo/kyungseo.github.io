@@ -1,4 +1,6 @@
-<dialog class="lightbox" id="lightbox">
+{{ $ko := eq .Language.Lang "ko" }}
+<dialog class="lightbox" id="lightbox" aria-label="{{ if $ko }}이미지 확대 보기{{ else }}Image viewer{{ end }}">
+  <button type="button" class="lightbox-close" aria-label="{{ if $ko }}닫기{{ else }}Close{{ end }}">×</button>
   <img src="" alt="">
 </dialog>
 <script>
@@ -6,12 +8,20 @@
   var dlg = document.getElementById('lightbox');
   if (!dlg || !dlg.showModal) return;
   var dImg = dlg.querySelector('img');
+  var zoomLabel = {{ if $ko }}'확대해서 보기'{{ else }}'View enlarged'{{ end }};
+  function open(img) {
+    dImg.src = img.currentSrc || img.src;
+    dImg.alt = img.alt || '';
+    dlg.showModal();
+  }
   document.querySelectorAll('.post-content img').forEach(function (img) {
     img.classList.add('zoomable');
-    img.addEventListener('click', function () {
-      dImg.src = img.currentSrc || img.src;
-      dImg.alt = img.alt || '';
-      dlg.showModal();
+    img.setAttribute('role', 'button');
+    img.tabIndex = 0;
+    img.setAttribute('aria-label', (img.alt ? img.alt + ' — ' : '') + zoomLabel);
+    img.addEventListener('click', function () { open(img); });
+    img.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); }
     });
   });
   dlg.addEventListener('click', function () { dlg.close(); });
