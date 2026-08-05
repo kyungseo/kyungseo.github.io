@@ -11,6 +11,7 @@ translated_from: ko
 original_date: 2026-07-27
 original_platform: "a Korean-language Facebook group"
 og_image: round9-masked.png
+discussion_url: "https://github.com/kyungseo/kyungseo.github.io/discussions/1"
 draft: false
 ---
 

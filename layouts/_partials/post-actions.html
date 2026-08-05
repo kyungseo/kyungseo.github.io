@@ -10,9 +10,15 @@
           data-fail="{{ if $ko }}복사 실패 — 주소창에서 복사해 주세요{{ else }}Copy failed — use the address bar{{ end }}">
     {{ if $ko }}링크 복사{{ else }}Copy link{{ end }}
   </button>
+  {{ with .Params.discussion_url }}
+  <a href="{{ . }}" rel="noopener">
+    {{ if $ko }}이 글의 Discussion에서 대화하기 →{{ else }}Discuss this post on GitHub →{{ end }}
+  </a>
+  {{ else }}
   <a href="https://github.com/kyungseo/kyungseo.github.io/discussions" rel="noopener">
     {{ if $ko }}GitHub Discussions에서 대화하기 →{{ else }}Join the discussion on GitHub →{{ end }}
   </a>
+  {{ end }}
   <span class="copy-status visually-hidden" aria-live="polite"></span>
 </div>
 <script>

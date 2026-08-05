@@ -50,9 +50,11 @@
 
 - **공유**: 본문 하단의 조용한 affordance — `navigator.share`(네이티브) + 링크 복사.
   외부 SDK·추적 위젯은 쓰지 않는다.
-- **의견 (1단계, 현재)**: 글 하단 "GitHub Discussions에서 대화하기" 정적 링크 → repo
-  Discussions 목록. 사이트는 외부 iframe을 전혀 로드하지 않고, 대화하려는 독자만 GitHub로
-  이동한다. 글이 쌓이면 글별 discussion URL 연결을 검토한다(라벨은 목록행임을 정직하게 표기).
+- **의견 (1단계, 현재)**: 글 하단 정적 링크 → GitHub Discussions. 사이트는 외부 iframe을
+  전혀 로드하지 않고, 대화하려는 독자만 GitHub로 이동한다. front matter `discussion_url`이
+  있으면 그 글의 discussion으로 직접 연결("이 글의 Discussion에서 대화하기"), 없으면 목록으로
+  fallback("GitHub Discussions에서 대화하기" — 목록행임을 정직하게 표기). 글별 discussion은
+  게시 시 짧은 대화 시작점(본문 재복사 금지 + 열린 질문)으로 만든다.
 - **의견 (2단계, 조건부)**: 본문 내 giscus embed는 "글 안에서 바로 읽고 쓰고 싶다"는
   실수요가 확인될 때만 도입한다. 방식은 **클릭 후 주입**(정적 버튼 → 사용자가 누른 뒤에만
   script/iframe 로드; `loading=lazy`는 명시적 동의가 아니므로 불충분). 승격 전 선행 결정:
