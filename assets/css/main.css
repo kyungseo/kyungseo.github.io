@@ -136,6 +136,31 @@ th { background: var(--code-bg); }
   }
 }
 
+/* lightbox — 이미지 클릭 확대 */
+.post-content img.zoomable { cursor: zoom-in; }
+.lightbox { border: none; padding: 0; background: transparent; max-width: 96vw; max-height: 96vh; }
+.lightbox::backdrop { background: rgba(0, 0, 0, 0.82); }
+.lightbox img { max-width: 96vw; max-height: 96vh; display: block; cursor: zoom-out; }
+
+/* post actions — 조용한 공유·의견 affordance */
+.post-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 0 0 1.5rem;
+  font-size: 0.875rem;
+}
+.post-actions button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--accent);
+  cursor: pointer;
+}
+.post-actions button:hover, .post-actions a:hover { text-decoration: underline; }
+
 /* provenance & series nav */
 .provenance {
   margin-top: 3rem;

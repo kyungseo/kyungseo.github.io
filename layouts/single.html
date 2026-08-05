@@ -29,7 +29,9 @@
       {{ range . }}<a href="{{ .Permalink }}">#{{ .LinkTitle }}</a> {{ end }}
     </nav>
     {{ end }}
+    {{ partial "post-actions.html" . }}
     {{ partial "series-nav.html" . }}
   </footer>
 </article>
+{{ partial "lightbox.html" . }}
 {{ end }}

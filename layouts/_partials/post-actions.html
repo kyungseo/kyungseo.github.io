@@ -1,0 +1,37 @@
+{{ $ko := eq .Language.Lang "ko" }}
+<div class="post-actions">
+  <button type="button" class="share-native" hidden
+          data-title="{{ .Title }}" data-url="{{ .Permalink }}">
+    {{ if $ko }}공유하기{{ else }}Share{{ end }}
+  </button>
+  <button type="button" class="copy-link" data-url="{{ .Permalink }}"
+          data-label="{{ if $ko }}링크 복사{{ else }}Copy link{{ end }}"
+          data-done="{{ if $ko }}복사됨 ✓{{ else }}Copied ✓{{ end }}">
+    {{ if $ko }}링크 복사{{ else }}Copy link{{ end }}
+  </button>
+  <a href="https://github.com/kyungseo/kyungseo.github.io/discussions" rel="noopener">
+    {{ if $ko }}GitHub에서 의견 남기기 →{{ else }}Leave a comment on GitHub →{{ end }}
+  </a>
+</div>
+<script>
+(function () {
+  var s = document.querySelector('.share-native');
+  if (s && navigator.share) {
+    s.hidden = false;
+    s.addEventListener('click', function () {
+      navigator.share({ title: s.dataset.title, url: s.dataset.url }).catch(function () {});
+    });
+  }
+  var c = document.querySelector('.copy-link');
+  if (c) {
+    if (navigator.clipboard) {
+      c.addEventListener('click', function () {
+        navigator.clipboard.writeText(c.dataset.url).then(function () {
+          c.textContent = c.dataset.done;
+          setTimeout(function () { c.textContent = c.dataset.label; }, 1600);
+        });
+      });
+    } else { c.hidden = true; }
+  }
+})();
+</script>

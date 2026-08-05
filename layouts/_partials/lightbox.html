@@ -1,0 +1,19 @@
+<dialog class="lightbox" id="lightbox">
+  <img src="" alt="">
+</dialog>
+<script>
+(function () {
+  var dlg = document.getElementById('lightbox');
+  if (!dlg || !dlg.showModal) return;
+  var dImg = dlg.querySelector('img');
+  document.querySelectorAll('.post-content img').forEach(function (img) {
+    img.classList.add('zoomable');
+    img.addEventListener('click', function () {
+      dImg.src = img.currentSrc || img.src;
+      dImg.alt = img.alt || '';
+      dlg.showModal();
+    });
+  });
+  dlg.addEventListener('click', function () { dlg.close(); });
+})();
+</script>
