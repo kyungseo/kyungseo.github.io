@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350" role="img" style="font-family:Pretendard,'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif">
+  <title>좋은 다이어그램은 렌더링 전에 완성된다</title>
+  <desc>관계와 형태를 고른 뒤 캔버스, 여백, 글자 수, 연결선 통로를 계산하고, 편집 가능한 SVG에서 lint와 2배 PNG 렌더링, 사람의 시각 검수로 이어지는 svg-infographic의 작업 방식을 보여준다.</desc>
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#C9DDF0" stroke-width="1" opacity=".48"/>
+    </pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#264B6B" flood-opacity=".09"/>
+    </filter>
+    <marker id="arrow-blue" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="11.25" markerHeight="11.25" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="M2 2L10 6L2 10" fill="none" stroke="#2B72AC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <symbol id="ic-structure" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="4.5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7v5M12 12l-6 4.5M12 12l6 4.5"/>
+    </symbol>
+    <symbol id="ic-ruler" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 17.5L17.5 4l2.5 2.5L6.5 20H4z"/><path d="M13 8.5l2.5 2.5M10 11.5l1.5 1.5M7 14.5L9.5 17"/>
+    </symbol>
+    <symbol id="ic-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 20l4.2-1 10.6-10.6a2 2 0 0 0-2.8-2.8L5.4 16.2z"/><path d="M14.5 7.2l2.8 2.8M5.4 16.2l2.8 2.8"/>
+    </symbol>
+    <symbol id="ic-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8.5 6L3 12l5.5 6M15.5 6l5.5 6-5.5 6M14 4l-4 16"/>
+    </symbol>
+    <symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5 5.5-6"/>
+    </symbol>
+    <symbol id="ic-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"/><circle cx="12" cy="12" r="2.7"/>
+    </symbol>
+  </defs>
+  <style>
+    svg{--bg:#F7FAFD;--ink:#172536;--muted:#5B6877;--hair:#C9D8E6;--blue:#2B72AC;--blue-dark:#194F7A;--blue-soft:#E8F2FA;--teal:#087F74;--teal-soft:#E6F5F1;--amber:#B96C16;--amber-soft:#FFF1DE;--card:#FFFFFF}
+    .ink{fill:var(--ink)}.muted{fill:var(--muted)}.blue{fill:var(--blue)}.blue-dark{fill:var(--blue-dark)}.teal{fill:var(--teal)}.amber{fill:var(--amber)}.on-accent{fill:#FFFFFF}
+    .h1{font-size:46px;font-weight:800;letter-spacing:-1.5px}.eyebrow{font-size:16px;font-weight:750;letter-spacing:1.1px}.subtitle{font-size:19px;font-weight:500}.section{font-size:24px;font-weight:800}.card-title{font-size:25px;font-weight:800}.body{font-size:19px;font-weight:520}.caption{font-size:16px;font-weight:600}.metric{font-size:27px;font-weight:850}.mono{font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace}
+  </style>
+  <rect width="1080" height="1350" fill="var(--bg)"/>
+
+  <g data-layout-role="page-title-header" data-layout-rail-padding-top="16" data-layout-rail-padding-bottom="0" data-layout-subtitle-gap="12" data-layout-tolerance="2">
+    <rect data-layout-role="title-rail" x="60" y="48" width="6" height="143" rx="3" fill="var(--blue)"/>
+    <text data-layout-role="title-eyebrow" x="88" y="72" font-size="16" dominant-baseline="middle" class="blue eyebrow">SKILLSTEAD · SVG-INFOGRAPHIC</text>
+    <text data-layout-role="title-line" x="88" y="117" font-size="46" dominant-baseline="middle" class="ink h1">좋은 다이어그램은</text>
+    <text data-layout-role="title-line" x="88" y="168" font-size="46" dominant-baseline="middle" class="ink h1">렌더링 전에 완성된다</text>
+    <text data-layout-role="title-subtitle" x="88" y="212.5" font-size="19" dominant-baseline="middle" class="muted subtitle">그리기 전에 정의하고, 코드 형태로 렌더링한다</text>
+  </g>
+
+  <rect x="60" y="258" width="960" height="580" rx="22" fill="#EEF6FC" stroke="#AFCBE2" stroke-width="1.5"/>
+  <rect x="60" y="258" width="960" height="580" rx="22" fill="url(#grid)" opacity=".78"/>
+  <rect x="88" y="238" width="236" height="44" rx="22" fill="var(--blue)"/>
+  <text x="206" y="260" text-anchor="middle" dominant-baseline="central" class="on-accent caption">DRAW LATE · 먼저 계산</text>
+
+  <g filter="url(#shadow)">
+    <rect x="100" y="322" width="240" height="174" rx="16" fill="var(--card)" stroke="#8EB7D5" stroke-width="1.5"/>
+    <circle cx="220" cy="372" r="31" fill="var(--blue-soft)"/>
+    <use href="#ic-structure" x="202" y="354" width="36" height="36" style="color:#2B72AC"/>
+    <text x="220" y="424" text-anchor="middle" dominant-baseline="central" class="blue-dark card-title">관계를 고른다</text>
+    <text x="220" y="458" text-anchor="middle" dominant-baseline="central" class="muted caption">연결 · 순서 · 비교 · 포함</text>
+  </g>
+  <path d="M352 409H408" fill="none" stroke="var(--blue)" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <g filter="url(#shadow)">
+    <rect x="420" y="322" width="240" height="174" rx="16" fill="var(--card)" stroke="#8EB7D5" stroke-width="1.5"/>
+    <circle cx="540" cy="372" r="31" fill="var(--blue-soft)"/>
+    <use href="#ic-ruler" x="522" y="354" width="36" height="36" style="color:#2B72AC"/>
+    <text x="540" y="424" text-anchor="middle" dominant-baseline="central" class="blue-dark card-title">형태를 정한다</text>
+    <text x="540" y="458" text-anchor="middle" dominant-baseline="central" class="muted caption">flow · layer · before/after</text>
+  </g>
+  <path d="M672 409H728" fill="none" stroke="var(--blue)" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <g filter="url(#shadow)">
+    <rect x="740" y="322" width="240" height="174" rx="16" fill="var(--card)" stroke="#0E8D80" stroke-width="2"/>
+    <circle cx="860" cy="372" r="31" fill="var(--teal-soft)"/>
+    <use href="#ic-pen" x="842" y="354" width="36" height="36" style="color:#087F74"/>
+    <text x="860" y="424" text-anchor="middle" dominant-baseline="central" class="teal card-title">그리기 시작</text>
+    <text x="860" y="458" text-anchor="middle" dominant-baseline="central" class="muted caption">좌표가 정해진 뒤 SVG 작성</text>
+  </g>
+
+  <text x="100" y="545" class="blue-dark section">LAYOUT PASS</text>
+  <text x="980" y="545" text-anchor="end" class="muted caption">눈대중 대신 숫자로 잠근 네 가지</text>
+
+  <g>
+    <rect x="100" y="572" width="199" height="150" rx="14" fill="var(--card)" stroke="var(--hair)"/>
+    <text x="122" y="606" class="muted caption">CANVAS</text>
+    <text x="122" y="650" class="blue metric mono">1080×1350</text>
+    <text x="122" y="691" class="ink body">출력 비율부터 고정</text>
+  </g>
+  <g>
+    <rect x="327" y="572" width="199" height="150" rx="14" fill="var(--card)" stroke="var(--hair)"/>
+    <text x="349" y="606" class="muted caption">MARGIN</text>
+    <text x="349" y="650" class="blue metric mono">≥ 40px</text>
+    <text x="349" y="691" class="ink body">바깥 여백과 gutter</text>
+  </g>
+  <g>
+    <rect x="554" y="572" width="199" height="150" rx="14" fill="var(--card)" stroke="var(--hair)"/>
+    <text x="576" y="606" class="muted caption">TEXT BUDGET</text>
+    <text x="576" y="650" class="blue metric mono">2–3 lines</text>
+    <text x="576" y="691" class="ink body">한국어 폭까지 계산</text>
+  </g>
+  <g>
+    <rect x="781" y="572" width="199" height="150" rx="14" fill="var(--card)" stroke="var(--hair)"/>
+    <text x="803" y="606" class="muted caption">CORRIDOR</text>
+    <text x="803" y="650" class="blue metric mono">≥ 12px</text>
+    <text x="803" y="691" class="ink body">shaft + head 통로</text>
+  </g>
+
+  <rect x="100" y="754" width="880" height="54" rx="12" fill="var(--blue-dark)"/>
+  <text x="540" y="781" text-anchor="middle" dominant-baseline="central" class="on-accent body">이제야 그린다 — 텍스트와 도형이 살아 있는 편집 가능한 SVG</text>
+
+  <rect x="60" y="882" width="960" height="290" rx="22" fill="#F1F8F6" stroke="#AAD7CE" stroke-width="1.5"/>
+  <rect x="88" y="862" width="268" height="44" rx="22" fill="var(--teal)"/>
+  <text x="222" y="884" text-anchor="middle" dominant-baseline="central" class="on-accent caption">SOURCE FIRST · 결과 검증</text>
+  <text x="100" y="944" class="teal section">원본과 공유본을 같은 흐름에서 만든다</text>
+
+  <g>
+    <rect x="100" y="982" width="199" height="142" rx="14" fill="var(--card)" stroke="#7FC2B7"/>
+    <circle cx="199.5" cy="1021" r="25" fill="var(--teal-soft)"/>
+    <use href="#ic-code" x="184.5" y="1006" width="30" height="30" style="color:#087F74"/>
+    <text x="199.5" y="1065" text-anchor="middle" dominant-baseline="central" class="teal card-title">SVG 원본</text>
+    <text x="199.5" y="1099" text-anchor="middle" dominant-baseline="central" class="muted caption">계속 수정 가능</text>
+  </g>
+  <path d="M307 1045L319 1053L307 1061Z" fill="var(--teal)"/>
+  <g>
+    <rect x="327" y="982" width="199" height="142" rx="14" fill="var(--card)" stroke="#7FC2B7"/>
+    <circle cx="426.5" cy="1021" r="25" fill="var(--teal-soft)"/>
+    <use href="#ic-check" x="411.5" y="1006" width="30" height="30" style="color:#087F74"/>
+    <text x="426.5" y="1065" text-anchor="middle" dominant-baseline="central" class="teal card-title">Source lint</text>
+    <text x="426.5" y="1099" text-anchor="middle" dominant-baseline="central" class="muted caption">결정적 오류 차단</text>
+  </g>
+  <path d="M534 1045L546 1053L534 1061Z" fill="var(--teal)"/>
+  <g>
+    <rect x="554" y="982" width="199" height="142" rx="14" fill="var(--card)" stroke="#7FC2B7"/>
+    <circle cx="653.5" cy="1021" r="25" fill="var(--teal-soft)"/>
+    <text x="653.5" y="1022" text-anchor="middle" dominant-baseline="central" class="teal metric mono">2×</text>
+    <text x="653.5" y="1065" text-anchor="middle" dominant-baseline="central" class="teal card-title">PNG render</text>
+    <text x="653.5" y="1099" text-anchor="middle" dominant-baseline="central" class="muted caption">실제 크기 확인</text>
+  </g>
+  <path d="M761 1045L773 1053L761 1061Z" fill="var(--teal)"/>
+  <g>
+    <rect x="781" y="982" width="199" height="142" rx="14" fill="var(--card)" stroke="#7FC2B7"/>
+    <circle cx="880.5" cy="1021" r="25" fill="var(--teal-soft)"/>
+    <use href="#ic-eye" x="865.5" y="1006" width="30" height="30" style="color:#087F74"/>
+    <text x="880.5" y="1065" text-anchor="middle" dominant-baseline="central" class="teal card-title">Visual QA</text>
+    <text x="880.5" y="1099" text-anchor="middle" dominant-baseline="central" class="muted caption">읽는 순서는 사람이</text>
+  </g>
+
+  <rect x="60" y="1216" width="960" height="86" rx="18" fill="var(--amber-soft)" stroke="#E4B77D"/>
+  <text x="540" y="1250" text-anchor="middle" class="amber section">첫 렌더링의 품질은 그리기 전에 결정된다</text>
+  <text x="540" y="1281" text-anchor="middle" class="muted caption">계산은 창의성을 줄이는 규칙이 아니라, 반복 수정이 생길 자리를 미리 없애는 장치다.</text>
+</svg>
