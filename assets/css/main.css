@@ -72,6 +72,15 @@ time { color: var(--fg-muted); font-size: 0.875rem; }
 .lang-switch { border-left: 1px solid var(--border); padding-left: 1rem; }
 
 /* home intro — 좁은 화면은 자연 줄바꿈, 넓은 화면만 의도된 행 구분 */
+.profile-callout {
+  margin: 2rem 0 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+}
+.profile-callout p { margin: 0.25rem 0; }
 .intro br { display: none; }
 @media (min-width: 40rem) {
   .intro br { display: inline; }
