@@ -8,7 +8,6 @@ summary: "저장소에 섞인 인증 정보·개인 환경 흔적·내부 정보
 toc: false
 date: 2026-08-09
 edited: false
-provenance_note: "최초 공개본입니다."
 og_image: release-authority-before-the-button.png
 draft: false
 ---

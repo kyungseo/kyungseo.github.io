@@ -8,7 +8,6 @@ summary: "기술 다이어그램을 한 번 그럴듯하게 만드는 데서 멈
 toc: false
 date: 2026-08-09
 edited: false
-provenance_note: "최초 공개본입니다."
 og_image: draw-with-numbers-first.png
 draft: false
 ---
