@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350" role="img" style="font-family:Pretendard,'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif">
+  <title>GitHub Public transitions need a sensitive-data gate</title>
+  <desc>Before a private repository becomes public, github-release-guide checks credentials, personal paths, internal addresses, and generated-file metadata. It stops on unknowns or blockers, requires explicit approval, and verifies the result. Finding nothing does not prove the absence of sensitive information.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="6" stdDeviation="9" flood-color="#253B55" flood-opacity=".11"/>
+    </filter>
+    <linearGradient id="scan-beam" x1="0" x2="1">
+      <stop offset="0" stop-color="#F2A93B" stop-opacity=".03"/>
+      <stop offset="1" stop-color="#F2A93B" stop-opacity=".28"/>
+    </linearGradient>
+    <marker id="arrow-navy" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="11.25" markerHeight="11.25" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="M2 2L10 6L2 10" fill="none" stroke="#2C618A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <symbol id="ic-folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 6.5h7l2 2h9v10.5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 10h18"/>
+    </symbol>
+    <symbol id="ic-scan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M3 12h18"/>
+    </symbol>
+    <symbol id="ic-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 4.5 6.2 4.5 9S15 17.8 12 21M12 3C9 6.2 7.5 9.2 7.5 12S9 17.8 12 21"/>
+    </symbol>
+    <symbol id="ic-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="8" cy="12" r="4"/><path d="M12 12h9M17 12v3M20 12v2"/>
+    </symbol>
+    <symbol id="ic-stop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 3h8l5 5v8l-5 5H8l-5-5V8z"/><path d="M8 12h8"/>
+    </symbol>
+    <symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/>
+    </symbol>
+    <symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5 5.5-6"/>
+    </symbol>
+  </defs>
+  <style>
+    svg{--bg:#F7F9FC;--ink:#172434;--muted:#5D6978;--hair:#CCD7E2;--navy:#2C618A;--navy-dark:#1B4567;--navy-soft:#E8F2FA;--amber:#B66512;--amber-soft:#FFF0DA;--red:#B94840;--red-soft:#FDEBE9;--green:#0B7B63;--green-soft:#E6F5F0;--card:#FFFFFF}
+    .ink{fill:var(--ink)}.muted{fill:var(--muted)}.navy{fill:var(--navy)}.navy-dark{fill:var(--navy-dark)}.amber{fill:var(--amber)}.red{fill:var(--red)}.green{fill:var(--green)}.on-accent{fill:#FFFFFF}
+    .h1{font-size:46px;font-weight:800;letter-spacing:-1.5px}.eyebrow{font-size:16px;font-weight:750;letter-spacing:1.1px}.subtitle{font-size:19px;font-weight:500}.section{font-size:24px;font-weight:800}.card-title{font-size:25px;font-weight:800}.body{font-size:19px;font-weight:520}.caption{font-size:16px;font-weight:600}.small{font-size:14px;font-weight:650}.mono{font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace}
+  </style>
+  <rect width="1080" height="1350" fill="var(--bg)"/>
+
+  <g data-layout-role="page-title-header" data-layout-rail-padding-top="16" data-layout-rail-padding-bottom="0" data-layout-subtitle-gap="12" data-layout-tolerance="2">
+    <rect data-layout-role="title-rail" x="60" y="48" width="6" height="143" rx="3" fill="var(--navy)"/>
+    <text data-layout-role="title-eyebrow" x="88" y="72" font-size="16" dominant-baseline="middle" class="navy eyebrow">SKILLSTEAD · GITHUB-RELEASE-GUIDE</text>
+    <text data-layout-role="title-line" x="88" y="117" font-size="46" dominant-baseline="middle" class="ink h1">GitHub Public transitions need</text>
+    <text data-layout-role="title-line" x="88" y="168" font-size="46" dominant-baseline="middle" class="ink h1">a sensitive-data gate</text>
+    <text data-layout-role="title-subtitle" x="88" y="212.5" font-size="19" dominant-baseline="middle" class="muted subtitle">Published copies cannot be fully recalled; verify before release</text>
+  </g>
+
+  <rect x="60" y="258" width="960" height="544" rx="22" fill="#F3F7FB" stroke="#B9CDDE" stroke-width="1.5"/>
+  <rect x="88" y="238" width="268" height="44" rx="22" fill="var(--navy)"/>
+  <text x="222" y="260" text-anchor="middle" dominant-baseline="central" class="on-accent caption">PRE-PUBLIC X-RAY GATE</text>
+
+  <g filter="url(#shadow)">
+    <rect x="92" y="334" width="300" height="286" rx="18" fill="var(--card)" stroke="#8FB2CC" stroke-width="1.5"/>
+    <circle cx="242" cy="392" r="34" fill="var(--navy-soft)"/>
+    <use href="#ic-folder" x="221" y="371" width="42" height="42" style="color:#2C618A"/>
+    <text x="242" y="445" text-anchor="middle" dominant-baseline="central" class="navy-dark card-title">PRIVATE REPO</text>
+    <text x="124" y="494" class="muted caption mono">config/.env.example</text>
+    <line x1="124" y1="511" x2="360" y2="511" stroke="#D8E3EC"/>
+    <text x="124" y="539" class="muted caption mono">docs/screenshot.png</text>
+    <line x1="124" y1="556" x2="360" y2="556" stroke="#D8E3EC"/>
+    <text x="124" y="584" class="muted caption mono">history · tags · assets</text>
+  </g>
+
+  <path d="M392 350L494 312V642L392 604Z" fill="url(#scan-beam)"/>
+  <rect x="494" y="304" width="92" height="346" rx="18" fill="#FFF9EF" stroke="#D78B2C" stroke-width="2"/>
+  <circle cx="540" cy="356" r="29" fill="var(--amber-soft)"/>
+  <use href="#ic-scan" x="522" y="338" width="36" height="36" style="color:#B66512"/>
+  <text x="540" y="410" text-anchor="middle" dominant-baseline="central" class="amber caption">ASSESS</text>
+  <line x1="540" y1="442" x2="540" y2="606" stroke="#D78B2C" stroke-width="3" stroke-dasharray="6 6"/>
+  <circle cx="540" cy="468" r="7" fill="#D78B2C"/>
+  <circle cx="540" cy="520" r="7" fill="#D78B2C"/>
+  <circle cx="540" cy="572" r="7" fill="#D78B2C"/>
+
+  <g filter="url(#shadow)">
+    <rect x="688" y="334" width="300" height="286" rx="18" fill="var(--card)" stroke="#90C8B9" stroke-width="1.5"/>
+    <circle cx="838" cy="392" r="34" fill="var(--green-soft)"/>
+    <use href="#ic-globe" x="817" y="371" width="42" height="42" style="color:#0B7B63"/>
+    <text x="838" y="445" text-anchor="middle" dominant-baseline="central" class="green card-title">PUBLIC</text>
+    <rect x="728" y="487" width="220" height="46" rx="23" fill="var(--green-soft)" stroke="#9CCFC2"/>
+    <use href="#ic-shield" x="746" y="498" width="24" height="24" style="color:#0B7B63"/>
+    <text x="786" y="510" dominant-baseline="central" class="green caption">APPROVE FIRST</text>
+    <text x="838" y="573" text-anchor="middle" dominant-baseline="central" class="muted caption">Verify the actual state after change</text>
+  </g>
+  <path d="M598 477H676" fill="none" stroke="var(--navy)" stroke-width="2.5" marker-end="url(#arrow-navy)"/>
+
+  <g>
+    <rect x="92" y="670" width="209" height="84" rx="14" fill="var(--red-soft)" stroke="#DEA7A2"/>
+    <use href="#ic-key" x="110" y="695" width="30" height="30" style="color:#B94840"/>
+    <text x="153" y="696" class="red caption">Credential</text>
+    <text x="153" y="722" class="muted small">key · token · secret</text>
+  </g>
+  <g>
+    <rect x="321" y="670" width="209" height="84" rx="14" fill="var(--amber-soft)" stroke="#E3BA7E"/>
+    <text x="343" y="702" class="amber caption mono">/Users/name/…</text>
+    <text x="343" y="730" class="muted small">personal path · account</text>
+  </g>
+  <g>
+    <rect x="550" y="670" width="209" height="84" rx="14" fill="var(--amber-soft)" stroke="#E3BA7E"/>
+    <text x="572" y="702" class="amber caption mono">intranet/…</text>
+    <text x="572" y="730" class="muted small">internal URL · identifier</text>
+  </g>
+  <g>
+    <rect x="779" y="670" width="209" height="84" rx="14" fill="var(--red-soft)" stroke="#DEA7A2"/>
+    <text x="801" y="702" class="red caption">Generated files</text>
+    <text x="801" y="730" class="muted small">image · doc metadata</text>
+  </g>
+
+  <rect x="60" y="846" width="960" height="184" rx="22" fill="#FFF8EE" stroke="#E2B779" stroke-width="1.5"/>
+  <rect x="88" y="826" width="238" height="44" rx="22" fill="var(--amber)"/>
+  <text x="207" y="848" text-anchor="middle" dominant-baseline="central" class="on-accent caption">TWO QUESTIONS</text>
+  <g>
+    <rect x="92" y="902" width="434" height="86" rx="14" fill="var(--card)" stroke="#DEA7A2"/>
+    <circle cx="135" cy="945" r="25" fill="var(--red-soft)"/>
+    <use href="#ic-stop" x="120" y="930" width="30" height="30" style="color:#B94840"/>
+    <text x="174" y="934" class="red body">Is anything unsafe</text>
+    <text x="174" y="962" class="ink body">to publish?</text>
+  </g>
+  <g>
+    <rect x="554" y="902" width="434" height="86" rx="14" fill="var(--card)" stroke="#92C9BA"/>
+    <circle cx="597" cy="945" r="25" fill="var(--green-soft)"/>
+    <use href="#ic-check" x="582" y="930" width="30" height="30" style="color:#0B7B63"/>
+    <text x="636" y="934" class="green body">Do docs and install info</text>
+    <text x="636" y="962" class="ink body">match the actual release?</text>
+  </g>
+
+  <rect x="60" y="1074" width="960" height="168" rx="22" fill="#EDF5FA" stroke="#B4CCDE" stroke-width="1.5"/>
+  <text x="92" y="1117" class="navy-dark section">Assessment is not mutation authority</text>
+  <g>
+    <rect x="92" y="1144" width="118" height="46" rx="23" fill="var(--navy-soft)" stroke="#9BBBD1"/>
+    <text x="151" y="1167" text-anchor="middle" dominant-baseline="central" class="navy caption">ASSESS</text>
+    <text x="223" y="1168" text-anchor="middle" dominant-baseline="central" class="navy body">→</text>
+    <rect x="236" y="1144" width="124" height="46" rx="23" fill="var(--navy-soft)" stroke="#9BBBD1"/>
+    <text x="298" y="1167" text-anchor="middle" dominant-baseline="central" class="navy caption">PREVIEW</text>
+    <text x="373" y="1168" text-anchor="middle" dominant-baseline="central" class="navy body">→</text>
+    <rect x="386" y="1144" width="132" height="46" rx="23" fill="var(--navy-soft)" stroke="#9BBBD1"/>
+    <text x="452" y="1167" text-anchor="middle" dominant-baseline="central" class="navy caption">RECHECK</text>
+    <text x="531" y="1168" text-anchor="middle" dominant-baseline="central" class="navy body">→</text>
+    <rect x="544" y="1144" width="138" height="46" rx="23" fill="var(--amber-soft)" stroke="#D7A45E"/>
+    <text x="613" y="1167" text-anchor="middle" dominant-baseline="central" class="amber caption">APPROVAL</text>
+    <text x="695" y="1168" text-anchor="middle" dominant-baseline="central" class="navy body">→</text>
+    <rect x="708" y="1144" width="120" height="46" rx="23" fill="var(--green-soft)" stroke="#92C9BA"/>
+    <text x="768" y="1167" text-anchor="middle" dominant-baseline="central" class="green caption">MUTATE</text>
+    <text x="841" y="1168" text-anchor="middle" dominant-baseline="central" class="navy body">→</text>
+    <rect x="854" y="1144" width="134" height="46" rx="23" fill="var(--green-soft)" stroke="#92C9BA"/>
+    <text x="921" y="1167" text-anchor="middle" dominant-baseline="central" class="green caption">VERIFY</text>
+    <text x="921" y="1219" text-anchor="middle" dominant-baseline="central" class="muted small">NEXT or STOP</text>
+  </g>
+
+  <rect x="60" y="1278" width="960" height="52" rx="16" fill="var(--red-soft)" stroke="#DEA7A2"/>
+    <text x="540" y="1304" text-anchor="middle" dominant-baseline="central" class="red body">Finding nothing does not prove the absence of sensitive information</text>
+</svg>
