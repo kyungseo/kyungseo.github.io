@@ -8,7 +8,6 @@ summary: "글의 의미·작성자 목소리·독자에게 맞는 문체를 구�
 toc: false
 date: 2026-08-09
 edited: false
-provenance_note: "최초 공개본입니다."
 og_image: meaning-before-fluency.png
 draft: false
 ---

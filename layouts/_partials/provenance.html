@@ -1,25 +1,96 @@
 {{ $ko := eq .Language.Lang "ko" }}
-{{ if or .Params.original_date .Params.original_url .Params.edited .Params.translated_from .Params.provenance_note }}
-<aside class="provenance">
-  <p>
-    {{ if $ko }}게시{{ else }}Published{{ end }}: {{ .Date.Format "2006-01-02" }}.
+{{ $updates := .Params.updates | default slice }}
+{{ $related := .Params.related | default slice }}
+{{ $relatedURLs := slice }}
+{{ range $related }}
+  {{ $relatedURLs = $relatedURLs | append .url }}
+{{ end }}
+{{ $legacySocial := .Params.social_url }}
+{{ $showLegacySocial := and $legacySocial (not (in $relatedURLs $legacySocial)) }}
+{{ $isOrigin := not (or .Params.translated_from .Params.original_date) }}
+{{ if .Date.IsZero }}{{ errorf "post %s has no date" .File.Path }}{{ end }}
+
+<aside class="post-history" aria-labelledby="post-history-heading">
+  <h2 id="post-history-heading">{{ if $ko }}글 기록{{ else }}Post history{{ end }}</h2>
+
+  {{ $seoul := (time.AsTime "2000-01-01T00:00:00" "Asia/Seoul").Location }}
+  {{ $entries := slice }}
+  {{ range $updates }}
+    {{ if not .date }}
+      {{ errorf "post history update in %s is missing date" $.File.Path }}
+    {{ else if not .kind }}
+      {{ errorf "post history update in %s is missing kind" $.File.Path }}
+    {{ else if not (in (slice "update" "correction") .kind) }}
+      {{ errorf "post history update in %s has unsupported kind %q" $.File.Path .kind }}
+    {{ else if not .summary }}
+      {{ errorf "post history update in %s is missing summary" $.File.Path }}
+    {{ else }}
+      {{ $when := (time.AsTime .date "Asia/Seoul").In $seoul }}
+      {{ $entries = $entries | append (dict "at" $when "epoch" $when.Unix "kind" .kind "summary" .summary) }}
+    {{ end }}
+  {{ end }}
+  {{ with $entries }}
+  <ol class="post-history-list" role="list">
+    {{ range sort . "epoch" "desc" }}
+    <li class="post-history-entry">
+      <p class="post-history-meta">
+        <time datetime="{{ .at.Format "2006-01-02T15:04:05Z07:00" }}">{{ .at.Format "2006-01-02 15:04 MST" }}</time>
+        <span aria-hidden="true">·</span>
+        <span class="post-history-kind post-history-kind--{{ .kind }}">
+          {{ if eq .kind "correction" }}{{ if $ko }}정정{{ else }}Correction{{ end }}{{ else }}{{ if $ko }}업데이트{{ else }}Update{{ end }}{{ end }}
+        </span>
+      </p>
+      <p>{{ .summary }}</p>
+    </li>
+    {{ end }}
+  </ol>
+  {{ end }}
+
+  <div class="post-history-first">
+    <p class="post-history-meta">
+      <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
+      <span aria-hidden="true">·</span>
+      <span>{{ if $isOrigin }}{{ if $ko }}첫 게시{{ else }}First published{{ end }}{{ else }}{{ if $ko }}게시{{ else }}Published{{ end }}{{ end }}</span>
+    </p>
+    {{ with .Params.provenance_note }}
+    <p>{{ . }}</p>
+    {{ else }}
+      <p>{{ if $ko }}이 글에 의미 있는 변경이 생기면 이 자리에 기록합니다.{{ else }}Any meaningful change to this post will be recorded here.{{ end }}</p>
+    {{ end }}
+
     {{ if .Params.translated_from }}
       {{ $src := "" }}{{ range .Translations }}{{ if eq .Language.Lang $.Params.translated_from }}{{ $src = .Permalink }}{{ end }}{{ end }}
+      <p>
       {{ if $ko }}
         {{ with $src }}<a href="{{ . }}">{{ end }}{{ if eq .Params.translated_from "en" }}영어{{ else }}한국어{{ end }} 원문{{ if $src }}</a>{{ end }}의 번역판{{ with .Params.original_date }} (원문 첫 게시: {{ . }}{{ with $.Params.original_platform }}, {{ . }}{{ end }}){{ end }}.
       {{ else }}
         Translated from the {{ if eq .Params.translated_from "ko" }}Korean{{ else }}English{{ end }} {{ with $src }}<a href="{{ . }}">original</a>{{ else }}original{{ end }}{{ with .Params.original_date }} (first published {{ . }}{{ with $.Params.original_platform }} in {{ . }}{{ end }}){{ end }}.
       {{ end }}
+      </p>
     {{ else }}
       {{ with .Params.original_date }}
-        {{ if $ko }}원 게시{{ else }}Originally published{{ end }}: {{ . }}{{ with $.Params.original_platform }}, {{ . }}{{ end }}{{ with $.Params.original_url }} · <a href="{{ . }}" rel="noopener">{{ if $ko }}원본{{ else }}original{{ end }}</a>{{ end }}.
+      <p>{{ if $ko }}원 게시{{ else }}Originally published{{ end }}: {{ . }}{{ with $.Params.original_platform }}, {{ . }}{{ end }}{{ with $.Params.original_url }} · <a href="{{ . }}" rel="noopener">{{ if $ko }}원본{{ else }}original{{ end }}</a>{{ end }}.</p>
       {{ end }}
     {{ end }}
-    {{ if .Params.edited }}{{ if $ko }}원문에서 일부 수정.{{ else }}Lightly edited from the original.{{ end }}{{ end }}
-  </p>
-  {{ with .Params.provenance_note }}<p>{{ . }}</p>{{ end }}
-  {{ with .Params.social_url }}
-  <p>{{ if $ko }}이 글의 소셜 스레드{{ else }}Discussion thread{{ end }}: <a href="{{ . }}" rel="noopener">{{ . }}</a></p>
+    {{ if .Params.edited }}<p>{{ if $ko }}원문에서 일부 수정.{{ else }}Lightly edited from the original.{{ end }}</p>{{ end }}
+  </div>
+
+  {{ if or $related $showLegacySocial }}
+  <section class="post-history-related" aria-labelledby="post-history-related-heading">
+    <h3 id="post-history-related-heading">{{ if $ko }}관련 링크{{ else }}Related links{{ end }}</h3>
+    <ul role="list">
+      {{ range $related }}
+      {{ if not .label }}{{ errorf "post history related link in %s is missing label" $.File.Path }}{{ end }}
+      {{ if not .url }}{{ errorf "post history related link in %s is missing url" $.File.Path }}{{ end }}
+      <li>
+        {{ with .type }}<span class="related-type">{{ if eq . "threads" }}Threads{{ else if eq . "github" }}GitHub{{ else if eq . "post" }}{{ if $ko }}관련 글{{ else }}Post{{ end }}{{ else }}{{ if $ko }}관련{{ else }}Related{{ end }}{{ end }}</span>{{ end }}
+        <a href="{{ .url }}" rel="noopener">{{ .label }}</a>
+      </li>
+      {{ end }}
+      {{ if $showLegacySocial }}
+      <li><span class="related-type">Social</span><a href="{{ $legacySocial }}" rel="noopener">{{ if $ko }}이 글과 관련된 소셜 대화{{ else }}Social discussion for this post{{ end }}</a></li>
+      {{ end }}
+    </ul>
+  </section>
   {{ end }}
 </aside>
-{{ end }}
