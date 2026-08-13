@@ -31,7 +31,7 @@ timeZone = "Asia/Seoul"
     noClasses = false
 
 [outputs]
-  home = ["html", "rss", "sitemap"]
+  home = ["html", "rss"]
   section = ["html", "rss"]
 
 [params]
