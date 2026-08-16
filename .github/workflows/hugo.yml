@@ -33,6 +33,8 @@ jobs:
         env:
           HUGO_ENVIRONMENT: production
         run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Verify sitemap coverage
+        run: python3 scripts/check_sitemap.py public
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
