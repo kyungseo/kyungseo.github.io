@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 900" width="720" height="900" role="img"
+  style="font-family:Pretendard,Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <title>The elements of a topology and its receipt</title>
+  <desc>Numbered callouts explain zones, nodes, and connectors inside a TypePack content area and show how a receipt outside the diagram binds the input, tool version, and SVG digest.</desc>
+  <rect width="720" height="900" data-fill-role="canvas" fill="#F7F7F5"/>
+
+  <g data-layout-role="header-cluster" data-layout-content-top="154" data-layout-breathing="36" data-layout-tolerance="2">
+    <rect x="36" y="52.2" width="4" height="47.6" rx="2" data-layout-role="cluster-keyline" data-fill-role="focus" fill="#2E6DA4"/>
+    <text x="52" y="44" font-size="14" font-weight="700" letter-spacing="0.08em" dominant-baseline="central"
+      data-layout-role="cluster-eyebrow" data-fill-role="muted" fill="#636A75">TOPOLOGY ANATOMY</text>
+    <text x="52" y="76" font-size="28" font-weight="700" dominant-baseline="central"
+      data-layout-role="cluster-h1" data-fill-role="ink" fill="#252B35">Anatomy of a topology</text>
+    <text x="52" y="110" font-size="14" dominant-baseline="central"
+      data-layout-role="cluster-subtitle" data-fill-role="muted" fill="#636A75">What you see and the contracts behind it</text>
+  </g>
+
+  <defs>
+    <marker id="ah-callout" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9"
+      markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="M2 2 L10 6 L2 10" data-stroke-role="focus" stroke="#2E6DA4" fill="none" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="ah-flow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11.25" markerHeight="11.25"
+      markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="M2 2 L10 6 L2 10" data-stroke-role="edge-line" stroke="#2E6DA4" fill="none" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <g data-layer="containers">
+    <rect x="172" y="154" width="512" height="532" rx="18" data-fill-role="surface" fill="#FFFFFF"
+      data-stroke-role="rule" stroke="#DEE0E2" stroke-width="1.5" stroke-dasharray="7 6"/>
+    <rect x="194" y="250" width="468" height="410" rx="14" data-fill-role="strip" fill="#F7F9FB"
+      data-stroke-role="rule" stroke="#DEE0E2" stroke-width="1"/>
+  </g>
+
+  <g data-layer="page-header" data-layout-role="header-cluster" data-layout-content-top="250"
+    data-layout-breathing="12" data-layout-tolerance="2">
+    <rect x="199" y="197.5" width="3" height="27" rx="1.5" data-layout-role="cluster-keyline"
+      data-fill-role="focus" fill="#2E6DA4"/>
+    <text x="210" y="188" font-size="11" font-weight="700" dominant-baseline="central"
+      data-layout-role="cluster-eyebrow" data-fill-role="muted" fill="#636A75">SERVICE TOPOLOGY</text>
+    <text x="210" y="211" font-size="18" font-weight="700" dominant-baseline="central"
+      data-layout-role="cluster-h1" data-fill-role="ink" fill="#252B35">A user request reaches the service</text>
+    <text x="210" y="232" font-size="10.5" dominant-baseline="central"
+      data-layout-role="cluster-subtitle" data-fill-role="muted" fill="#636A75">PageFrame budgets the title, margins, and content</text>
+  </g>
+
+  <g data-layer="connectors" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M492 354 V404" data-stroke-role="edge-line" stroke="#2E6DA4" stroke-width="2.5" marker-end="url(#ah-flow)"/>
+    <path d="M492 468 V518" data-stroke-role="edge-line" stroke="#2E6DA4" stroke-width="2.5" marker-end="url(#ah-flow)"/>
+  </g>
+
+  <g data-layer="nodes">
+    <g data-entity="zone-user">
+      <rect x="214" y="274" width="428" height="96" rx="12" data-fill-role="surface-tint" fill="#E4EDF3" data-stroke-role="rule" stroke="#DEE0E2"/>
+      <text x="226" y="290" font-size="11" font-weight="700" dominant-baseline="central" data-fill-role="muted" fill="#636A75">Users</text>
+      <rect x="372" y="300" width="240" height="54" rx="12" data-fill-role="external-fill" fill="#F9F9F9" data-stroke-role="external-line" stroke="#B9BCC1"/>
+      <circle cx="402" cy="327" r="18" data-fill-role="icon-tint" fill="#EAF0F6"/>
+      <g data-icon-id="users" transform="translate(392 317) scale(0.8333)">
+        <path d="M8 11 A3 3 0 1 0 8 5 A3 3 0 1 0 8 11 M2 20 A6 6 0 0 1 14 20 M16 6 A3 3 0 0 1 16 11 M15 20 A6 6 0 0 0 22 20"
+          data-stroke-role="external-line" stroke="#B9BCC1" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <text x="432" y="319" font-size="13" font-weight="700" dominant-baseline="central" data-fill-role="ink" fill="#252B35">User</text>
+      <text x="432" y="337" font-size="10.5" dominant-baseline="central" data-fill-role="muted" fill="#636A75">node.kind = actor</text>
+    </g>
+
+    <g data-entity="zone-edge">
+      <rect x="214" y="388" width="428" height="96" rx="12" data-fill-role="surface-tint" fill="#E4EDF3" data-stroke-role="rule" stroke="#DEE0E2"/>
+      <text x="226" y="404" font-size="11" font-weight="700" dominant-baseline="central" data-fill-role="muted" fill="#636A75">Entry</text>
+      <rect x="372" y="414" width="240" height="54" rx="12" data-fill-role="edge-fill" fill="#EAF0F6" data-stroke-role="edge-line" stroke="#2E6DA4"/>
+      <circle cx="402" cy="441" r="18" data-fill-role="icon-tint" fill="#EAF0F6"/>
+      <g data-icon-id="route" transform="translate(392 431) scale(0.8333)">
+        <path d="M5 19 H12 A4 4 0 0 0 12 11 H8 A4 4 0 0 1 8 3 H19" data-stroke-role="edge-line" stroke="#2E6DA4"
+          fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <text x="432" y="433" font-size="13" font-weight="700" dominant-baseline="central" data-fill-role="ink" fill="#252B35">Gateway</text>
+      <text x="432" y="451" font-size="10.5" dominant-baseline="central" data-fill-role="muted" fill="#636A75">node.kind = gateway</text>
+    </g>
+
+    <g data-entity="zone-application">
+      <rect x="214" y="502" width="428" height="126" rx="12" data-fill-role="surface-tint" fill="#E4EDF3" data-stroke-role="rule" stroke="#DEE0E2"/>
+      <text x="226" y="518" font-size="11" font-weight="700" dominant-baseline="central" data-fill-role="muted" fill="#636A75">Application</text>
+      <rect x="372" y="528" width="240" height="70" rx="12" data-fill-role="api-fill" fill="#EFEEF6" data-stroke-role="api-line" stroke="#5B54A8"/>
+      <circle cx="402" cy="563" r="18" data-fill-role="icon-tint" fill="#EAF0F6"/>
+      <g data-icon-id="api" transform="translate(392 553) scale(0.8333)">
+        <path d="M9 5 L5 12 L9 19 M15 5 L19 12 L15 19" data-stroke-role="api-line" stroke="#5B54A8"
+          fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <text x="432" y="553" font-size="13" font-weight="700" dominant-baseline="central" data-fill-role="ink" fill="#252B35">Order service</text>
+      <text x="432" y="573" font-size="10.5" dominant-baseline="central" data-fill-role="muted" fill="#636A75">node.kind = service</text>
+    </g>
+  </g>
+
+  <g data-layer="receipt">
+    <rect x="172" y="718" width="512" height="122" rx="16" data-fill-role="surface" fill="#FFFFFF" data-stroke-role="focus" stroke="#2E6DA4" stroke-width="1.5"/>
+    <text x="198" y="744" font-size="15" font-weight="700" dominant-baseline="central" data-fill-role="ink" fill="#252B35">receipt — the record outside the diagram</text>
+    <text x="198" y="768" font-size="11.5" dominant-baseline="central" data-fill-role="muted" fill="#636A75">Binds this input, tool version, and SVG as one set</text>
+    <rect x="198" y="788" width="98" height="30" rx="15" data-fill-role="strip" fill="#F7F9FB" data-stroke-role="rule" stroke="#DEE0E2"/>
+    <rect x="310" y="788" width="126" height="30" rx="15" data-fill-role="strip" fill="#F7F9FB" data-stroke-role="rule" stroke="#DEE0E2"/>
+    <rect x="450" y="788" width="188" height="30" rx="15" data-fill-role="strip" fill="#F7F9FB" data-stroke-role="rule" stroke="#DEE0E2"/>
+    <text x="247" y="803" font-size="11" text-anchor="middle" dominant-baseline="central" data-fill-role="ink" fill="#252B35">input digest</text>
+    <text x="373" y="803" font-size="11" text-anchor="middle" dominant-baseline="central" data-fill-role="ink" fill="#252B35">tool version</text>
+    <text x="544" y="803" font-size="11" text-anchor="middle" dominant-baseline="central" data-fill-role="ink" fill="#252B35">SVG digest → recheck</text>
+  </g>
+
+  <g data-layer="callouts" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M156 190 H162 L172 190" data-stroke-role="focus" stroke="#2E6DA4" stroke-width="2" marker-end="url(#ah-callout)"/>
+    <path d="M156 264 H178 L194 264" data-stroke-role="focus" stroke="#2E6DA4" stroke-width="2" marker-end="url(#ah-callout)"/>
+    <path d="M156 338 H190 L214 326" data-stroke-role="focus" stroke="#2E6DA4" stroke-width="2" marker-end="url(#ah-callout)"/>
+    <path d="M156 434 H250 L362 441" data-stroke-role="focus" stroke="#2E6DA4" stroke-width="2" marker-end="url(#ah-callout)"/>
+    <path d="M156 530 H270 L482 494" data-stroke-role="focus" stroke="#2E6DA4" stroke-width="2" marker-end="url(#ah-callout)"/>
+    <path d="M156 766 H164 L172 766" data-stroke-role="focus" stroke="#2E6DA4" stroke-width="2" marker-end="url(#ah-callout)"/>
+  </g>
+
+  <g data-layer="callout-labels">
+    <g>
+      <rect x="24" y="164" width="132" height="52" rx="12" data-fill-role="surface" fill="#FFFFFF" data-stroke-role="rule" stroke="#DEE0E2"/>
+      <circle cx="44" cy="190" r="12" data-fill-role="focus" fill="#2E6DA4"/>
+      <text x="44" y="190" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="central" data-fill-role="on-focus" fill="#FFFFFF">1</text>
+      <text x="62" y="184" font-size="11.5" font-weight="700" dominant-baseline="central" data-fill-role="ink" fill="#252B35">PageFrame</text>
+      <text x="62" y="200" font-size="10" dominant-baseline="central" data-fill-role="muted" fill="#636A75">Title + margins</text>
+    </g>
+    <g>
+      <rect x="24" y="238" width="132" height="52" rx="12" data-fill-role="surface" fill="#FFFFFF" data-stroke-role="rule" stroke="#DEE0E2"/>
+      <circle cx="44" cy="264" r="12" data-fill-role="focus" fill="#2E6DA4"/>
+      <text x="44" y="264" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="central" data-fill-role="on-focus" fill="#FFFFFF">2</text>
+      <text x="62" y="258" font-size="11.5" font-weight="700" dominant-baseline="central" data-fill-role="ink" fill="#252B35">TypePack</text>
+      <text x="62" y="274" font-size="10" dominant-baseline="central" data-fill-role="muted" fill="#636A75">Layout rules</text>
+    </g>
+    <g>
+      <rect x="24" y="312" width="132" height="52" rx="12" data-fill-role="surface" fill="#FFFFFF" data-stroke-role="rule" stroke="#DEE0E2"/>
+      <circle cx="44" cy="338" r="12" data-fill-role="focus" fill="#2E6DA4"/>
+      <text x="44" y="338" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="central" data-fill-role="on-focus" fill="#FFFFFF">3</text>
+      <text x="62" y="332" font-size="11.5" font-weight="700" dominant-baseline="central" data-fill-role="ink" fill="#252B35">zone</text>
+      <text x="62" y="348" font-size="10" dominant-baseline="central" data-fill-role="muted" fill="#636A75">Related group</text>
+    </g>
+    <g>
+      <rect x="24" y="408" width="132" height="52" rx="12" data-fill-role="surface" fill="#FFFFFF" data-stroke-role="rule" stroke="#DEE0E2"/>
+      <circle cx="44" cy="434" r="12" data-fill-role="focus" fill="#2E6DA4"/>
+      <text x="44" y="434" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="central" data-fill-role="on-focus" fill="#FFFFFF">4</text>
+      <text x="62" y="428" font-size="11.5" font-weight="700" dominant-baseline="central" data-fill-role="ink" fill="#252B35">node</text>
+      <text x="62" y="444" font-size="10" dominant-baseline="central" data-fill-role="muted" fill="#636A75">Semantic box</text>
+    </g>
+    <g>
+      <rect x="24" y="504" width="132" height="52" rx="12" data-fill-role="surface" fill="#FFFFFF" data-stroke-role="rule" stroke="#DEE0E2"/>
+      <circle cx="44" cy="530" r="12" data-fill-role="focus" fill="#2E6DA4"/>
+      <text x="44" y="530" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="central" data-fill-role="on-focus" fill="#FFFFFF">5</text>
+      <text x="62" y="524" font-size="11.5" font-weight="700" dominant-baseline="central" data-fill-role="ink" fill="#252B35">connector</text>
+      <text x="62" y="540" font-size="10" dominant-baseline="central" data-fill-role="muted" fill="#636A75">Link + direction</text>
+    </g>
+    <g>
+      <rect x="24" y="740" width="132" height="52" rx="12" data-fill-role="surface" fill="#FFFFFF" data-stroke-role="rule" stroke="#DEE0E2"/>
+      <circle cx="44" cy="766" r="12" data-fill-role="focus" fill="#2E6DA4"/>
+      <text x="44" y="766" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="central" data-fill-role="on-focus" fill="#FFFFFF">6</text>
+      <text x="62" y="760" font-size="11.5" font-weight="700" dominant-baseline="central" data-fill-role="ink" fill="#252B35">receipt</text>
+      <text x="62" y="776" font-size="10" dominant-baseline="central" data-fill-role="muted" fill="#636A75">Binding record</text>
+    </g>
+  </g>
+</svg>

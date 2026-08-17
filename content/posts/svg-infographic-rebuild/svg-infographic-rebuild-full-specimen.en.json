@@ -1,0 +1,532 @@
+{
+ "schemaVersion": 1,
+ "command": "generate",
+ "typepack": "topology-component",
+ "case": "topology-component-stress-primitive-coverage",
+ "locale": "en",
+ "preset": "presentation-16x9",
+ "cols": null,
+ "presetDeclared": true,
+ "presetPreferred": "presentation-16x9",
+ "presetsSupported": [
+  "social-4x5",
+  "presentation-16x9"
+ ],
+ "audition": false,
+ "layout": "zones",
+ "count": 4,
+ "inputDigest": "sha256:54501c02ceba3e481837ec4f4c78b877ed5484f5ea131ba0a3d0cb9be76f588d",
+ "geometry": "fits",
+ "geometryExpected": "fits",
+ "routingExpected": "routable",
+ "footprint": {
+  "w": 632,
+  "h": 652
+ },
+ "contentBox": {
+  "w": 1504,
+  "h": 652
+ },
+ "status": "ok",
+ "artifact": "flagship.en.svg",
+ "consumed": [
+  "zone-external",
+  "client",
+  "provider",
+  "zone-edge",
+  "gateway",
+  "zone-application",
+  "worker",
+  "service",
+  "observability",
+  "zone-data",
+  "queue",
+  "database",
+  "cache",
+  "object-storage",
+  "request-client-gateway",
+  "request-gateway-service",
+  "event-queue-worker",
+  "dependency-service-database",
+  "dependency-service-queue",
+  "boundary"
+ ],
+ "artifactDigest": "sha256:61f4343f55854e2878e42ae7a9234fb57460a9296b072eccd6f501b2677eeaaf",
+ "contentFlowBounds": {
+  "x": 48,
+  "y": 200,
+  "w": 1504,
+  "h": 652
+ },
+ "fontDelivery": {
+  "mode": "portable",
+  "grade": "acceptance",
+  "policyDigest": "1fc29ca6a5bd7e1b",
+  "typographyProfileDigest": "154f16e844e12cbf",
+  "alias": "SkinSans-Subset",
+  "glyphs": 45,
+  "faces": [
+   {
+    "weight": 400,
+    "sourceDigest": "3ffbacde6ab8411f1d2db54bb9b1f0b3ee2a738932033722cf0388c06aed1c93",
+    "subsetDigest": "sha256:27a6801b884a2b68bfd10fcb1bd441c14b0f7ed2177e2c90e17ac5d799a15f43",
+    "bytes": 23452
+   },
+   {
+    "weight": 700,
+    "sourceDigest": "2e91915fab54df71cc9598ebf608b2bdb54c6fe3c066ac61dff0bc44fca71cc7",
+    "subsetDigest": "sha256:132005cfbaad0cb2cc08d64108fe6e63af0622cb87de13334fe87aca04c40f23",
+    "bytes": 23280
+   }
+  ],
+  "tool": {
+   "fonttools": "4.53.1",
+   "brotli": "1.1.0",
+   "python": "3.14.6"
+  },
+  "wrapperDigest": "sha256:f265dff7e9041e5c90e8fea0b92f43b2ba1e278e812ad6af2d28d6864a6c527f",
+  "identity": [
+   {
+    "weight": 400,
+    "family": "SkinSans-Subset",
+    "fullName": "SkinSans-Subset Regular",
+    "postScriptName": "SkinSans-Subset-Regular",
+    "uniqueID": "SkinSans-Subset Regular; subset; weight 400",
+    "preservedLegalNameIDs": [
+     0,
+     7,
+     8,
+     9,
+     11,
+     12,
+     13,
+     14
+    ]
+   },
+   {
+    "weight": 700,
+    "family": "SkinSans-Subset",
+    "fullName": "SkinSans-Subset Bold",
+    "postScriptName": "SkinSans-Subset-Bold",
+    "uniqueID": "SkinSans-Subset Bold; subset; weight 700",
+    "preservedLegalNameIDs": [
+     0,
+     7,
+     8,
+     9,
+     11,
+     12,
+     13,
+     14
+    ]
+   }
+  ]
+ },
+ "treatment": {
+  "name": "flat",
+  "mode": "light",
+  "overlay": null,
+  "displacementBound": 0
+ },
+ "routing": {
+  "degradeLevel": 0,
+  "ladder": [],
+  "portConstraints": [
+   {
+    "edge": "dependency-service-queue",
+    "endpoint": "to",
+    "node": "queue",
+    "allowed": {
+     "lo": 286.7,
+     "hi": 445.5,
+     "axis": "x"
+    }
+   }
+  ],
+  "problems": [],
+  "hops": 0,
+  "alignment": [],
+  "attempts": [
+   {
+    "edge": "request-client-gateway",
+    "candidates": [
+     {
+      "shape": "straight",
+      "bends": 0,
+      "travel": 64,
+      "ok": true,
+      "code": null,
+      "reason": null
+     }
+    ]
+   },
+   {
+    "edge": "request-gateway-service",
+    "candidates": [
+     {
+      "shape": "straight",
+      "bends": 0,
+      "travel": 64,
+      "ok": true,
+      "code": null,
+      "reason": null
+     }
+    ]
+   },
+   {
+    "edge": "event-queue-worker",
+    "candidates": [
+     {
+      "shape": "side-channel",
+      "bends": 2,
+      "travel": 250,
+      "ok": true,
+      "code": null,
+      "reason": null
+     }
+    ]
+   },
+   {
+    "edge": "dependency-service-database",
+    "candidates": [
+     {
+      "shape": "straight",
+      "bends": 0,
+      "travel": 88,
+      "ok": true,
+      "code": null,
+      "reason": null
+     }
+    ]
+   },
+   {
+    "edge": "dependency-service-queue",
+    "candidates": [
+     {
+      "shape": "elbow",
+      "bends": 1,
+      "travel": 427.3,
+      "ok": false,
+      "code": "R-THROUGH",
+      "reason": "crosses node worker"
+     },
+     {
+      "shape": "elbow",
+      "bends": 1,
+      "travel": 486.5,
+      "ok": false,
+      "code": "R-THROUGH",
+      "reason": "crosses node database"
+     },
+     {
+      "shape": "dogleg",
+      "bends": 2,
+      "travel": 292.5,
+      "ok": false,
+      "code": "R-THROUGH",
+      "reason": "crosses node worker"
+     },
+     {
+      "shape": "dogleg",
+      "bends": 2,
+      "travel": 621.3,
+      "ok": true,
+      "code": null,
+      "reason": null
+     }
+    ]
+   }
+  ],
+  "diagnostics": [],
+  "legend": true,
+  "demoted": [],
+  "routes": [
+   {
+    "id": "request-client-gateway",
+    "from": "client",
+    "to": "gateway",
+    "path": "straight",
+    "semanticKind": "request",
+    "semanticDirection": "consumer-to-provider",
+    "ports": [
+     "bottom",
+     "top"
+    ],
+    "bends": 0,
+    "style": "solid",
+    "targetGap": 10,
+    "hops": 0
+   },
+   {
+    "id": "request-gateway-service",
+    "from": "gateway",
+    "to": "service",
+    "path": "straight",
+    "semanticKind": "request",
+    "semanticDirection": "consumer-to-provider",
+    "ports": [
+     "bottom",
+     "top"
+    ],
+    "bends": 0,
+    "style": "dashed",
+    "targetGap": 10,
+    "hops": 0
+   },
+   {
+    "id": "event-queue-worker",
+    "from": "queue",
+    "to": "worker",
+    "path": "side-channel",
+    "semanticKind": "event",
+    "semanticDirection": "producer-to-consumer",
+    "ports": [
+     "left",
+     "left"
+    ],
+    "bends": 2,
+    "style": "dashed",
+    "targetGap": 10,
+    "hops": 0
+   },
+   {
+    "id": "dependency-service-database",
+    "from": "service",
+    "to": "database",
+    "path": "straight",
+    "semanticKind": "dependency",
+    "semanticDirection": "consumer-to-provider",
+    "ports": [
+     "bottom",
+     "top"
+    ],
+    "bends": 0,
+    "style": "dashed",
+    "targetGap": 10,
+    "hops": 0
+   },
+   {
+    "id": "dependency-service-queue",
+    "from": "service",
+    "to": "queue",
+    "path": "dogleg",
+    "semanticKind": "dependency",
+    "semanticDirection": "consumer-to-provider",
+    "ports": [
+     "bottom",
+     "top"
+    ],
+    "bends": 2,
+    "style": "dashed",
+    "targetGap": 10,
+    "hops": 0
+   }
+  ]
+ },
+ "topology": {
+  "schemaVersion": 1,
+  "variant": "regular",
+  "coverage": "full-primitive-specimen",
+  "primitiveSet": [
+   "actor",
+   "cache",
+   "compute",
+   "database",
+   "external-provider",
+   "gateway",
+   "object-storage",
+   "observability",
+   "queue",
+   "service"
+  ],
+  "nodes": [
+   {
+    "id": "client",
+    "zone": "zone-external",
+    "kind": "actor",
+    "declaredKind": "client",
+    "icon": "users",
+    "iconSource": "registry"
+   },
+   {
+    "id": "provider",
+    "zone": "zone-external",
+    "kind": "external-provider",
+    "declaredKind": "external-provider",
+    "icon": "network",
+    "iconSource": "registry"
+   },
+   {
+    "id": "gateway",
+    "zone": "zone-edge",
+    "kind": "gateway",
+    "declaredKind": "gateway",
+    "icon": "route",
+    "iconSource": "registry"
+   },
+   {
+    "id": "worker",
+    "zone": "zone-application",
+    "kind": "compute",
+    "declaredKind": "worker",
+    "icon": "gear",
+    "iconSource": "registry"
+   },
+   {
+    "id": "service",
+    "zone": "zone-application",
+    "kind": "service",
+    "declaredKind": "service",
+    "icon": "api",
+    "iconSource": "registry"
+   },
+   {
+    "id": "observability",
+    "zone": "zone-application",
+    "kind": "observability",
+    "declaredKind": "observability",
+    "icon": "activity",
+    "iconSource": "registry"
+   },
+   {
+    "id": "queue",
+    "zone": "zone-data",
+    "kind": "queue",
+    "declaredKind": "event-bus",
+    "icon": "queue",
+    "iconSource": "registry"
+   },
+   {
+    "id": "database",
+    "zone": "zone-data",
+    "kind": "database",
+    "declaredKind": "database",
+    "icon": "database",
+    "iconSource": "registry"
+   },
+   {
+    "id": "cache",
+    "zone": "zone-data",
+    "kind": "cache",
+    "declaredKind": "cache",
+    "icon": "layers",
+    "iconSource": "registry"
+   },
+   {
+    "id": "object-storage",
+    "zone": "zone-data",
+    "kind": "object-storage",
+    "declaredKind": "object-storage",
+    "icon": "doc",
+    "iconSource": "registry"
+   }
+  ],
+  "edges": [
+   {
+    "id": "request-client-gateway",
+    "from": "client",
+    "to": "gateway",
+    "kind": "request",
+    "direction": "consumer-to-provider",
+    "delivery": "sync",
+    "visibility": "public"
+   },
+   {
+    "id": "request-gateway-service",
+    "from": "gateway",
+    "to": "service",
+    "kind": "request",
+    "direction": "consumer-to-provider",
+    "delivery": "sync",
+    "visibility": "private"
+   },
+   {
+    "id": "dependency-service-database",
+    "from": "service",
+    "to": "database",
+    "kind": "dependency",
+    "direction": "consumer-to-provider",
+    "delivery": "sync",
+    "visibility": "private"
+   },
+   {
+    "id": "dependency-service-queue",
+    "from": "service",
+    "to": "queue",
+    "kind": "dependency",
+    "direction": "consumer-to-provider",
+    "delivery": "async",
+    "visibility": "private"
+   },
+   {
+    "id": "event-queue-worker",
+    "from": "queue",
+    "to": "worker",
+    "kind": "event",
+    "direction": "producer-to-consumer",
+    "delivery": "async",
+    "visibility": "private"
+   }
+  ],
+  "structure": {
+   "zones": [
+    "zone-external",
+    "zone-edge",
+    "zone-application",
+    "zone-data"
+   ],
+   "boundary": true
+  },
+  "contract": {
+   "zonePadding": 12,
+   "nodePadding": 12,
+   "iconSize": 20,
+   "nodeTextSize": 12,
+   "zoneLabelSize": 12,
+   "nodeHeightMax": 96,
+   "nodeWidthMax": 960,
+   "portInset": 16,
+   "targetGap": 10,
+   "outerClearance": 14
+  },
+  "verification": {
+   "primitiveAndVariant": "verified",
+   "reachability": "unverified",
+   "cycles": "unverified",
+   "completeness": "unverified"
+  }
+ },
+ "matrix": null,
+ "timeline": null,
+ "residual": {
+  "top": 0,
+  "bottom": 0
+ },
+ "residualDisposition": null,
+ "provenance": {
+  "schema": {
+   "name": "svg-infographic-provenance",
+   "version": 1,
+   "canonicalization": 2
+  },
+  "executionMode": "installed-runtime",
+  "skillRoot": "skills/svg-infographic",
+  "package": {
+   "id": "svg-infographic",
+   "surfaceRevision": 17
+  },
+  "runtimeSurfaceDigest": "sha256:12819c706448cb154730024e8db459dd469bc8a0159df235ffd16e6d710ec2b4",
+  "source": null,
+  "producer": {
+   "kind": "generator",
+   "generatorDigest": "sha256:6385ee4dbd7a5b332cee75f243a8e03b1f9125155f0b4c0c52aa1ab0c99852b2"
+  },
+  "inputs": [
+   {
+    "role": "typepack-input",
+    "digest": "sha256:54501c02ceba3e481837ec4f4c78b877ed5484f5ea131ba0a3d0cb9be76f588d"
+   }
+  ],
+  "browser": null
+ }
+}
