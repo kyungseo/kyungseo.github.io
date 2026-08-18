@@ -1,5 +1,5 @@
 ---
-title: "바이브 코딩을 팀의 시스템으로 만들려면"
+title: "바이브 코딩을 팀의 시선으로 바라볼 때"
 slug: vibe-coding-needs-a-harness
 format: essay
 tags: ["ai", "vibe-coding", "coding-agent", "software-engineering", "si", "harness"]
