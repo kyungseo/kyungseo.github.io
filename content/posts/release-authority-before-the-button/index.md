@@ -5,7 +5,7 @@ format: essay
 tags: ["skillstead", "skills", "github", "release", "governance"]
 series: []
 summary: "저장소에 섞인 인증 정보·개인 환경 흔적·내부 정보를 공개 전에 점검하고, 릴리스를 결정과 승인, 변경, 검증의 연속으로 다루는 github-release-guide의 안전 설계."
-toc: false
+toc: true
 date: 2026-08-09
 edited: false
 og_image: release-authority-before-the-button.png

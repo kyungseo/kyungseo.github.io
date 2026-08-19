@@ -5,7 +5,7 @@ format: essay
 tags: ["skillstead", "skills", "writing", "editing", "localization"]
 series: []
 summary: "글의 의미·작성자 목소리·독자에게 맞는 문체를 구분해, 자연스러움과 정확성을 함께 다루는 writing-quality-editor의 편집 계약."
-toc: false
+toc: true
 date: 2026-08-09
 edited: false
 og_image: meaning-before-fluency.png

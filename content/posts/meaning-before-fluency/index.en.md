@@ -5,7 +5,7 @@ format: essay
 tags: ["skillstead", "skills", "writing", "editing", "localization"]
 series: []
 summary: "The editing contract behind writing-quality-editor: separate meaning, authorial voice, and audience-appropriate register so that natural writing does not come at the cost of accuracy."
-toc: false
+toc: true
 date: 2026-08-09
 translated_from: ko
 original_date: 2026-08-09

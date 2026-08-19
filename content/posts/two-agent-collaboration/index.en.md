@@ -5,7 +5,7 @@ format: essay
 tags: ["agents", "collaboration", "review"]
 series: []
 summary: "What I learned while running two agents as Driver and Reviewer — widening the Reviewer's role from pointing out problems to falsifying independently, then solving collaboratively."
-toc: false
+toc: true
 date: 2026-08-05
 translated_from: ko
 original_date: 2026-07-27
@@ -17,6 +17,8 @@ draft: false
 
 A retrospective, I suppose? This one came out a bit long.
 
+## Why I ran two agents together
+
 For a while now I've been running two agents together — Codex and Claude Code — with one as the Author/Driver and the other as the Reviewer. The Driver plans and writes; the Reviewer attacks the result independently.
 
 Compared to working with a single agent this costs more time and money, but the effect has been clear. The pair caught omissions and self-contradictions far better than one agent alone, and it kept questioning premises the author had come to take for granted.
@@ -24,6 +26,8 @@ Compared to working with a single agent this costs more time and money, but the 
 My standing instruction to the Reviewer went like this:
 
 > Don't just check the content and implementation for consistency. Be a cold-blooded Red-team that doubts the direction itself.
+
+## When the Reviewer stopped at findings
 
 Then today, during a fairly wide-ranging cleanup, the review rounds simply would not end. I'd fix something, a new defect would surface, I'd fix that, and another problem would appear — over and over.
 
@@ -41,6 +45,8 @@ So I added one more requirement for the Reviewer:
 
 From the next round on, the character of the results was clearly different. Not every problem disappeared at once, but at least the Driver no longer had to restart from abstract design every time. With causes and fix directions arriving together, disposition got much faster and the discussion became more concrete.
 
+## The Driver and Reviewer see different things
+
 Looking back, the two roles are disadvantaged in different ways, and strong in different ways.
 
 The Driver works while holding a wide load: requirements, prior decisions, change history, implementation constraints. It knows the most about the actual context — which also means high cognitive load, and it's easy to get trapped inside premises of its own making.
@@ -57,6 +63,8 @@ Going forward I intend to give the Reviewer two responsibilities together. (Not 
 
 1. Falsify independently, without inheriting the author's premises.
 2. Once a problem is confirmed, present the cause, a recommended solution, the minimal scope of change, and the verification method.
+
+## First falsify, then solve collaboratively
 
 There is a balance to keep, though.
 
@@ -81,6 +89,8 @@ Even when there are several options, present one preferred recommendation whenev
 
 And when the same class of defect repeats for two rounds or more, the Reviewer should signal that it's time to re-examine the design axis itself rather than keep refining locally. A growing round count doesn't always mean the review is going deep. Sometimes it means we're polishing the wrong abstraction ever more precisely.
 
+## Review success is not the number of findings
+
 Perhaps I've been running two or three times more review rounds than I needed to. As the Owner, I also had to make an unnecessary number of intermediate judgment calls along the way.
 
 A bit late — but better to have learned it now.
@@ -91,7 +101,7 @@ The Red-team's critical eye and cooperative solution-sharing were never opposing
 
 The collaboration Skill I build next will encode this principle explicitly. Keep the Red-team's sharpness — but the ultimate measure of success is not the number of findings. It's converging the work to a correct state, safely and quickly.
 
-'Coordination principles, summarized'
+## Coordination principles, summarized
 
 The final balance I'd recommend:
 

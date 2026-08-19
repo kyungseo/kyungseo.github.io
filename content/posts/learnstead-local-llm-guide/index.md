@@ -5,7 +5,7 @@ format: note
 tags: ["learnstead", "local-llm", "ollama", "open-weight"]
 series: []
 summary: "Local LLM의 개념과 모델·runtime 선택부터 Ollama로 첫 응답을 확인하는 절차까지 정리한 Learnstead 첫 가이드 소개."
-toc: false
+toc: true
 date: 2026-08-11
 edited: false
 og_image: local-llm-guide-hero-social.png

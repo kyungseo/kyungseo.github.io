@@ -5,7 +5,7 @@ format: essay
 tags: ["skillstead", "skills", "svg", "infographic", "visualization"]
 series: []
 summary: "The design principles behind svg-infographic: not just producing a plausible technical diagram once, but keeping an editable SVG and a verified PNG that can be revised and reused."
-toc: false
+toc: true
 date: 2026-08-09
 translated_from: ko
 original_date: 2026-08-09

@@ -6,7 +6,7 @@ tags: ["skillstead", "skills", "svg", "infographic", "diagram", "design-system"]
 series: []
 summary: "standalone SVG와 한글 폰트를 결과물에 함께 담고, 입력·도구·artifact를 receipt로 묶어 결함 있는 결과를 성공한 결과로 처리하지 않도록 svg-infographic을 다시 설계한 과정."
 og_image: svg-infographic-rebuild-hero.ko.png
-toc: false
+toc: true
 date: 2026-08-17
 edited: false
 draft: false
