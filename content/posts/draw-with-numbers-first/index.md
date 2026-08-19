@@ -5,7 +5,7 @@ format: essay
 tags: ["skillstead", "skills", "svg", "infographic", "visualization"]
 series: []
 summary: "기술 다이어그램을 한 번 그럴듯하게 만드는 데서 멈추지 않고, 수정 가능한 SVG와 검증된 PNG로 재사용할 수 있게 하는 svg-infographic의 설계 원칙."
-toc: false
+toc: true
 date: 2026-08-09
 edited: false
 og_image: draw-with-numbers-first.png

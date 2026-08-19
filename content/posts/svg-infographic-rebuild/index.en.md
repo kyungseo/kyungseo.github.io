@@ -6,7 +6,7 @@ tags: ["skillstead", "skills", "svg", "infographic", "diagram", "design-system"]
 series: []
 summary: "How I rebuilt svg-infographic around standalone SVGs, embedded Korean fonts, and receipts that bind inputs, runtime, and artifacts so defective output is not quietly counted as success."
 og_image: svg-infographic-rebuild-hero.en.png
-toc: false
+toc: true
 date: 2026-08-17
 translated_from: ko
 original_date: 2026-08-17

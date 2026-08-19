@@ -5,7 +5,7 @@ format: essay
 tags: ["skillstead", "skills", "github", "release", "governance"]
 series: []
 summary: "The safety design of github-release-guide: check a repository for credentials, personal-environment traces, and internal information before publication, then treat a release as a sequence of decisions, approvals, changes, and verification."
-toc: false
+toc: true
 date: 2026-08-09
 translated_from: ko
 original_date: 2026-08-09

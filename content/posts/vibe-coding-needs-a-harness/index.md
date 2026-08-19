@@ -6,7 +6,7 @@ tags: ["ai", "vibe-coding", "coding-agent", "software-engineering", "si", "harne
 series: []
 summary: "AI 코딩 에이전트의 속도를 개인의 일회성 성과로 끝내지 않고, 팀이 이해하고 유지할 수 있는 코드로 이어 가기 위해 하네스에 무엇을 담아야 하는지 생각해 봤습니다."
 og_image: vibe-coding-harness-editorial.png
-toc: false
+toc: true
 date: 2026-08-18
 edited: false
 draft: false
