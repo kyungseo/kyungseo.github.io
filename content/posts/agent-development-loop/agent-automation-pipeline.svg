@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 628" width="680" height="628" role="img"
+     aria-labelledby="pipeline-title pipeline-desc"
+     style="font-family:Pretendard,Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <title id="pipeline-title">프롬프트만으로 자동화되지는 않습니다</title>
+  <desc id="pipeline-desc">트리거에서 상태와 프롬프트를 불러오고 에이전트가 도구를 실행해 검토 대기 결과를 만든다. 자동 평가에 실패하면 중지하고 보고하며, 통과하면 사람 승인 후 확정하고 상태를 저장한다. 모든 단계는 실행 기록에 남는다.</desc>
+
+  <defs>
+    <marker id="pipeline-arrow" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="9.9" markerHeight="9.9"
+            markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 L10 6 L2 10" fill="none" stroke="#2E6DA4" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" data-stroke-role="edge-line"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="680" height="628" fill="#F7F7F5" data-fill-role="canvas"/>
+
+  <!-- Header: document-compact PageFrame -->
+  <text x="45" y="38" font-size="12" font-weight="700" letter-spacing="1.3" dominant-baseline="central"
+        fill="#636A75" data-fill-role="muted">AGENT AUTOMATION PIPELINE</text>
+  <rect x="32" y="48" width="3" height="41" rx="1.5" fill="#2E6DA4" data-fill-role="focus"/>
+  <text x="45" y="68" font-size="24" font-weight="700" dominant-baseline="central"
+        fill="#252B35" data-fill-role="ink">프롬프트만으로 자동화되지는 않습니다</text>
+  <text x="45" y="99" font-size="13" dominant-baseline="central"
+        fill="#636A75" data-fill-role="muted">한 번의 실행 흐름과 다음 반복을 만드는 구성 요소</text>
+
+  <!-- Main pipeline: four ordered stages -->
+  <g aria-label="작업 실행 파이프라인">
+    <rect x="32" y="148" width="130" height="100" rx="14" fill="#FFFFFF" stroke="#DEE0E2" stroke-width="1.2"
+          data-fill-role="surface" data-stroke-role="rule"/>
+    <circle cx="52" cy="168" r="10" fill="#2E6DA4" data-fill-role="focus"/>
+    <text x="52" y="169" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central"
+          fill="#FFFFFF" data-fill-role="on-focus">1</text>
+    <text x="97" y="188" font-size="15" font-weight="700" text-anchor="middle" dominant-baseline="central"
+          fill="#252B35" data-fill-role="ink">트리거</text>
+    <text x="97" y="216" font-size="11.5" text-anchor="middle" dominant-baseline="central"
+          fill="#636A75" data-fill-role="muted">시간 · 이벤트</text>
+
+    <path d="M172 198 H184" fill="none" stroke="#2E6DA4" stroke-width="2.2" stroke-linecap="round"
+          marker-end="url(#pipeline-arrow)" data-stroke-role="edge-line"/>
+
+    <rect x="194" y="148" width="130" height="100" rx="14" fill="#FFFFFF" stroke="#DEE0E2" stroke-width="1.2"
+          data-fill-role="surface" data-stroke-role="rule"/>
+    <circle cx="214" cy="168" r="10" fill="#2E6DA4" data-fill-role="focus"/>
+    <text x="214" y="169" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central"
+          fill="#FFFFFF" data-fill-role="on-focus">2</text>
+    <text x="259" y="188" font-size="14.5" font-weight="700" text-anchor="middle" dominant-baseline="central"
+          fill="#252B35" data-fill-role="ink">상태·프롬프트</text>
+    <text x="259" y="216" font-size="11.5" text-anchor="middle" dominant-baseline="central"
+          fill="#636A75" data-fill-role="muted">처리 이력 · 규칙</text>
+
+    <path d="M334 198 H346" fill="none" stroke="#2E6DA4" stroke-width="2.2" stroke-linecap="round"
+          marker-end="url(#pipeline-arrow)" data-stroke-role="edge-line"/>
+
+    <rect x="356" y="148" width="130" height="100" rx="14" fill="#EAF0F6" stroke="#2E6DA4" stroke-width="1.4"
+          data-fill-role="edge-fill" data-stroke-role="edge-line"/>
+    <circle cx="376" cy="168" r="10" fill="#2E6DA4" data-fill-role="focus"/>
+    <text x="376" y="169" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central"
+          fill="#FFFFFF" data-fill-role="on-focus">3</text>
+    <text x="421" y="188" font-size="14.5" font-weight="700" text-anchor="middle" dominant-baseline="central"
+          fill="#193C5A" data-fill-role="edge-ink">에이전트 실행</text>
+    <text x="421" y="216" font-size="11" text-anchor="middle" dominant-baseline="central"
+          fill="#193C5A" data-fill-role="edge-ink">모델 ↔ 도구 ↔ 결과</text>
+
+    <path d="M496 198 H508" fill="none" stroke="#2E6DA4" stroke-width="2.2" stroke-linecap="round"
+          marker-end="url(#pipeline-arrow)" data-stroke-role="edge-line"/>
+
+    <rect x="518" y="148" width="130" height="100" rx="14" fill="#FFFFFF" stroke="#DEE0E2" stroke-width="1.2"
+          data-fill-role="surface" data-stroke-role="rule"/>
+    <circle cx="538" cy="168" r="10" fill="#2E6DA4" data-fill-role="focus"/>
+    <text x="538" y="169" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central"
+          fill="#FFFFFF" data-fill-role="on-focus">4</text>
+    <text x="583" y="188" font-size="15" font-weight="700" text-anchor="middle" dominant-baseline="central"
+          fill="#252B35" data-fill-role="ink">검토 대기</text>
+    <text x="583" y="216" font-size="11.5" text-anchor="middle" dominant-baseline="central"
+          fill="#636A75" data-fill-role="muted">확정 전 결과</text>
+  </g>
+
+  <!-- Evaluation gate -->
+  <path d="M583 258 C583 282 340 264 340 294" fill="none" stroke="#2E6DA4" stroke-width="2.2"
+        stroke-linecap="round" marker-end="url(#pipeline-arrow)" data-stroke-role="edge-line"/>
+  <rect x="274" y="304" width="132" height="86" rx="16" fill="#ECF4F1" stroke="#3F8F72" stroke-width="1.5"
+        data-fill-role="compute-fill" data-stroke-role="positive"/>
+  <text x="340" y="332" font-size="16" font-weight="700" text-anchor="middle" dominant-baseline="central"
+        fill="#234F3F" data-fill-role="compute-ink">자동 평가</text>
+  <text x="340" y="357" font-size="11.5" text-anchor="middle" dominant-baseline="central"
+        fill="#234F3F" data-fill-role="compute-ink">Evals · 성공 기준 검사</text>
+
+  <!-- Decision branches -->
+  <path d="M326 400 C326 426 215 424 215 456" fill="none" stroke="#B45A50" stroke-width="2"
+        stroke-linecap="round" marker-end="url(#pipeline-arrow-danger)" data-stroke-role="danger"/>
+  <path d="M354 400 C354 426 465 424 465 456" fill="none" stroke="#3F8F72" stroke-width="2"
+        stroke-linecap="round" marker-end="url(#pipeline-arrow-positive)" data-stroke-role="positive"/>
+
+  <defs>
+    <marker id="pipeline-arrow-danger" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="9" markerHeight="9"
+            markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 L10 6 L2 10" fill="none" stroke="#B45A50" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" data-stroke-role="danger"/>
+    </marker>
+    <marker id="pipeline-arrow-positive" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="9" markerHeight="9"
+            markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 L10 6 L2 10" fill="none" stroke="#3F8F72" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" data-stroke-role="positive"/>
+    </marker>
+  </defs>
+
+  <rect x="112" y="466" width="206" height="70" rx="14" fill="#FFFFFF" stroke="#B45A50" stroke-width="1.4"
+        data-fill-role="surface" data-stroke-role="danger"/>
+  <text x="215" y="489" font-size="13" font-weight="700" text-anchor="middle" dominant-baseline="central"
+        fill="#B45A50" data-fill-role="danger">실패 · 중지하고 보고</text>
+  <text x="215" y="513" font-size="11.5" text-anchor="middle" dominant-baseline="central"
+        fill="#636A75" data-fill-role="muted">확정 영역에는 반영하지 않음</text>
+
+  <rect x="362" y="466" width="206" height="70" rx="14" fill="#FFFFFF" stroke="#3F8F72" stroke-width="1.4"
+        data-fill-role="surface" data-stroke-role="positive"/>
+  <text x="465" y="489" font-size="13" font-weight="700" text-anchor="middle" dominant-baseline="central"
+        fill="#3F8F72" data-fill-role="positive">통과 · 사람 승인</text>
+  <text x="465" y="513" font-size="11.5" text-anchor="middle" dominant-baseline="central"
+        fill="#636A75" data-fill-role="muted">승인 후 확정하고 상태 저장</text>
+
+  <!-- Improvement loop note -->
+  <rect x="32" y="554" width="616" height="42" rx="12" fill="#FFFFFF" stroke="#DEE0E2" stroke-width="1"
+        data-fill-role="surface" data-stroke-role="rule"/>
+  <text x="340" y="568" font-size="11.5" font-weight="600" text-anchor="middle" dominant-baseline="central"
+        fill="#252B35" data-fill-role="ink">모든 단계는 실행 기록에 남깁니다</text>
+  <text x="340" y="584" font-size="11.5" text-anchor="middle" dominant-baseline="central"
+        fill="#636A75" data-fill-role="muted">실패 사례는 사람이 규칙을 고쳐 다음 실행에 반영합니다</text>
+</svg>
