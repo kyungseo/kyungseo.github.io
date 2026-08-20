@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ with .Site.Params.tagline }} — {{ . }}{{ end }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
 {{ $desc := .Params.summary | default .Site.Params.description }}
 <meta name="description" content="{{ $desc }}">
 <link rel="canonical" href="{{ .Permalink }}">
@@ -10,11 +10,28 @@
 {{ if .IsTranslated }}
 <link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
 {{ end }}
+{{ $ogImage := "" }}
+{{ with .Params.og_image }}{{ $og := . }}{{ with $.Resources.GetMatch $og }}{{ $ogImage = .Permalink }}{{ else }}{{ $ogImage = $og | absURL }}{{ end }}{{ end }}
+{{ if not $ogImage }}{{ with .Site.Params.default_og_image }}{{ $ogImage = . | absURL }}{{ end }}{{ end }}
 <meta property="og:title" content="{{ .Title | default .Site.Title }}">
 <meta property="og:description" content="{{ $desc }}">
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
-{{ with .Params.og_image }}{{ $og := . }}{{ with $.Resources.GetMatch $og }}<meta property="og:image" content="{{ .Permalink }}">{{ else }}<meta property="og:image" content="{{ $og | absURL }}">{{ end }}{{ end }}
+{{ with $ogImage }}<meta property="og:image" content="{{ . }}">{{ end }}
+<meta name="twitter:card" content="{{ if $ogImage }}summary_large_image{{ else }}summary{{ end }}">
+<meta name="twitter:title" content="{{ .Title | default .Site.Title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+{{ with $ogImage }}<meta name="twitter:image" content="{{ . }}">{{ end }}
+{{ if .IsPage }}
+{{ $schema := dict "@context" "https://schema.org" "@type" "BlogPosting" "headline" (.Title | plainify) "description" ($desc | plainify) "inLanguage" .Language.LanguageCode "mainEntityOfPage" .Permalink "url" .Permalink "author" (dict "@type" "Person" "name" "Kyungseo Park" "url" .Site.BaseURL) }}
+{{ if not .PublishDate.IsZero }}{{ $schema = merge $schema (dict "datePublished" (.PublishDate.Format "2006-01-02")) }}{{ end }}
+{{ if not .Lastmod.IsZero }}{{ $schema = merge $schema (dict "dateModified" (.Lastmod.Format "2006-01-02")) }}{{ end }}
+{{ with $ogImage }}{{ $schema = merge $schema (dict "image" (slice .)) }}{{ end }}
+<script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>
+{{ end }}
+{{ if .IsHome }}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@type" "WebSite" "name" .Site.Title "url" .Site.BaseURL "description" .Site.Params.description "inLanguage" .Language.LanguageCode | jsonify | safeJS }}</script>
+{{ end }}
 {{ with .OutputFormats.Get "rss" }}
 <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .Permalink }}">
 {{ end }}

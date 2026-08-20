@@ -35,4 +35,6 @@ timeZone = "Asia/Seoul"
   section = ["html", "rss"]
 
 [params]
-  description = "글과 기록"
+  description = "AI 에이전트, coding agent harness, 검증 가능한 개발 워크플로우에 대한 글과 기록"
+  tagline = "AI 에이전트와 검증 가능한 개발 워크플로우"
+  default_og_image = "/og-default.png"
