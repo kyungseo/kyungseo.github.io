@@ -11,6 +11,10 @@ date: 2026-08-17
 translated_from: ko
 original_date: 2026-08-17
 edited: false
+updates:
+  - date: "2026-08-21T14:10:42+09:00"
+    kind: update
+    summary: "Added the svg-infographic 0.11.0 presentation projection example and updated the installation instructions."
 draft: false
 ---
 
@@ -155,17 +159,33 @@ I plan to keep adding TypePacks. Adding a type, however, will not mean placing o
 
 That is why I want to protect the admission criteria before optimizing for addition speed. A type such as a statistical chart, where the accuracy of values and axes is essential, will not join the catalog merely because the system can draw its shape. It belongs there only after a verifier can check that accuracy.
 
+## Placing a result in context
+
+`svg-infographic 0.11.0` can place a verified result on a notebook, gallery wall, or portrait monitor. A natural-language request can be as simple as this:
+
+> Use svg-infographic to create an image that fits what I have just described. Show the result on the notebook template.
+
+This does not change what the skill produces by default: an editable SVG and its canonical PNG rendered at exactly 2×. A projection is a separate PNG created only when the user asks for one. If that projection fails, the already verified canonical result remains valid.
+
+The three bundled surfaces are paper notebook, gallery wall, and portrait monitor. If a projection request does not name a surface, it uses paper notebook. An explicit choice always wins. A short signature may appear in the lower-right corner, or the slot may be left empty.
+
+[![An official Gallery example showing a separate infographic about the goal, plan, action, observation, and evaluation loop of AI agent development projected at an angle onto the right-hand page of an open notebook.](./svg-infographic-rebuild-paper-notebook-projection.webp)](https://kyungseo.github.io/skillstead/gallery/)
+
+*This is a web-sized copy of a verified paper notebook projection from the official Gallery. Its content comes from a separate infographic about the AI agent development loop rather than from this article.*
+
+A local background can be used as well. The current path requires a local raster image and a strict manifest declaring where the result belongs on that image. It does not fetch an image from a remote URL or freely redraw the verified result. The [Gallery](https://kyungseo.github.io/skillstead/gallery/) shows all three bundled surfaces and the current boundaries.
+
 ## See it for yourself
 
-The [svg-infographic Gallery](https://kyungseo.github.io/skillstead/gallery/) shows the 0.10.0 outputs, prompts, and receipts. For each of the nine TypePacks, it includes Korean and English canonical examples, selection guidance, build commands, and the boundary where the content no longer fits on one page.
+The [svg-infographic Gallery](https://kyungseo.github.io/skillstead/gallery/) shows the current `0.11.0` TypePack outputs and presentation examples, together with their prompts and receipts. For each of the nine TypePacks, it includes Korean and English canonical examples, selection guidance, build commands, and the boundary where the content no longer fits on one page.
 
 [![The svg-infographic Gallery in English, showing the TypePack selection view, source and receipt gates, an 18/18 verification result, and canonical example cards including approval-gate, before-after, and cards-kpi-grid.](./svg-infographic-rebuild-gallery-typepack.en.jpg)](https://kyungseo.github.io/skillstead/gallery/)
 
-The following commands install only the `svg-infographic` folder from the verified 0.10.0 release, making it possible to install the same version again.
+The following commands install only the `svg-infographic` folder from the verified 0.11.0 release, making it possible to install the same version again.
 
 ```bash
 install_root="$(mktemp -d)"
-git clone --depth 1 --branch svg-infographic/v0.10.0 \
+git clone --depth 1 --branch svg-infographic/v0.11.0 \
   https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
 mkdir -p .agents/skills
 cp -R "$install_root/skillstead/skills/svg-infographic" .agents/skills/
@@ -182,6 +202,6 @@ The agent turns the natural-language request into semantic input, selects a Type
 ## Related material
 
 - [svg-infographic Gallery](https://kyungseo.github.io/skillstead/gallery/)
-- [svg-infographic 0.10.0 Release](https://github.com/kyungseo/skillstead/releases/tag/svg-infographic/v0.10.0)
-- [English README](https://github.com/kyungseo/skillstead/blob/svg-infographic/v0.10.0/skills/svg-infographic/README.md)
+- [svg-infographic 0.11.0 Release](https://github.com/kyungseo/skillstead/releases/tag/svg-infographic/v0.11.0)
+- [English README](https://github.com/kyungseo/skillstead/blob/svg-infographic/v0.11.0/skills/svg-infographic/README.md)
 - [Earlier article: Why Relationships and Spacing Come Before Drawing a Diagram](https://kyungseo.github.io/en/posts/draw-with-numbers-first/)

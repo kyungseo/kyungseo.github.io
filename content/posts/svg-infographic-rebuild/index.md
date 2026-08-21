@@ -9,6 +9,10 @@ og_image: svg-infographic-rebuild-hero.ko.png
 toc: true
 date: 2026-08-17
 edited: false
+updates:
+  - date: "2026-08-21T14:10:42+09:00"
+    kind: update
+    summary: "svg-infographic 0.11.0의 presentation projection 예시를 추가하고 설치 안내를 0.11.0 기준으로 갱신했습니다."
 draft: false
 ---
 
@@ -153,17 +157,33 @@ architecture primitive를 확인할 때 제가 처음 세운 목표는 16:9 한 
 
 그래서 추가 속도보다 입장 조건을 먼저 지키려고 합니다. 통계 chart처럼 값과 축의 정확성이 핵심인 유형은 모양을 그릴 수 있다는 이유만으로 올리지 않고, 그 정확성을 검사할 verifier가 준비된 뒤 다룹니다.
 
+## 결과를 맥락에 놓을 수 있게 됐다
+
+`svg-infographic 0.11.0`에서는 검증을 마친 결과를 노트, 갤러리 벽, 세로형 모니터 같은 배경 위에 놓을 수 있습니다. 이를테면 다음처럼 자연스럽게 요청하면 됩니다.
+
+> svg-infographic을 사용해 지금 설명한 내용에 맞는 이미지를 만들어 줘. 결과는 노트 템플릿 위에 보여 줘.
+
+이 기능을 추가했지만 기본 결과물은 바뀌지 않았습니다. 여전히 편집 가능한 SVG와 정확히 2배 크기로 렌더한 canonical PNG를 만듭니다. Projection은 사용자가 요청했을 때만 별도의 PNG로 만들며, projection에 실패해도 이미 검증을 마친 canonical 결과가 무효가 되지는 않습니다.
+
+기본으로 제공하는 배경은 paper notebook, gallery wall, portrait monitor 세 가지입니다. Projection을 요청하면서 배경을 고르지 않으면 paper notebook을 사용하고, 원하는 배경을 지정하면 그 선택을 우선합니다. 우측 하단에 짧은 서명을 넣거나 비워 둘 수도 있습니다.
+
+[![펼친 노트의 오른쪽 페이지에 목표·계획·실행·관찰·평가의 순환과 AI agent 개발 역량을 정리한 별도 인포그래픽을 비스듬히 투영한 공식 Gallery 예시](./svg-infographic-rebuild-paper-notebook-projection.webp)](https://kyungseo.github.io/skillstead/gallery/)
+
+*공식 Gallery에 포함된 검증된 paper notebook projection을 웹 게시용으로 축소한 예시입니다. 안의 내용은 이 글의 도해가 아니라 별도로 만든 AI agent 개발 loop 인포그래픽입니다.*
+
+자신이 가진 배경을 사용하는 것도 가능합니다. 다만 현재는 로컬 raster image와 그 위에서 결과가 들어갈 영역을 선언한 strict manifest가 필요합니다. 웹 주소의 이미지를 바로 가져오거나 결과를 자유롭게 다시 그리는 기능은 아닙니다. 세 가지 기본 예시와 자세한 경계는 [Gallery](https://kyungseo.github.io/skillstead/gallery/)에서 먼저 확인할 수 있습니다.
+
 ## 직접 확인하기
 
-0.10.0의 결과와 prompt, receipt는 [svg-infographic Gallery](https://kyungseo.github.io/skillstead/gallery/)에서 볼 수 있습니다. Gallery는 아홉 TypePack 각각의 한국어·영어 canonical example과 선택 기준, 명령 예시, 한 화면에 맞지 않는 경계를 함께 보여 줍니다.
+현재 `0.11.0`의 TypePack 결과와 presentation 예시, prompt, receipt는 [svg-infographic Gallery](https://kyungseo.github.io/skillstead/gallery/)에서 볼 수 있습니다. Gallery는 아홉 TypePack 각각의 한국어·영어 canonical example과 선택 기준, 명령 예시, 한 화면에 맞지 않는 경계를 함께 보여 줍니다.
 
 [![한국어로 선택한 svg-infographic Gallery의 TypePack 고르기 화면. source gate와 TypePack receipt 통과 상태, 18/18 검증 결과, approval-gate·before-after·cards-kpi-grid를 비롯한 canonical example 카드가 보입니다.](./svg-infographic-rebuild-gallery-typepack.ko.jpg)](https://kyungseo.github.io/skillstead/gallery/)
 
-같은 버전을 다시 설치할 수 있도록, 아래 명령은 검증을 마친 0.10.0 버전에서 `svg-infographic` 폴더만 가져옵니다.
+같은 버전을 다시 설치할 수 있도록, 아래 명령은 검증을 마친 0.11.0 버전에서 `svg-infographic` 폴더만 가져옵니다.
 
 ```bash
 install_root="$(mktemp -d)"
-git clone --depth 1 --branch svg-infographic/v0.10.0 \
+git clone --depth 1 --branch svg-infographic/v0.11.0 \
   https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
 mkdir -p .agents/skills
 cp -R "$install_root/skillstead/skills/svg-infographic" .agents/skills/
@@ -180,6 +200,6 @@ agent가 자연어 요청을 semantic input으로 구조화하고, TypePack과 v
 ## 관련 자료
 
 - [svg-infographic Gallery](https://kyungseo.github.io/skillstead/gallery/)
-- [svg-infographic 0.10.0 Release](https://github.com/kyungseo/skillstead/releases/tag/svg-infographic/v0.10.0)
-- [한국어 README](https://github.com/kyungseo/skillstead/blob/svg-infographic/v0.10.0/skills/svg-infographic/README.ko.md)
+- [svg-infographic 0.11.0 Release](https://github.com/kyungseo/skillstead/releases/tag/svg-infographic/v0.11.0)
+- [한국어 README](https://github.com/kyungseo/skillstead/blob/svg-infographic/v0.11.0/skills/svg-infographic/README.ko.md)
 - [이전 글: 다이어그램을 그리기 전에 관계와 여백부터 정하는 이유](https://kyungseo.github.io/posts/draw-with-numbers-first/)
