@@ -32,6 +32,10 @@
     {{ partial "post-actions.html" . }}
     {{ partial "series-nav.html" . }}
   </footer>
+
+  {{ if ne .Params.comments false }}
+  {{ partial "comments.html" . }}
+  {{ end }}
 </article>
 {{ partial "lightbox.html" . }}
 {{ end }}
