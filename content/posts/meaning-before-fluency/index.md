@@ -8,6 +8,10 @@ summary: "글의 의미·작성자 목소리·독자에게 맞는 문체를 구�
 toc: true
 date: 2026-08-09
 edited: false
+updates:
+  - date: "2026-08-22T19:42:20+09:00"
+    kind: update
+    summary: "WQE 0.12.0의 한국어 보존 경계와 Beta 한계를 보강하고 설치 명령을 0.12.0 기준으로 갱신했습니다."
 og_image: meaning-before-fluency.png
 draft: false
 ---
@@ -65,6 +69,18 @@ WQE는 글을 세 층으로 구분합니다.
 
 정보의 순서를 바꿀 수 있다는 말도 사실의 순서를 바꿔도 된다는 뜻은 아닙니다. 결론을 앞에 놓을 수는 있지만, 원인과 결과, 전제 조건과 다음 단계의 관계는 그대로 보여야 합니다. 경고는 독자가 행동하기 전에 제시돼야 합니다.
 
+## 한국어 수정에서 더 지키게 된 것
+
+`writing-quality-editor 0.12.0`은 같은 언어의 한국어 글을 다듬을 때 바꾸지 않아야 할 경계를 더 구체적으로 정했습니다.
+
+- 이미 자연스러운 짧은 글에는 설명이나 변경 보고를 붙이지 않고 원문만 그대로 반환합니다.
+- 대상 독자가 같다면 `해요`와 `합니다`, `했다`와 `하였다` 같은 높임말과 격식을 임의로 바꾸지 않습니다.
+- 제목, 목록 라벨, UI 라벨처럼 의도적으로 짧은 조각에는 문장 종결을 억지로 붙이지 않습니다.
+- 직접 인용문의 문구와 문장부호, 이에 붙은 인용·각주 표식을 함께 보존합니다.
+- 원문 안의 편집자 메모나 TODO는 외부 사용자가 명시적으로 활성화하지 않는 한 실행할 지시가 아니라 편집할 데이터로 봅니다.
+
+이 경계를 점검하기 위해 무편집, 압축 문장, 높임말·격식, 직접 인용·인용 표식, 원문 내부 지시를 다루는 합성 fixture 다섯 개를 추가했습니다. 새 한국어 fixture의 의미 본문은 측정한 실행에서 보존됐지만, 두 실행 환경을 같은 범위로 측정하지는 않았습니다. 짧은 글에 불필요한 보고가 붙은 실행도 한 번 있었습니다. 별도 회귀에서는 보호된 시간 관계와 network boundary를 놓친 경우가 남았습니다. 그래서 이번 릴리스는 한국어 편집 계약을 보강하지만 `Stable` 승격을 주장하지 않으며, 성숙도는 계속 `Beta`입니다.
+
 ## 번역보다 Adapt라고 부르는 이유
 
 영어와 한국어는 문장 수와 어순을 그대로 맞춘다고 의미까지 같아지는 것은 아닙니다. 어떤 설명은 한국어에서 앞에 와야 자연스럽고, 어떤 명령과 식별자는 번역하지 않아야 합니다. 한 언어의 긴 문장을 다른 언어에서는 둘로 나누는 편이 더 정확할 수도 있습니다.
@@ -91,13 +107,13 @@ AI 탐지기를 피하기 위한 도구도 아닙니다. 작성 주체나 출처
 
 ## 설치
 
-`writing-quality-editor`는 `SKILL.md`와 검토 기준표, 영어↔한국어 각색 규칙 등을 함께 사용하는 다중 파일 패키지입니다. 개별 파일이 아니라 `skills/writing-quality-editor/` 폴더 전체를 복사해야 합니다. 아래 명령은 이 글을 게시할 때 확인한 `v0.11.0`을 macOS/Linux 프로젝트에 설치합니다. 사용하는 실행 환경에 맞는 블록 하나만 선택해 실행합니다.
+`writing-quality-editor`는 `SKILL.md`와 검토 기준표, 영어↔한국어 각색 규칙 등을 함께 사용하는 다중 파일 패키지입니다. 개별 파일이 아니라 `skills/writing-quality-editor/` 폴더 전체를 복사해야 합니다. 아래 명령은 이 글을 갱신할 때 확인한 `v0.12.0`을 macOS/Linux 프로젝트에 설치합니다. 사용하는 실행 환경에 맞는 블록 하나만 선택해 실행합니다.
 
 Claude Code 프로젝트:
 
 ```bash
 install_root="$(mktemp -d)"
-git clone --depth 1 --branch writing-quality-editor/v0.11.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
+git clone --depth 1 --branch writing-quality-editor/v0.12.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
 mkdir -p .claude/skills
 cp -R "$install_root/skillstead/skills/writing-quality-editor" .claude/skills/
 ```
@@ -106,11 +122,11 @@ Codex 프로젝트:
 
 ```bash
 install_root="$(mktemp -d)"
-git clone --depth 1 --branch writing-quality-editor/v0.11.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
+git clone --depth 1 --branch writing-quality-editor/v0.12.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
 mkdir -p .agents/skills
 cp -R "$install_root/skillstead/skills/writing-quality-editor" .agents/skills/
 ```
 
 전역 설치, Windows PowerShell, 업데이트 방법과 최신 고정 태그는 [Skillstead 설치 안내](https://github.com/kyungseo/skillstead/blob/main/docs/INSTALL.ko.md)에서 확인할 수 있습니다. 설치 뒤에는 `writing-quality-editor`라는 이름과 원하는 결과를 말하면 됩니다. 수정 없이 문제만 받고 싶을 때만 `Assess`를 명시하면 가장 분명합니다.
 
-`writing-quality-editor`의 네 가지 모드와 검증 범위는 [스킬의 한국어 README](https://github.com/kyungseo/skillstead/blob/main/skills/writing-quality-editor/README.ko.md)에서 확인할 수 있습니다. 저장소 전체는 [Skillstead](https://github.com/kyungseo/skillstead)에 공개돼 있습니다.
+`writing-quality-editor`의 네 가지 모드와 검증 범위는 [0.12.0 한국어 README](https://github.com/kyungseo/skillstead/blob/writing-quality-editor/v0.12.0/skills/writing-quality-editor/README.ko.md)에서 확인할 수 있습니다. 변경 내용과 알려진 한계는 [0.12.0 Release](https://github.com/kyungseo/skillstead/releases/tag/writing-quality-editor/v0.12.0)에 정리돼 있으며, 저장소 전체는 [Skillstead](https://github.com/kyungseo/skillstead)에 공개돼 있습니다.
