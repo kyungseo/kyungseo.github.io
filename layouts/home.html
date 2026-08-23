@@ -7,11 +7,29 @@
   {{ end }}
   {{ .Content }}
 </section>
+{{/* 공지 — GitHub Discussions Announcements category를 build-time data로 렌더. data 파일이 없거나 비면 section 자체를 내지 않는다. */}}
+{{ with .Site.Data.announcements }}
+{{ $limit := default 3 site.Params.announcements_count }}
+{{ $isEn := eq $.Language.Lang "en" }}
+<section class="announcements" aria-labelledby="announcements-heading">
+  <h2 id="announcements-heading">{{ if $isEn }}Announcements{{ else }}공지{{ end }}</h2>
+  <ul>
+    {{ range first $limit . }}
+    <li>
+      <a href="{{ .url }}" rel="noopener">{{ .title }}</a>
+      <time datetime="{{ .createdAt }}">{{ (time.AsTime .createdAt).Format "2006-01-02" }}</time>
+    </li>
+    {{ end }}
+  </ul>
+  <p class="announcements-all"><a href="https://github.com/kyungseo/kyungseo.github.io/discussions/categories/announcements" rel="noopener">{{ if $isEn }}All announcements on GitHub Discussions{{ else }}GitHub Discussions에서 전체 공지 보기{{ end }}</a></p>
+</section>
+{{ end }}
 <section class="post-list">
   {{ $posts := where .Site.RegularPages "Section" "posts" }}
   {{ if $posts }}
+  {{ $paginator := .Paginate $posts.ByDate.Reverse }}
   <ul>
-    {{ range $posts.ByDate.Reverse }}
+    {{ range $paginator.Pages }}
     <li>
       <a href="{{ .Permalink }}">{{ .Title }}</a>
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
@@ -19,6 +37,13 @@
     </li>
     {{ end }}
   </ul>
+  {{ if gt $paginator.TotalPages 1 }}
+  <nav class="pagination" aria-label="{{ if eq .Language.Lang "en" }}Pagination{{ else }}페이지 이동{{ end }}">
+    {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}" rel="prev">{{ if eq .Language.Lang "en" }}← Newer{{ else }}← 최신 글{{ end }}</a>{{ else }}<span></span>{{ end }}
+    <span class="pagination-status">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+    {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}" rel="next">{{ if eq .Language.Lang "en" }}Older →{{ else }}이전 글 →{{ end }}</a>{{ else }}<span></span>{{ end }}
+  </nav>
+  {{ end }}
   {{ end }}
 </section>
 {{ end }}

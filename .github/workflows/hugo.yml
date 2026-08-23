@@ -3,10 +3,13 @@ name: Deploy Hugo site to Pages
 on:
   push:
     branches: [main]
+  discussion:
+    types: [created, edited, deleted, category_changed]
   workflow_dispatch:
 
 permissions:
   contents: read
+  discussions: read
   pages: write
   id-token: write
 
@@ -16,6 +19,8 @@ concurrency:
 
 jobs:
   build:
+    # discussion 이벤트는 Announcements category일 때만 재배포한다 (giscus Comments thread로는 발화하지 않음).
+    if: github.event_name != 'discussion' || github.event.discussion.category.slug == 'announcements'
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.164.0
@@ -26,6 +31,10 @@ jobs:
           sudo dpkg -i ${{ runner.temp }}/hugo.deb
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Fetch announcements from Discussions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash scripts/fetch_announcements.sh data/announcements.json
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
