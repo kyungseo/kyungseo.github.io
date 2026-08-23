@@ -60,3 +60,12 @@
   script/iframe 로드; `loading=lazy`는 명시적 동의가 아니므로 불충분). 승격 전 선행 결정:
   KO/EN 글이 같은 discussion을 공유하도록 공통 식별자(slug 기반 term) 매핑을 확정한다.
 - **이미지 확대**: 무의존 `<dialog>` lightbox — 클릭 확대, ESC/클릭 닫기.
+- **공지 (2026-08-23 도입)**: 홈 intro 아래 compact strip에 GitHub Discussions **Announcements**
+  category의 최근 3건(`params.announcements_count`)을 보여준다. Discussions는 REST endpoint가 없고
+  GraphQL은 token 필수라 브라우저 fetch를 쓰지 않는다 — Actions가 `scripts/fetch_announcements.sh`로
+  `data/announcements.json`(gitignored)을 만들고 `layouts/home.html`이 `.Site.Data.announcements`로
+  렌더한다. data가 없거나 비면 section 자체를 내지 않는다(로컬 빌드·fetch 실패가 배포를 막지 않음).
+  공지를 만들거나 고치면 `discussion` 이벤트로 재배포되며 Announcements category일 때만 발화한다
+  (giscus Comments thread는 제외). ko/en 홈이 같은 목록을 공유하므로 Discussion 제목이 그대로 홈에 걸린다.
+- **글 목록 페이징 (2026-08-23 도입)**: `pagerSize = 10`. 항목이 제목·날짜·summary 3줄이라 10개가
+  데스크톱 약 1.5화면이다. pager는 글이 10편을 넘을 때만 나타난다.
