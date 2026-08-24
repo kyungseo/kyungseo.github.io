@@ -3,13 +3,13 @@ title: "내 장비에서 LLM 직접 실행하기"
 slug: learnstead-local-llm-guide
 format: note
 tags: ["learnstead", "local-llm", "ollama", "open-weight"]
-series: []
+series: ["Learnstead 가이드"]
 summary: "Local LLM의 개념과 모델·runtime 선택부터 Ollama로 첫 응답을 확인하는 절차까지 정리한 Learnstead 첫 가이드 소개."
 toc: true
 date: 2026-08-11
-edited: false
+edited: true
 og_image: local-llm-guide-hero-social.png
-provenance_note: "이 글은 첫 공개 초안입니다."
+provenance_note: "2026-08-25: 후속 가이드 링크와 Learnstead 가이드 시리즈 정보를 추가했습니다."
 draft: false
 ---
 
@@ -73,5 +73,11 @@ telemetry, hosted API를 연결하면 data가 network로 나갈 수 있습니다
 
 Learnstead에는 앞으로도 한 가지 주제를 개념부터 직접 실행까지 이어서 볼 수 있는 guide, tutorial,
 hands-on lab을 차례로 쌓아갈 예정입니다.
+
+## 이어서 읽기
+
+모델을 실행했다면 다음은 프로그램에서 호출할 차례입니다. 이어지는 글
+[「Local LLM을 내 프로그램에 연결하기」](https://kyungseo.github.io/posts/learnstead-local-llm-app-integration-guide/)에서
+대화 기록, 구조화 출력, tool calling과 읽기 전용 도구의 권한 경계를 다룹니다.
 
 <!-- 글 하단 기록은 site가 front matter에서 자동 렌더. -->
