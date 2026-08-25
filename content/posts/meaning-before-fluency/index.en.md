@@ -11,6 +11,9 @@ translated_from: ko
 original_date: 2026-08-09
 edited: false
 updates:
+  - date: "2026-08-26T00:17:36+09:00"
+    kind: update
+    summary: "Added WQE 0.13.0's document-wide defect-class transfer and no-edit boundary, and updated the installation commands to 0.13.0."
   - date: "2026-08-22T19:42:20+09:00"
     kind: update
     summary: "Added the Korean preservation boundaries and Beta limitations in WQE 0.12.0, and updated the installation commands."
@@ -81,7 +84,17 @@ Reordering information does not permit changing causal or procedural order. A co
 - It preserves a direct quotation together with its punctuation and attached citation or footnote marker.
 - An editor note or TODO inside the source remains text to edit, not an instruction to execute, unless the external user explicitly activates it.
 
-Five synthetic fixtures now exercise no-edit identity, compressed prose, honorific and formality retention, quotation and citation attachment, and embedded source instructions. The measured runs preserved the semantic body of the new Korean fixtures, though the two runtimes were not measured to the same extent. One direct short-text run also added an unnecessary report. Separate regressions missed a protected timing relationship and a network boundary. This release therefore strengthens the Korean editing contract without claiming `Stable`; maturity remains `Beta`.
+Five synthetic fixtures now exercise no-edit identity, compressed prose, honorific and formality retention, quotation and citation attachment, and embedded source instructions. The measured runs preserved the semantic body of the new Korean fixtures, though the two runtimes were not measured to the same extent. One direct short-text run also added an unnecessary report. Separate regressions missed a protected timing relationship and a network boundary. That release therefore strengthened the Korean editing contract without claiming `Stable`; maturity remained `Beta`.
+
+## Examples are not a list of phrases to replace
+
+`writing-quality-editor 0.13.0` does not treat the sentences a user points out as a list that limits the edit to those sentences. It first identifies the reader problem the examples reveal, then checks the whole requested document for the same problem.
+
+It revises an explanation, comparison, or instruction when readers would otherwise have to infer a necessary relationship, decode a term or shorthand before they can understand the point, or separate an observation from a cause the evidence has not established. This is not a banned-word list or a separate set of rules for each document type. The decision depends on the role of the sentence and the needs of its intended reader.
+
+The goal is not to edit more sentences. Ordinary references that resolve naturally in nearby context, equally natural active and passive endings, modifier positions, and synonymous expressions stay unchanged unless they obstruct understanding. `Needs Human` is reserved for an important unresolved choice that blocks a safe, usable result, not an optional opportunity to add detail.
+
+The repository checks passed `282/282`, and its validator reported `0 finding(s)`. In answer-key-blind isolated runs, Claude Fable 5 and Codex passed the new English and Korean explanatory cases and the document-wide example-transfer case. In both environments, two already-natural control passages also remained byte-for-byte identical across three independent runs. This was a bounded amendment-level evaluation rather than a complete rerun, and agent output remains non-deterministic. Maturity therefore remains `Beta`.
 
 ## Why it is called Adapt rather than translate
 
@@ -109,13 +122,13 @@ Only then does it revise the sentence. Fluency is the result, not a separate goa
 
 ## Installation
 
-`writing-quality-editor` is a multi-file package containing `SKILL.md`, the review rubric, and English↔Korean adaptation guidance. Copy the complete `skills/writing-quality-editor/` folder rather than one file. The commands below install the `v0.12.0` version verified for this update into a macOS/Linux project. Run only the block for your agent environment.
+`writing-quality-editor` is a multi-file package containing `SKILL.md`, the review rubric, and English↔Korean adaptation guidance. Copy the complete `skills/writing-quality-editor/` folder rather than one file. The commands below install the `v0.13.0` version verified for this update into a macOS/Linux project. Run only the block for your agent environment.
 
 Claude Code project:
 
 ```bash
 install_root="$(mktemp -d)"
-git clone --depth 1 --branch writing-quality-editor/v0.12.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
+git clone --depth 1 --branch writing-quality-editor/v0.13.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
 mkdir -p .claude/skills
 cp -R "$install_root/skillstead/skills/writing-quality-editor" .claude/skills/
 ```
@@ -124,11 +137,11 @@ Codex project:
 
 ```bash
 install_root="$(mktemp -d)"
-git clone --depth 1 --branch writing-quality-editor/v0.12.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
+git clone --depth 1 --branch writing-quality-editor/v0.13.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
 mkdir -p .agents/skills
 cp -R "$install_root/skillstead/skills/writing-quality-editor" .agents/skills/
 ```
 
-See the [Skillstead installation guide](https://github.com/kyungseo/skillstead/blob/main/docs/INSTALL.md) for global installation, Windows PowerShell, updates, and the latest pinned tag. The [0.12.0 English README](https://github.com/kyungseo/skillstead/blob/writing-quality-editor/v0.12.0/skills/writing-quality-editor/README.md) describes the four modes and validation scope, while the [0.12.0 Release](https://github.com/kyungseo/skillstead/releases/tag/writing-quality-editor/v0.12.0) records the changes and known limitations. After installation, name `writing-quality-editor` and describe the result you want. Specify `Assess` only when you want findings without edits.
+See the [Skillstead installation guide](https://github.com/kyungseo/skillstead/blob/main/docs/INSTALL.md) for global installation, Windows PowerShell, updates, and the latest pinned tag. The [0.13.0 English README](https://github.com/kyungseo/skillstead/blob/writing-quality-editor/v0.13.0/skills/writing-quality-editor/README.md) describes the four modes and validation scope, while the [0.13.0 Release](https://github.com/kyungseo/skillstead/releases/tag/writing-quality-editor/v0.13.0) records the changes and known limitations. After installation, name `writing-quality-editor` and describe the result you want. Specify `Assess` only when you want findings without edits.
 
 The full catalog is available in [Skillstead](https://github.com/kyungseo/skillstead).

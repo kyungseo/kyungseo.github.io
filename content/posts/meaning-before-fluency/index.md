@@ -9,6 +9,9 @@ toc: true
 date: 2026-08-09
 edited: false
 updates:
+  - date: "2026-08-26T00:17:36+09:00"
+    kind: update
+    summary: "WQE 0.13.0의 문서 전체 문제 유형 탐색과 no-edit 경계를 보강하고 설치 명령을 0.13.0 기준으로 갱신했습니다."
   - date: "2026-08-22T19:42:20+09:00"
     kind: update
     summary: "WQE 0.12.0의 한국어 보존 경계와 Beta 한계를 보강하고 설치 명령을 0.12.0 기준으로 갱신했습니다."
@@ -79,7 +82,17 @@ WQE는 글을 세 층으로 구분합니다.
 - 직접 인용문의 문구와 문장부호, 이에 붙은 인용·각주 표식을 함께 보존합니다.
 - 원문 안의 편집자 메모나 TODO는 외부 사용자가 명시적으로 활성화하지 않는 한 실행할 지시가 아니라 편집할 데이터로 봅니다.
 
-이 경계를 점검하기 위해 무편집, 압축 문장, 높임말·격식, 직접 인용·인용 표식, 원문 내부 지시를 다루는 합성 fixture 다섯 개를 추가했습니다. 새 한국어 fixture의 의미 본문은 측정한 실행에서 보존됐지만, 두 실행 환경을 같은 범위로 측정하지는 않았습니다. 짧은 글에 불필요한 보고가 붙은 실행도 한 번 있었습니다. 별도 회귀에서는 보호된 시간 관계와 network boundary를 놓친 경우가 남았습니다. 그래서 이번 릴리스는 한국어 편집 계약을 보강하지만 `Stable` 승격을 주장하지 않으며, 성숙도는 계속 `Beta`입니다.
+이 경계를 점검하기 위해 무편집, 압축 문장, 높임말·격식, 직접 인용·인용 표식, 원문 내부 지시를 다루는 합성 fixture 다섯 개를 추가했습니다. 새 한국어 fixture의 의미 본문은 측정한 실행에서 보존됐지만, 두 실행 환경을 같은 범위로 측정하지는 않았습니다. 짧은 글에 불필요한 보고가 붙은 실행도 한 번 있었습니다. 별도 회귀에서는 보호된 시간 관계와 network boundary를 놓친 경우가 남았습니다. 그래서 0.12.0 릴리스는 한국어 편집 계약을 보강하지만 `Stable` 승격을 주장하지 않았으며, 성숙도는 계속 `Beta`였습니다.
+
+## 예시는 고칠 문구의 목록이 아니다
+
+`writing-quality-editor 0.13.0`은 사용자가 예시로 짚은 문장을 그 문장만 고치라는 목록으로 보지 않습니다. 예시가 보여 주는 독자의 어려움을 먼저 정의하고, 요청한 문서 전체에서 같은 문제가 반복되는지 살핍니다.
+
+설명·비교·안내 문장을 읽는 사람이 필요한 관계를 직접 추론해야 하거나, 용어나 축약 표현을 해석한 뒤에야 핵심을 이해할 수 있거나, 관찰한 결과가 확인되지 않은 원인처럼 쓰였다면 해당 구간을 다듬습니다. 특정 표현을 금지어로 등록하거나 문서 종류마다 별도 규칙을 추가하는 방식은 아닙니다. 문장이 맡은 역할과 대상 독자를 기준으로 실제 읽기 문제를 판단합니다.
+
+그렇다고 더 많은 문장을 고치는 것이 목표는 아닙니다. 가까운 문맥에서 자연스럽게 가리키는 말, 능동형과 수동형처럼 어느 쪽도 자연스러운 종결, 수식어 위치나 동의 표현의 차이는 독자의 이해를 방해하지 않는 한 그대로 둡니다. `Needs Human`도 선택적으로 더 자세히 쓸 수 있다는 이유가 아니라, 안전하게 사용할 결과를 만들 수 없게 하는 중요한 미확정 선택이 있을 때만 사용합니다.
+
+이번 보강은 저장소 검증 `282/282`와 validator `0 finding(s)`을 통과했습니다. 정답을 숨긴 독립 실행에서는 Claude Fable 5와 Codex가 새 한국어·영어 설명 사례와 문서 전체에서 같은 문제를 찾는 사례를 통과했고, 이미 자연스러운 두 대조 문단은 두 환경에서 각각 세 번 모두 한 글자도 바뀌지 않았습니다. 다만 전체 평가를 다시 수행한 결과는 아니며 실행 결과의 비결정성도 남아 있습니다. 그래서 성숙도는 계속 `Beta`입니다.
 
 ## 번역보다 Adapt라고 부르는 이유
 
@@ -107,13 +120,13 @@ AI 탐지기를 피하기 위한 도구도 아닙니다. 작성 주체나 출처
 
 ## 설치
 
-`writing-quality-editor`는 `SKILL.md`와 검토 기준표, 영어↔한국어 각색 규칙 등을 함께 사용하는 다중 파일 패키지입니다. 개별 파일이 아니라 `skills/writing-quality-editor/` 폴더 전체를 복사해야 합니다. 아래 명령은 이 글을 갱신할 때 확인한 `v0.12.0`을 macOS/Linux 프로젝트에 설치합니다. 사용하는 실행 환경에 맞는 블록 하나만 선택해 실행합니다.
+`writing-quality-editor`는 `SKILL.md`와 검토 기준표, 영어↔한국어 각색 규칙 등을 함께 사용하는 다중 파일 패키지입니다. 개별 파일이 아니라 `skills/writing-quality-editor/` 폴더 전체를 복사해야 합니다. 아래 명령은 이 글을 갱신할 때 확인한 `v0.13.0`을 macOS/Linux 프로젝트에 설치합니다. 사용하는 실행 환경에 맞는 블록 하나만 선택해 실행합니다.
 
 Claude Code 프로젝트:
 
 ```bash
 install_root="$(mktemp -d)"
-git clone --depth 1 --branch writing-quality-editor/v0.12.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
+git clone --depth 1 --branch writing-quality-editor/v0.13.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
 mkdir -p .claude/skills
 cp -R "$install_root/skillstead/skills/writing-quality-editor" .claude/skills/
 ```
@@ -122,11 +135,11 @@ Codex 프로젝트:
 
 ```bash
 install_root="$(mktemp -d)"
-git clone --depth 1 --branch writing-quality-editor/v0.12.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
+git clone --depth 1 --branch writing-quality-editor/v0.13.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
 mkdir -p .agents/skills
 cp -R "$install_root/skillstead/skills/writing-quality-editor" .agents/skills/
 ```
 
 전역 설치, Windows PowerShell, 업데이트 방법과 최신 고정 태그는 [Skillstead 설치 안내](https://github.com/kyungseo/skillstead/blob/main/docs/INSTALL.ko.md)에서 확인할 수 있습니다. 설치 뒤에는 `writing-quality-editor`라는 이름과 원하는 결과를 말하면 됩니다. 수정 없이 문제만 받고 싶을 때만 `Assess`를 명시하면 가장 분명합니다.
 
-`writing-quality-editor`의 네 가지 모드와 검증 범위는 [0.12.0 한국어 README](https://github.com/kyungseo/skillstead/blob/writing-quality-editor/v0.12.0/skills/writing-quality-editor/README.ko.md)에서 확인할 수 있습니다. 변경 내용과 알려진 한계는 [0.12.0 Release](https://github.com/kyungseo/skillstead/releases/tag/writing-quality-editor/v0.12.0)에 정리돼 있으며, 저장소 전체는 [Skillstead](https://github.com/kyungseo/skillstead)에 공개돼 있습니다.
+`writing-quality-editor`의 네 가지 모드와 검증 범위는 [0.13.0 한국어 README](https://github.com/kyungseo/skillstead/blob/writing-quality-editor/v0.13.0/skills/writing-quality-editor/README.ko.md)에서 확인할 수 있습니다. 변경 내용과 알려진 한계는 [0.13.0 Release](https://github.com/kyungseo/skillstead/releases/tag/writing-quality-editor/v0.13.0)에 정리돼 있으며, 저장소 전체는 [Skillstead](https://github.com/kyungseo/skillstead)에 공개돼 있습니다.
