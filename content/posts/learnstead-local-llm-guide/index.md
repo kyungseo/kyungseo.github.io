@@ -9,7 +9,7 @@ toc: true
 date: 2026-08-11
 edited: true
 og_image: local-llm-guide-hero-social.png
-provenance_note: "2026-08-25: 후속 가이드 링크와 Learnstead 가이드 시리즈 정보를 추가했습니다."
+provenance_note: "2026-08-30: 후속 자료를 프로그램 연결과 RAG 두 경로로 나눠 연결했습니다."
 draft: false
 ---
 
@@ -36,7 +36,7 @@ Ollama로 첫 응답을 확인하는 절차까지 초급자의 눈높이에서 �
 - **Prove** — GPU 적재, API 응답, version과 실행 조건을 확인하고 기록합니다.
 
 Local·Hosted·Open-weight도 하나의 선 위에 놓인 반대말로 다루지 않습니다. Local과 Hosted는 모델의 **실행
-위치**를, Open-weight는 **가중치 접근 범위와 라이선스**를 구분하는 말입니다. 조직 환경에서 두 실행 위치를
+위치를**, Open-weight는 **가중치 접근 범위와 라이선스를** 구분하는 말입니다. 조직 환경에서 두 실행 위치를
 함께 쓰는 hybrid 구성도 선택지가 될 수 있지만, routing·민감 정보 차단·접근 제어·log·장애 대응을 별도로 설계해야 한다는
 운영 경계까지 함께 설명합니다.
 
@@ -76,8 +76,13 @@ hands-on lab을 차례로 쌓아갈 예정입니다.
 
 ## 이어서 읽기
 
-모델을 실행했다면 다음은 프로그램에서 호출할 차례입니다. 이어지는 글
-[「Local LLM을 내 프로그램에 연결하기」](https://kyungseo.github.io/posts/learnstead-local-llm-app-integration-guide/)에서
-대화 기록, 구조화 출력, tool calling과 읽기 전용 도구의 권한 경계를 다룹니다.
+모델을 실행한 다음에는 목적에 따라 두 방향으로 이어갈 수 있습니다.
+
+- 모델을 내 프로그램에서 호출하고 싶다면
+  [「Local LLM을 내 프로그램에 연결하기」](https://kyungseo.github.io/posts/learnstead-local-llm-app-integration-guide/)에서
+  대화 기록, 구조화 출력, tool calling과 읽기 전용 도구의 권한 경계를 다룹니다.
+- 내 문서를 검색해 근거와 함께 답하게 만들고 싶다면
+  [「내 문서에 답하는 AI — RAG 이해부터 실패 진단까지」](https://kyungseo.github.io/posts/learnstead-local-rag-series/)에서
+  RAG의 구조부터 최소 구현과 실패 재현까지 이어서 볼 수 있습니다.
 
 <!-- 글 하단 기록은 site가 front matter에서 자동 렌더. -->
