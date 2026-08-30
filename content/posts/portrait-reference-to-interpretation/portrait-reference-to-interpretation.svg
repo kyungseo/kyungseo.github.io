@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="900" viewBox="0 0 720 900" role="img" aria-labelledby="title desc">
+  <title id="title">사진을 복사하지 않고 인상을 다시 그리는 네 단계</title>
+  <desc id="desc">인물 사진에서 인상 지도를 만들고, 거리 화가풍 캐리커처 또는 로맨스 수채화로 해석한 뒤 한 번의 표적 수정을 거치는 흐름도</desc>
+  <defs>
+    <marker id="arrow-edge" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11.25" markerHeight="11.25" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M2 2 L10 6 L2 10" data-stroke-role="edge-line" fill="none" stroke="#2E6DA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="720" height="900" data-fill-role="canvas" fill="#F7F7F5"/>
+
+  <g aria-label="제목">
+    <text x="52" y="45" data-fill-role="muted" fill="#636A75" font-family="Pretendard, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" font-weight="700">STREET-PORTRAIT-ARTIST</text>
+    <rect x="36" y="58" width="4" height="54" rx="2" data-fill-role="focus" fill="#2E6DA4"/>
+    <text x="52" y="78" data-fill-role="ink" fill="#252B35" font-family="Pretendard, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28" font-weight="700">
+      <tspan x="52" dy="0">사진을 닮게 복사하지 않고</tspan>
+      <tspan x="52" dy="34">인상을 다시 그리는 법</tspan>
+    </text>
+    <text x="52" y="139" data-fill-role="muted" fill="#636A75" font-family="Pretendard, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14">정체성은 관계로 남기고, 화풍은 해석으로 분리한다</text>
+  </g>
+
+  <g aria-label="1단계 인물 사진">
+    <rect x="72" y="188" width="576" height="92" rx="18" data-fill-role="surface" data-stroke-role="rule" fill="#FFFFFF" stroke="#DEE0E2" stroke-width="2"/>
+    <circle cx="104" cy="216" r="18" data-fill-role="focus" fill="#2E6DA4"/>
+    <text x="104" y="216" text-anchor="middle" dominant-baseline="central" data-fill-role="on-focus" fill="#FFFFFF" font-family="Pretendard, sans-serif" font-size="14" font-weight="700">1</text>
+    <text x="140" y="215" dominant-baseline="central" data-fill-role="ink" fill="#252B35" font-family="Pretendard, sans-serif" font-size="21" font-weight="700">인물 사진</text>
+    <text x="140" y="247" dominant-baseline="central" data-fill-role="muted" fill="#636A75" font-family="Pretendard, sans-serif" font-size="15">포즈·표정·헤어·의상처럼 눈에 보이는 사실을 받는다</text>
+  </g>
+
+  <path d="M360 292 V328" data-stroke-role="edge-line" fill="none" stroke="#2E6DA4" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-edge)"/>
+
+  <g aria-label="2단계 인상 지도">
+    <rect x="72" y="338" width="576" height="120" rx="18" data-fill-role="edge-fill" data-stroke-role="edge-line" fill="#EAF0F6" stroke="#2E6DA4" stroke-width="2"/>
+    <circle cx="104" cy="366" r="18" data-fill-role="focus" fill="#2E6DA4"/>
+    <text x="104" y="366" text-anchor="middle" dominant-baseline="central" data-fill-role="on-focus" fill="#FFFFFF" font-family="Pretendard, sans-serif" font-size="14" font-weight="700">2</text>
+    <text x="140" y="365" dominant-baseline="central" data-fill-role="edge-ink" fill="#193C5A" font-family="Pretendard, sans-serif" font-size="21" font-weight="700">Quick Sketch Impression Map</text>
+    <text x="104" y="407" data-fill-role="ink" fill="#252B35" font-family="Pretendard, sans-serif" font-size="15">
+      <tspan x="104" dy="0">머리 프레임 · 눈의 축 · T-zone · 입–턱 리듬 · 헤어 실루엣</tspan>
+      <tspan x="104" dy="25">닮음을 픽셀이 아니라 요소 사이의 관계로 고정한다</tspan>
+    </text>
+  </g>
+
+  <path d="M360 470 V506" data-stroke-role="edge-line" fill="none" stroke="#2E6DA4" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-edge)"/>
+
+  <g aria-label="3단계 두 가지 해석">
+    <rect x="72" y="516" width="576" height="184" rx="18" data-fill-role="surface" data-stroke-role="rule" fill="#FFFFFF" stroke="#DEE0E2" stroke-width="2"/>
+    <circle cx="104" cy="544" r="18" data-fill-role="focus" fill="#2E6DA4"/>
+    <text x="104" y="544" text-anchor="middle" dominant-baseline="central" data-fill-role="on-focus" fill="#FFFFFF" font-family="Pretendard, sans-serif" font-size="14" font-weight="700">3</text>
+    <text x="140" y="543" dominant-baseline="central" data-fill-role="ink" fill="#252B35" font-family="Pretendard, sans-serif" font-size="21" font-weight="700">같은 인상, 다른 해석</text>
+
+    <g aria-label="거리 화가풍 캐리커처">
+      <rect x="96" y="575" width="252" height="101" rx="14" data-fill-role="data-fill" data-stroke-role="data-line" fill="#F4F5F5" stroke="#636A75" stroke-width="1.8"/>
+      <text x="116" y="603" data-fill-role="data-ink" fill="#363A40" font-family="Pretendard, sans-serif" font-size="17" font-weight="700">Street Caricature</text>
+      <text x="116" y="633" data-fill-role="muted" fill="#636A75" font-family="Pretendard, sans-serif" font-size="14">
+        <tspan x="116" dy="0">하나의 특징을 과장하고</tspan>
+        <tspan x="116" dy="21">다른 형태가 반응하게 만든다</tspan>
+      </text>
+    </g>
+
+    <g aria-label="로맨스 수채화">
+      <rect x="372" y="575" width="252" height="101" rx="14" data-fill-role="compute-fill" data-stroke-role="compute-line" fill="#ECF4F1" stroke="#3F8F72" stroke-width="1.8"/>
+      <text x="392" y="603" data-fill-role="compute-ink" fill="#234F3F" font-family="Pretendard, sans-serif" font-size="17" font-weight="700">Romance Watercolor</text>
+      <text x="392" y="633" data-fill-role="muted" fill="#636A75" font-family="Pretendard, sans-serif" font-size="14">
+        <tspan x="392" dy="0">큰 색면과 여백으로 장면을</tspan>
+        <tspan x="392" dy="21">기억처럼 축약한다</tspan>
+      </text>
+    </g>
+  </g>
+
+  <path d="M360 712 V748" data-stroke-role="edge-line" fill="none" stroke="#2E6DA4" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-edge)"/>
+
+  <g aria-label="4단계 표적 수정">
+    <rect x="72" y="758" width="576" height="92" rx="18" data-fill-role="surface" data-stroke-role="positive" fill="#FFFFFF" stroke="#3F8F72" stroke-width="2"/>
+    <circle cx="104" cy="786" r="18" data-fill-role="positive" fill="#3F8F72"/>
+    <text x="104" y="786" text-anchor="middle" dominant-baseline="central" data-fill-role="on-focus" fill="#FFFFFF" font-family="Pretendard, sans-serif" font-size="14" font-weight="700">4</text>
+    <text x="140" y="785" dominant-baseline="central" data-fill-role="ink" fill="#252B35" font-family="Pretendard, sans-serif" font-size="21" font-weight="700">한 번의 표적 수정</text>
+    <text x="140" y="817" dominant-baseline="central" data-fill-role="muted" fill="#636A75" font-family="Pretendard, sans-serif" font-size="15">정체성 지도를 유지한 채, 가장 큰 결함 하나만 고친다</text>
+  </g>
+</svg>
