@@ -1,7 +1,7 @@
 {{ $page := . }}
 {{ with .GetTerms "series" }}
 {{ $term := index . 0 }}
-{{ $pages := $term.Pages.ByDate }}
+{{ $pages := partial "series-pages.html" $term }}
 {{ $curr := 0 }}
 {{ range $i, $p := $pages }}{{ if eq $p.Permalink $page.Permalink }}{{ $curr = $i }}{{ end }}{{ end }}
 <nav class="series-nav">
