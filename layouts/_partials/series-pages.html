@@ -1,0 +1,16 @@
+{{- $term := . -}}
+{{- $pages := $term.Pages.ByDate -}}
+{{- $orderedCount := 0 -}}
+{{- range $pages -}}
+  {{- if isset .Params "series_order" -}}
+    {{- $orderedCount = add $orderedCount 1 -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if and (gt $orderedCount 0) (lt $orderedCount (len $pages)) -}}
+  {{- warnf "series %q mixes pages with and without series_order; falling back to chronological order" $term.LinkTitle -}}
+{{- else if and (gt (len $pages) 0) (eq $orderedCount (len $pages)) -}}
+  {{- $pages = sort $pages "Params.series_order" "asc" -}}
+{{- end -}}
+
+{{- return $pages -}}

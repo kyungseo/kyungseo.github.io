@@ -3,7 +3,8 @@ title: "AI 에이전트 개발은 루프를 돌리는 일이다"
 slug: agent-development-loop
 format: essay
 tags: ["ai-agent", "automation", "evals", "human-in-the-loop"]
-series: []
+series: ["AI Agent를 이해하는 법"]
+series_order: 2
 summary: "프롬프트로 시작한 대화형 작업을 반복 가능한 자동화로 옮기려면 무엇이 더 필요한지, 이메일 영수증을 가계부에 기록하는 예제로 설명합니다."
 toc: true
 date: 2026-08-19

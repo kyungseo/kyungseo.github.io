@@ -1,9 +1,13 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
 {{ .Content }}
+{{ $pages := .Pages.ByDate.Reverse }}
+{{ if eq .Data.Plural "series" }}
+  {{ $pages = partial "series-pages.html" . }}
+{{ end }}
 <section class="post-list">
   <ul>
-    {{ range .Pages.ByDate.Reverse }}
+    {{ range $pages }}
     <li>
       <a href="{{ .Permalink }}">{{ .Title }}</a>
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
