@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" style="font-family:Pretendard, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <title>AI Agent를 위한 세 가지 설계</title>
+  <desc>반복 절차는 Agent Skills로, 외부 도구와 데이터는 MCP로, 지금 필요한 정보는 Context Engineering으로 나누어 설계하는 세 개의 카드</desc>
+  <rect width="800" height="450" data-fill-role="canvas" fill="#F7F7F5"/>
+
+  <text x="60" y="31" font-size="11" font-weight="700" letter-spacing="1.1" data-fill-role="muted" fill="#636A75">LEARNSTEAD · AI AGENT 학습 경로</text>
+  <rect x="40" y="48" width="4" height="38" rx="2" data-fill-role="focus" fill="#2E6DA4"/>
+  <text x="60" y="68" font-size="28" font-weight="700" dominant-baseline="central" data-fill-role="ink" fill="#252B35">AI Agent를 위한 세 가지 설계</text>
+  <text x="60" y="108" font-size="14" dominant-baseline="central" data-fill-role="muted" fill="#636A75">같은 Agent라도 절차 · 능력 · 정보는 서로 다른 문제입니다</text>
+
+  <g transform="translate(40 150)" data-layout-role="icon-text-card" data-layout-center-y="80" data-layout-center-tolerance="3">
+    <rect width="220" height="160" rx="16" data-layout-role="card-frame" data-fill-role="surface" data-stroke-role="edge-line" fill="#FFFFFF" stroke="#2E6DA4" stroke-width="1.5"/>
+    <circle cx="38" cy="80" r="22" data-layout-role="icon-center" data-fill-role="edge-fill" fill="#EAF0F6"/>
+    <path d="M4 7 H20 M4 12 H20 M4 17 H14" transform="translate(22.4 64.4) scale(1.3)" data-stroke-role="edge-line" stroke="#2E6DA4" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="75" y="58" font-size="18" font-weight="700" dominant-baseline="central" data-layout-role="card-title" data-fill-role="edge-ink" fill="#193C5A">Agent Skills</text>
+    <text x="75" y="86" font-size="13" dominant-baseline="central" data-layout-role="card-body" data-fill-role="muted" fill="#636A75">
+      <tspan x="75" dy="0">반복 절차를</tspan>
+      <tspan x="75" dy="20">필요할 때 읽기</tspan>
+    </text>
+  </g>
+
+  <g transform="translate(290 150)" data-layout-role="icon-text-card" data-layout-center-y="80" data-layout-center-tolerance="3">
+    <rect width="220" height="160" rx="16" data-layout-role="card-frame" data-fill-role="surface" data-stroke-role="api-line" fill="#FFFFFF" stroke="#5B54A8" stroke-width="1.5"/>
+    <circle cx="38" cy="80" r="22" data-layout-role="icon-center" data-fill-role="api-fill" fill="#EFEEF6"/>
+    <path d="M9 5 L5 12 L9 19 M15 5 L19 12 L15 19" transform="translate(22.4 64.4) scale(1.3)" data-stroke-role="api-line" stroke="#5B54A8" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="75" y="58" font-size="18" font-weight="700" dominant-baseline="central" data-layout-role="card-title" data-fill-role="api-ink" fill="#322E5C">MCP</text>
+    <text x="75" y="86" font-size="13" dominant-baseline="central" data-layout-role="card-body" data-fill-role="muted" fill="#636A75">
+      <tspan x="75" dy="0">외부 도구와</tspan>
+      <tspan x="75" dy="20">데이터 연결하기</tspan>
+    </text>
+  </g>
+
+  <g transform="translate(540 150)" data-layout-role="icon-text-card" data-layout-center-y="80" data-layout-center-tolerance="3">
+    <rect width="220" height="160" rx="16" data-layout-role="card-frame" data-fill-role="surface" data-stroke-role="compute-line" fill="#FFFFFF" stroke="#3F8F72" stroke-width="1.5"/>
+    <circle cx="38" cy="80" r="22" data-layout-role="icon-center" data-fill-role="compute-fill" fill="#ECF4F1"/>
+    <path d="M12 3 L21 8 L12 13 L3 8 Z M3 13 L12 18 L21 13" transform="translate(22.4 64.4) scale(1.3)" data-stroke-role="compute-line" stroke="#3F8F72" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="75" y="47" font-size="17" font-weight="700" dominant-baseline="central" data-layout-role="card-title" data-fill-role="compute-ink" fill="#234F3F">
+      <tspan x="75" dy="0">Context</tspan>
+      <tspan x="75" dy="20">Engineering</tspan>
+    </text>
+    <text x="75" y="94" font-size="13" dominant-baseline="central" data-layout-role="card-body" data-fill-role="muted" fill="#636A75">
+      <tspan x="75" dy="0">필요한 정보만</tspan>
+      <tspan x="75" dy="20">골라서 배치하기</tspan>
+    </text>
+  </g>
+
+  <rect x="40" y="340" width="720" height="70" rx="14" data-fill-role="strip" data-stroke-role="rule" fill="#F7F9FB" stroke="#DEE0E2"/>
+  <text x="400" y="361" font-size="12" font-weight="700" letter-spacing="0.8" text-anchor="middle" dominant-baseline="central" data-fill-role="focus" fill="#2E6DA4">세 가지를 나눠 보면</text>
+  <text x="400" y="387" font-size="16" font-weight="700" text-anchor="middle" dominant-baseline="central" data-fill-role="ink" fill="#252B35">반복 절차 · 실행 능력 · 판단에 필요한 정보의 위치가 보입니다</text>
+</svg>
