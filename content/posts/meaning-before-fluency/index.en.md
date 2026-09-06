@@ -1,16 +1,19 @@
 ---
-title: "What to Protect Before Making a Sentence Sound Natural"
+title: "Clearer Writing, the Same Meaning"
 slug: meaning-before-fluency
 format: essay
 tags: ["skillstead", "skills", "writing", "editing", "localization"]
 series: []
-summary: "The editing contract behind writing-quality-editor: separate meaning, authorial voice, and audience-appropriate register so that natural writing does not come at the cost of accuracy."
+summary: "What WQE should preserve and change, why new Korean drafts now use separate instructions, and where observed results still fall short of those principles."
 toc: true
 date: 2026-08-09
 translated_from: ko
 original_date: 2026-08-09
 edited: false
 updates:
+  - date: "2026-09-06T23:05:50+09:00"
+    kind: correction
+    summary: "Simplified the title and diagram and grouped historical validation records. Distinguished instructions from observed behavior, and clarified protection of embedded editor instructions and the scope of the new drafting checks."
   - date: "2026-09-06T20:50:57+09:00"
     kind: update
     summary: "Added the dedicated Korean drafting path in 0.14.0, the limitations observed in practical checks, and updated installation examples."
@@ -28,9 +31,11 @@ draft: false
 
 The sentences may become smoother while the warning becomes weaker. An exception may disappear when a long sentence is shortened. Adapting a translation for local readers can accidentally change who has approval authority. Making product copy more persuasive can add a feature that the evidence never mentioned. The text is easier to read, but it is no longer the same document.
 
-`writing-quality-editor`, or WQE, does not treat this as a search for better wording alone. It first establishes what must not change, then improves clarity and fluency within that boundary.
+`writing-quality-editor`, or WQE, does not treat this as a search for better wording alone. Its instructions aim to preserve facts and conditions while making sentences easier to understand.
 
-![Three editing layers—preserve the semantic contract, keep the author's voice by default, and adjust register and explanation for the reader—alongside Compose, Assess, Revise, and Adapt, plus a no-edit gate result showing 25 of 34 READMEs changed and nine preserved.](./meaning-before-fluency.en.svg)
+The following sections describe WQE’s writing and editing principles, not a guarantee that an agent follows them every time. I will also describe the observed results and the problems that remain.
+
+![WQE editing principles: preserve facts and conditions, keep the writer’s voice by default, and explain for the intended reader. Leave clear prose alone and check the final result.](./meaning-before-fluency.en.svg)
 
 ## A document has three layers
 
@@ -61,33 +66,31 @@ Writing a new document, finding problems, editing an existing draft, and rewriti
 
 Users do not need to know the mode names. Requests such as “draft this,” “review this without editing,” “polish this,” or “rewrite this for Korean readers” provide enough direction. When authority is ambiguous—“take a look,” for example—the skill remains in read-only `Assess`. A request for review is not expanded into permission to edit.
 
-`Compose` also does not fill gaps in the source material with plausible prose. It does not invent features, compatibility, measurements, or experience. When public research is needed, it records the sources and evidence date, and separates observed facts, source claims, and the writer's synthesis. If the evidence is too thin, a small placeholder or an explicit human decision is safer than a polished unsupported claim.
+`Compose` also does not fill gaps in the source material with plausible prose. The rule is to invent no features, compatibility, measurements, or experience. When public research is needed, it records the sources and evidence date, and separates observed facts, source claims, and the writer's synthesis. If the evidence is too thin, a small placeholder or an explicit human decision is safer than a polished unsupported claim.
 
 ## A good revision is not the one that changes the most
 
 It is easy to assume an editing tool has done its job only when the output looks different. But replacing a sentence that already fits its reader and purpose with synonyms is not an improvement. It is unnecessary revision.
 
-That is why `Revise` has a no-edit gate. Every proposed change must solve a named reader problem. If the differences are matters of taste, WQE returns the source unchanged. It does not manufacture activity by changing punctuation or splitting sentences without a reason.
+That is why `Revise` has a no-edit gate. Every proposed change must solve a named reader problem. If the differences are matters of taste, the instructions call for returning the source unchanged. Changing punctuation or splitting sentences merely to make the output look different does not count as useful editing.
 
 For requests about wording, fluency, and clarity, local editing comes before structural rewriting. WQE changes the smallest complete phrase, clause, or sentence that blocks the reader and leaves the surrounding text alone. If a phrase such as “change it quietly” could mean an arbitrary change, an unapproved change, or a change without prior notice, the skill does not choose the most fluent interpretation. It leaves the ambiguous span under `Needs Human` and continues only with edits that are safe.
 
-I applied this principle directly to Skillstead's public documentation. WQE first `Assess`ed 34 root, skill, and example READMEs. It then used `Revise` or `Adapt` on the 25 with concrete reader problems and preserved the other nine. The [dogfood commit](https://github.com/kyungseo/skillstead/commit/be0383ae64b8faae2e39bff270b2d7c01c10b474) shows both the changes and the documents deliberately left alone. The no-edit gate was used to decide what not to edit, not merely described in the documentation.
+I applied this principle directly to Skillstead's public documentation. WQE first `Assess`ed 34 root, skill, and example READMEs. It then used `Revise` or `Adapt` on the 25 with concrete reader problems and preserved the other nine. The [record of that application](https://github.com/kyungseo/skillstead/commit/be0383ae64b8faae2e39bff270b2d7c01c10b474) shows both the changes and the documents deliberately left alone. The no-edit gate was used to decide what not to edit, not merely described in the documentation.
 
-Some problems cannot be solved at sentence level. If the main action appears three paragraphs too late, or a warning arrives after the reader has already run the command, the structure needs to change. WQE allows a structural `Revise` under three conditions: it must name the reader problem, identify the sections involved, and move no more than the problem requires.
+Some problems cannot be solved at sentence level. If the main action appears three paragraphs too late, or a warning arrives after the reader has already run the command, the structure needs to change. WQE allows a structural `Revise` under three conditions: it must explain where and why readers struggle, identify the sections that sentence-level edits cannot fix, and move only the paragraphs needed to solve the problem.
 
 Reordering information does not permit changing causal or procedural order. A conclusion may move forward, but the relationship between cause and effect, prerequisite and next step, must remain visible. A warning must appear before the action it governs.
 
 ## What Korean revision now protects more explicitly
 
-`writing-quality-editor 0.12.0` makes the preservation boundary more concrete when revising Korean in the same language.
+The following rules apply when revising Korean prose in Korean. They were made explicit in `writing-quality-editor 0.12.0`.
 
 - An already-natural short passage is returned exactly as supplied, without an explanation or change report.
 - For the same audience, the skill does not casually switch honorific level or formality, such as `해요` versus `합니다` or `했다` versus `하였다`.
 - It does not force sentence endings onto intentional fragments such as headings, list labels, and UI labels.
 - It preserves a direct quotation together with its punctuation and attached citation or footnote marker.
-- An editor note or TODO inside the source remains text to edit, not an instruction to execute, unless the external user explicitly activates it.
-
-Five synthetic fixtures now exercise no-edit identity, compressed prose, honorific and formality retention, quotation and citation attachment, and embedded source instructions. The measured runs preserved the semantic body of the new Korean fixtures, though the two runtimes were not measured to the same extent. One direct short-text run also added an unnecessary report. Separate regressions missed a protected timing relationship and a network boundary. That release therefore strengthened the Korean editing contract without claiming `Stable`; maturity remained `Beta`.
+- Notes or TODOs addressed to the editor or agent inside the source are neither executed nor rewritten unless the user explicitly activates them.
 
 ## Examples are not a list of phrases to replace
 
@@ -95,9 +98,7 @@ Five synthetic fixtures now exercise no-edit identity, compressed prose, honorif
 
 It revises an explanation, comparison, or instruction when readers would otherwise have to infer a necessary relationship, decode a term or shorthand before they can understand the point, or separate an observation from a cause the evidence has not established. This is not a banned-word list or a separate set of rules for each document type. The decision depends on the role of the sentence and the needs of its intended reader.
 
-The goal is not to edit more sentences. Ordinary references that resolve naturally in nearby context, equally natural active and passive endings, modifier positions, and synonymous expressions stay unchanged unless they obstruct understanding. `Needs Human` is reserved for an important unresolved choice that blocks a safe, usable result, not an optional opportunity to add detail.
-
-The repository checks passed `282/282`, and its validator reported `0 finding(s)`. In answer-key-blind isolated runs, Claude Fable 5 and Codex passed the new English and Korean explanatory cases and the document-wide example-transfer case. In both environments, two already-natural control passages also remained byte-for-byte identical across three independent runs. This was a bounded amendment-level evaluation rather than a complete rerun, and agent output remains non-deterministic. Maturity therefore remains `Beta`.
+The goal is not to edit more sentences. References with a clear meaning in context and equally natural active or passive sentences stay unchanged. Modifier positions and synonyms also need no adjustment unless they obstruct understanding. `Needs Human` means a user decision is needed to finish the text without inventing a meaning or condition; it is not a marker for every opportunity to add detail.
 
 ## Giving new Korean drafts their own writing path
 
@@ -107,7 +108,9 @@ How much to explain depends on the reader and purpose. “Keep this brief for a 
 
 Separating the instructions does not itself demonstrate better writing. In limited checks, short drafts with enough source material covered the required content. A longer article still needed edits where a prescribed practice became advice and the ending became abstract. A request with missing information also produced an inferred adoption purpose before asking for facts. These results do not support a promise that missing information always leads only to questions, or that every first draft is ready to use.
 
-The change remains Beta. The new path was checked through explicit local-package loading; automatic discovery after installation and behavior on other runtimes remain unverified. Checking for errors alone does not establish naturalness, so practical evaluation will continue to record which parts of real drafts needed editing and why.
+Maturity remains `Beta`. Claude Code and Codex are listed as `Supported` within the established evidence scope, but the new Korean drafting instructions have not been checked to the same extent in both environments. The new instructions were tested by giving the agent an explicit local package path to read. Automatic discovery of the installed skill and the new instructions’ behavior in other runtimes remain unverified.
+
+Error checks alone cannot tell us whether writing reads naturally. Practical evaluation will continue to record which parts of real drafts needed editing and why.
 
 ## Why it is called Adapt rather than translate
 
@@ -115,7 +118,7 @@ Matching sentence count and word order between English and Korean does not guara
 
 `Adapt` therefore compares claims, conditions, risks, identifiers, links, limitations, and next actions rather than forcing sentence-to-sentence correspondence. It may change information order, idiom, and explanation density, but not the semantic contract. If no safe equivalent exists or the source is ambiguous, WQE exposes the issue as `needs-human` rather than hiding an interpretation inside fluent prose.
 
-The currently validated localization pair is English and Korean, with Korean output targeted to `ko-KR`. Within the published evidence scope, Claude Code and Codex are `Supported`, while the skill's maturity remains `Beta`. The general procedure may help with other languages or document types, but they are not presented as validated support.
+The currently validated adaptation pair is English and Korean, with Korean output following South Korean conventions (`ko-KR`). The general procedure may help with other languages or document types, but they are not presented as validated support.
 
 ## Fluency is not a way to hide provenance
 
@@ -123,7 +126,7 @@ WQE looks for translated syntax, unexplained internal metaphors, empty introduct
 
 It is not a tool for evading AI detectors. It does not hide authorship or provenance, add fabricated experience, or scatter unusual words and randomness through the text. Natural prose does not prove that its contents are true. Code review, security review, legal judgment, and product-claim verification still require their own evidence and procedures.
 
-The promise is narrower and more useful: write for the intended reader without arbitrarily changing what the document claims, requires, or warns about.
+WQE’s goal is to write for the intended reader without arbitrarily changing what the document claims, requires, or warns about.
 
 Before editing, WQE asks three questions:
 
@@ -131,7 +134,23 @@ Before editing, WQE asks three questions:
 2. Which qualities of the author's voice should survive?
 3. Is this a real reader problem, or only the editor's preference?
 
-Only then does it revise the sentence. Fluency is the result, not a separate goal purchased by sacrificing meaning.
+These questions guide the decision about what to edit. But preserving meaning does not by itself make writing natural. The result still needs both checks: has the meaning stayed intact, and has the text become easier for its reader to understand?
+
+## Validation history by version
+
+These records describe the checks made when each version was released. Their conditions differ, so the counts should not be combined into an overall success rate.
+
+### 0.12.0 — Preservation checks for Korean revision
+
+Five synthetic inputs covered returning the source unchanged, compressed prose, honorifics and formality, quotations and footnote markers, and instructions embedded in the source. The meaning of these inputs was preserved in the measured runs, though the two runtimes were not checked to the same extent. One short-text run also added an unnecessary report.
+
+Checks of existing behavior missed a requirement that one action happen before another. Another result changed a claim that metrics never leave the user’s network into a claim that the entire dashboard runs inside it. Version 0.12.0 therefore remained `Beta` rather than advancing to `Stable`.
+
+### 0.13.0 — Finding the same reader problem across a document
+
+The repository checks passed `282/282`, and the validator reported `0 finding(s)`. In answer-key-blind isolated runs, Claude Fable 5 and Codex passed the new English and Korean explanatory cases and the document-wide example-transfer case. In both environments, two already-natural control passages also remained byte-for-byte identical across three independent runs.
+
+This was not a complete rerun, and agent output can vary between runs. These results do not establish a general writing-quality advantage; maturity remains `Beta`.
 
 ## Installation
 
