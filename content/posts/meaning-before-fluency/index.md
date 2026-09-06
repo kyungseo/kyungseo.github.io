@@ -9,12 +9,16 @@ toc: true
 date: 2026-08-09
 edited: false
 updates:
+  - date: "2026-09-06T20:50:57+09:00"
+    kind: update
+    summary: "한국어 새 글 작성 경로를 분리한 0.14.0의 변경과 실제 확인에서 남은 한계를 설명하고 설치 예시를 갱신했습니다."
   - date: "2026-08-26T00:17:36+09:00"
     kind: update
     summary: "WQE 0.13.0의 문서 전체 문제 유형 탐색과 no-edit 경계를 보강하고 설치 명령을 0.13.0 기준으로 갱신했습니다."
   - date: "2026-08-22T19:42:20+09:00"
     kind: update
     summary: "WQE 0.12.0의 한국어 보존 경계와 Beta 한계를 보강하고 설치 명령을 0.12.0 기준으로 갱신했습니다."
+provenance_note: "최초 공개본입니다."
 og_image: meaning-before-fluency.png
 draft: false
 ---
@@ -94,6 +98,16 @@ WQE는 글을 세 층으로 구분합니다.
 
 이번 보강은 저장소 검증 `282/282`와 validator `0 finding(s)`을 통과했습니다. 정답을 숨긴 독립 실행에서는 Claude Fable 5와 Codex가 새 한국어·영어 설명 사례와 문서 전체에서 같은 문제를 찾는 사례를 통과했고, 이미 자연스러운 두 대조 문단은 두 환경에서 각각 세 번 모두 한 글자도 바뀌지 않았습니다. 다만 전체 평가를 다시 수행한 결과는 아니며 실행 결과의 비결정성도 남아 있습니다. 그래서 성숙도는 계속 `Beta`입니다.
 
+## 새 글 작성은 따로 다루기로 했다
+
+기존 글을 고칠 때와 메모에서 새 글을 만들 때는 출발점이 다릅니다. 교정에는 이미 쓴 문장이 있지만, 새 글에는 설명 순서와 문단 구성부터 정해야 합니다. `writing-quality-editor 0.14.0`에서는 한국어 새 글 작성에 필요한 지침을 따로 읽도록 분리했습니다. 기존 글의 편집·진단·번역 지침 본문은 유지했습니다.
+
+설명을 얼마나 풀어쓸지는 독자와 글의 목적에 따라 달라집니다. “Git을 조금 써본 개발자에게 짧게 설명해 줘”와 “처음 쓰는 사람도 이해하도록 필요한 개념을 풀어 줘”는 다른 요청입니다. 독자·목적·분량을 알려주면 그 조건에 맞춰 작성하도록 합니다. 용어를 모두 번역하거나 모든 개념을 자세히 설명하는 것을 목표로 삼지는 않습니다.
+
+다만 지침을 분리한 사실이 곧 글의 품질 향상을 뜻하지는 않습니다. 제한된 확인에서 자료가 충분한 짧은 설명문은 필요한 내용을 담았지만, 더 긴 글에서는 작업 규칙을 권장사항처럼 약하게 쓰거나 추상적인 마무리를 붙여 추가 수정이 필요했습니다. 자료가 부족한 경우에도 실제 도입 목적을 추정한 도입부를 쓴 뒤 질문한 사례가 있었습니다. “자료가 없으면 반드시 질문만 한다”거나 “한 번에 바로 쓸 글이 나온다”고 말할 수는 없습니다.
+
+이번 변경은 계속 Beta입니다. 새 경로는 로컬 패키지를 명시해 읽히는 방식으로 확인했고, 설치 후 자동 발견이나 다른 runtime에서의 동작은 아직 확인하지 않았습니다. 자연스러움은 오류가 없다는 검사만으로 판단하기 어려워, 앞으로도 실제 글을 읽고 어디를 왜 고쳤는지 함께 남기려 합니다.
+
 ## 번역보다 Adapt라고 부르는 이유
 
 영어와 한국어는 문장 수와 어순을 그대로 맞춘다고 의미까지 같아지는 것은 아닙니다. 어떤 설명은 한국어에서 앞에 와야 자연스럽고, 어떤 명령과 식별자는 번역하지 않아야 합니다. 한 언어의 긴 문장을 다른 언어에서는 둘로 나누는 편이 더 정확할 수도 있습니다.
@@ -120,13 +134,13 @@ AI 탐지기를 피하기 위한 도구도 아닙니다. 작성 주체나 출처
 
 ## 설치
 
-`writing-quality-editor`는 `SKILL.md`와 검토 기준표, 영어↔한국어 각색 규칙 등을 함께 사용하는 다중 파일 패키지입니다. 개별 파일이 아니라 `skills/writing-quality-editor/` 폴더 전체를 복사해야 합니다. 아래 명령은 이 글을 갱신할 때 확인한 `v0.13.0`을 macOS/Linux 프로젝트에 설치합니다. 사용하는 실행 환경에 맞는 블록 하나만 선택해 실행합니다.
+`writing-quality-editor`는 `SKILL.md`와 검토 기준표, 영어↔한국어 각색 규칙 등을 함께 사용하는 다중 파일 패키지입니다. 개별 파일이 아니라 `skills/writing-quality-editor/` 폴더 전체를 복사해야 합니다. 아래 명령은 `v0.14.0`을 macOS/Linux 프로젝트에 설치합니다. 사용하는 실행 환경에 맞는 블록 하나만 선택해 실행합니다.
 
 Claude Code 프로젝트:
 
 ```bash
 install_root="$(mktemp -d)"
-git clone --depth 1 --branch writing-quality-editor/v0.13.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
+git clone --depth 1 --branch writing-quality-editor/v0.14.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
 mkdir -p .claude/skills
 cp -R "$install_root/skillstead/skills/writing-quality-editor" .claude/skills/
 ```
@@ -135,11 +149,11 @@ Codex 프로젝트:
 
 ```bash
 install_root="$(mktemp -d)"
-git clone --depth 1 --branch writing-quality-editor/v0.13.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
+git clone --depth 1 --branch writing-quality-editor/v0.14.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
 mkdir -p .agents/skills
 cp -R "$install_root/skillstead/skills/writing-quality-editor" .agents/skills/
 ```
 
 전역 설치, Windows PowerShell, 업데이트 방법과 최신 고정 태그는 [Skillstead 설치 안내](https://github.com/kyungseo/skillstead/blob/main/docs/INSTALL.ko.md)에서 확인할 수 있습니다. 설치 뒤에는 `writing-quality-editor`라는 이름과 원하는 결과를 말하면 됩니다. 수정 없이 문제만 받고 싶을 때만 `Assess`를 명시하면 가장 분명합니다.
 
-`writing-quality-editor`의 네 가지 모드와 검증 범위는 [0.13.0 한국어 README](https://github.com/kyungseo/skillstead/blob/writing-quality-editor/v0.13.0/skills/writing-quality-editor/README.ko.md)에서 확인할 수 있습니다. 변경 내용과 알려진 한계는 [0.13.0 Release](https://github.com/kyungseo/skillstead/releases/tag/writing-quality-editor/v0.13.0)에 정리돼 있으며, 저장소 전체는 [Skillstead](https://github.com/kyungseo/skillstead)에 공개돼 있습니다.
+`writing-quality-editor`의 네 가지 모드와 검증 범위는 [0.14.0 한국어 README](https://github.com/kyungseo/skillstead/blob/writing-quality-editor/v0.14.0/skills/writing-quality-editor/README.ko.md)에서 확인할 수 있습니다. 변경 내용과 알려진 한계는 [0.14.0 Release](https://github.com/kyungseo/skillstead/releases/tag/writing-quality-editor/v0.14.0)에 정리돼 있으며, 저장소 전체는 [Skillstead](https://github.com/kyungseo/skillstead)에 공개돼 있습니다.

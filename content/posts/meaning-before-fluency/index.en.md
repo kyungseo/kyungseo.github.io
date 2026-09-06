@@ -11,6 +11,9 @@ translated_from: ko
 original_date: 2026-08-09
 edited: false
 updates:
+  - date: "2026-09-06T20:50:57+09:00"
+    kind: update
+    summary: "Added the dedicated Korean drafting path in 0.14.0, the limitations observed in practical checks, and updated installation examples."
   - date: "2026-08-26T00:17:36+09:00"
     kind: update
     summary: "Added WQE 0.13.0's document-wide defect-class transfer and no-edit boundary, and updated the installation commands to 0.13.0."
@@ -96,6 +99,16 @@ The goal is not to edit more sentences. Ordinary references that resolve natural
 
 The repository checks passed `282/282`, and its validator reported `0 finding(s)`. In answer-key-blind isolated runs, Claude Fable 5 and Codex passed the new English and Korean explanatory cases and the document-wide example-transfer case. In both environments, two already-natural control passages also remained byte-for-byte identical across three independent runs. This was a bounded amendment-level evaluation rather than a complete rerun, and agent output remains non-deterministic. Maturity therefore remains `Beta`.
 
+## Giving new Korean drafts their own writing path
+
+Revising existing prose and writing from notes start from different places. Revision has sentences to work with; a new draft still needs an explanation order and paragraph structure. In `writing-quality-editor 0.14.0`, new Korean drafts load a dedicated writing contract. The established contract text for revision, assessment, and adaptation remains unchanged.
+
+How much to explain depends on the reader and purpose. “Keep this brief for a developer who has used Git” asks for something different from “Explain the concepts a first-time user needs.” You can specify the audience, purpose, and length to guide the draft. Translating every technical term or explaining every concept at length is not the goal.
+
+Separating the instructions does not itself demonstrate better writing. In limited checks, short drafts with enough source material covered the required content. A longer article still needed edits where a prescribed practice became advice and the ending became abstract. A request with missing information also produced an inferred adoption purpose before asking for facts. These results do not support a promise that missing information always leads only to questions, or that every first draft is ready to use.
+
+The change remains Beta. The new path was checked through explicit local-package loading; automatic discovery after installation and behavior on other runtimes remain unverified. Checking for errors alone does not establish naturalness, so practical evaluation will continue to record which parts of real drafts needed editing and why.
+
 ## Why it is called Adapt rather than translate
 
 Matching sentence count and word order between English and Korean does not guarantee matching meaning. An explanation that reads naturally later in an English paragraph may need to appear earlier in Korean. Commands and identifiers may need to remain untranslated. A single sentence in one language may be clearer and more accurate as two in the other.
@@ -122,13 +135,13 @@ Only then does it revise the sentence. Fluency is the result, not a separate goa
 
 ## Installation
 
-`writing-quality-editor` is a multi-file package containing `SKILL.md`, the review rubric, and English↔Korean adaptation guidance. Copy the complete `skills/writing-quality-editor/` folder rather than one file. The commands below install the `v0.13.0` version verified for this update into a macOS/Linux project. Run only the block for your agent environment.
+`writing-quality-editor` is a multi-file package containing `SKILL.md`, the review rubric, and English↔Korean adaptation guidance. Copy the complete `skills/writing-quality-editor/` folder rather than one file. The commands below install `v0.14.0` into a macOS/Linux project. Run only the block for your agent environment.
 
 Claude Code project:
 
 ```bash
 install_root="$(mktemp -d)"
-git clone --depth 1 --branch writing-quality-editor/v0.13.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
+git clone --depth 1 --branch writing-quality-editor/v0.14.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
 mkdir -p .claude/skills
 cp -R "$install_root/skillstead/skills/writing-quality-editor" .claude/skills/
 ```
@@ -137,11 +150,11 @@ Codex project:
 
 ```bash
 install_root="$(mktemp -d)"
-git clone --depth 1 --branch writing-quality-editor/v0.13.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
+git clone --depth 1 --branch writing-quality-editor/v0.14.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
 mkdir -p .agents/skills
 cp -R "$install_root/skillstead/skills/writing-quality-editor" .agents/skills/
 ```
 
-See the [Skillstead installation guide](https://github.com/kyungseo/skillstead/blob/main/docs/INSTALL.md) for global installation, Windows PowerShell, updates, and the latest pinned tag. The [0.13.0 English README](https://github.com/kyungseo/skillstead/blob/writing-quality-editor/v0.13.0/skills/writing-quality-editor/README.md) describes the four modes and validation scope, while the [0.13.0 Release](https://github.com/kyungseo/skillstead/releases/tag/writing-quality-editor/v0.13.0) records the changes and known limitations. After installation, name `writing-quality-editor` and describe the result you want. Specify `Assess` only when you want findings without edits.
+See the [Skillstead installation guide](https://github.com/kyungseo/skillstead/blob/main/docs/INSTALL.md) for global installation, Windows PowerShell, updates, and the latest pinned tag. The [0.14.0 English README](https://github.com/kyungseo/skillstead/blob/writing-quality-editor/v0.14.0/skills/writing-quality-editor/README.md) describes the four modes and validation scope, while the [0.14.0 Release](https://github.com/kyungseo/skillstead/releases/tag/writing-quality-editor/v0.14.0) records the changes and known limitations. After installation, name `writing-quality-editor` and describe the result you want. Specify `Assess` only when you want findings without edits.
 
 The full catalog is available in [Skillstead](https://github.com/kyungseo/skillstead).
