@@ -4,11 +4,15 @@ slug: portrait-reference-to-interpretation
 format: essay
 tags: ["skillstead", "skills", "portrait", "caricature", "watercolor", "image-generation"]
 series: []
-summary: "인물 사진의 픽셀을 따라 그리는 대신 얼굴의 관계를 Impression Map으로 고정하고, 거리 화가풍 캐리커처와 로맨스 수채화라는 서로 다른 해석으로 만드는 street-portrait-artist의 설계 과정."
+summary: "인물 사진의 픽셀을 따라 그리는 대신 얼굴의 관계를 Impression Map으로 고정하고, 캐리커처·수채화·Paper-Cut으로 해석하는 street-portrait-artist의 설계 과정."
 og_image: portrait-reference-to-interpretation.png
 toc: true
 date: 2026-08-30
 edited: false
+updates:
+  - date: "2026-09-12T20:31:31+09:00"
+    kind: update
+    summary: "0.2.0의 Editorial Watercolor와 Paper-Cut Illustration, 연속 작업의 identity 기준을 추가하고 현재 Release·예시 링크를 갱신했습니다."
 provenance_note: "이 글은 첫 공개 초안입니다."
 draft: false
 ---
@@ -88,6 +92,14 @@ Impression Map은 이 관계를 짧게 적는 메모입니다. 성격이나 나�
 
 이 글에 실은 남녀 캐리커처와 수채화 결과 네 장은 ChatGPT의 이미지 생성 기능으로 만든 공개용 editorial asset입니다. 앞서 기록한 설치본 discovery·invocation 검증과는 분리된 제작물이며, `street-portrait-artist 0.1.1`이 ChatGPT에서 이름으로 호출됐다는 증거로 사용하지 않습니다.
 
+## 표현은 늘리고, 정체성 기준은 나누지 않았다
+
+`street-portrait-artist 0.2.0`에는 Romance Watercolor의 `Editorial` 표현과 `Paper-Cut Illustration` mode가 추가됐습니다. Editorial은 얼굴을 조금 더 관찰해 묘사하고, 의상과 주변은 느슨한 wash로 남깁니다. 요청에 따라 여백을 크게 비우거나 색 덩어리를 더 단정하게 정리할 수 있습니다.
+
+Paper-Cut은 사진 장면 안의 인물만 평평한 색과 보이는 종이 가장자리로 단순화합니다. 공개 가능한 합성 예시에서는 앉은 자세, 양손, 옷 색과 옥상 정원이라는 큰 맥락이 유지됐습니다. 다만 결과는 전체 frame을 새로 생성해 배경 pixel도 달라졌습니다. 생성 prompt만으로 원본 배경을 정확히 보존했다고 말할 수는 없습니다. [원본과 Paper-Cut 결과](https://github.com/kyungseo/skillstead/tree/street-portrait-artist/v0.2.0/examples/street-portrait-artist/gallery/rooftop-garden)를 나란히 볼 수 있습니다.
+
+연속 작업에서는 원본에서 확인한 identity, 사용자가 받아들인 표현과 이번 수정 요청을 따로 둡니다. 부분 수정은 받아들인 작품을 고치고, 새로운 변형은 생성된 얼굴을 새 원본으로 삼지 않고 처음 참고한 사진으로 돌아갑니다. 표현 방법이 늘어나도 닮음의 근거는 같은 원본에 남겨 두기 위한 경계입니다.
+
 ## 한 번에 완벽하게 만들기보다 수정의 대상을 좁혔다
 
 이미지 생성은 같은 입력에서도 결과가 달라집니다. 그래서 `street-portrait-artist`는 첫 결과를 완성품이라고 가정하지 않습니다. 대신 네 가지를 따로 봅니다.
@@ -103,19 +115,21 @@ Impression Map은 이 관계를 짧게 적는 메모입니다. 성격이나 나�
 
 ## 지금 공개할 수 있는 범위
 
-이번에 공개한 `street-portrait-artist 0.1.1`에는 `Street Caricature`와 `Romance Watercolor` 두 모드, Impression Map 작성법, 표적 수정 절차와 공개 가능한 합성 예시가 들어 있습니다.
+현재 공개된 `street-portrait-artist 0.2.0`에는 `Street Caricature`, `Romance Watercolor`, `Paper-Cut Illustration` 세 mode와 Editorial 선택, Impression Map 작성법, 표적 수정과 연속 작업의 일관성 지침이 들어 있습니다.
 
-현재 성숙도는 `Experimental`입니다. 공개 예시는 의도한 방향을 보여 주지만, 다양한 얼굴·조명·인원·배경에서 일관된 품질을 증명하는 폭넓은 회귀 시험은 아닙니다. 닮음과 이미지 품질도 생성 모델의 비결정성에 영향을 받습니다.
+성숙도는 계속 `Experimental`입니다. 공개 예시는 의도한 방향을 보여 주지만, 다양한 얼굴·조명·인원·배경에서 일관된 품질을 증명하는 폭넓은 회귀 시험은 아닙니다. 닮음과 이미지 품질도 생성 모델의 비결정성에 영향을 받습니다.
 
-Codex에서는 공개된 0.1.1 package의 설치, discovery, 이름 기반 호출, 합성 reference를 사용한 두 모드 생성과 한 번의 표적 수정을 확인했습니다. 다만 현재 이미지 생성 표면은 4:5 구도를 따르면서도 요청한 1080×1350 대신 1122×1402 PNG를 전달했습니다. 따라서 정확한 픽셀 크기 export는 지원한다고 주장하지 않고, 사용할 수 없을 때 실제 크기를 알리는 `fail-visible` 경계로 남겼습니다.
+ChatGPT와 Codex의 `Supported` 표시는 공개된 0.1.0 package를 새로 설치해 discovery, 이름 기반 호출, 합성 reference 이미지 생성, 크기 fallback과 결과 전달을 확인한 기록에 근거합니다. 0.2.0의 새 mode와 지침을 두 제품에서 같은 범위로 다시 확인했다는 뜻은 아닙니다.
 
-ChatGPT에서도 공개 tag의 0.1.1 설치와 package 파일 검증까지 확인했습니다. 그러나 설치 직후와 그다음 새 턴 모두 이름 기반 discovery가 이전 0.1.0 cache를 가리켰습니다. 잘못된 버전의 규칙을 대신 쓰지 않고 호출과 이미지 생성을 중단했습니다. 이 시점의 ChatGPT 0.1.1 post-release 검증은 **설치·파일 확인은 성공, discovery와 invocation은 실패 또는 확인 불가입니다.** 설치와 현재 턴의 discovery가 같은 상태라는 가정은 하지 않습니다.
+0.1.1 공개 뒤 Codex에서는 해당 package의 설치와 discovery, 두 mode 생성과 한 번의 표적 수정을 확인했습니다. 당시 이미지 생성 표면은 4:5 구도를 따르면서도 요청한 1080×1350 대신 1122×1402 PNG를 전달했습니다. 같은 시기 ChatGPT에서는 설치와 package 파일을 확인했지만 discovery가 이전 0.1.0 cache를 가리켜 0.1.1 invocation을 중단했습니다. 두 기록은 그 버전에서 관찰한 역사로 남기며 현재 모든 실행이 같다고 일반화하지 않습니다.
+
+0.2.0의 제한된 시각 확인에서는 하나의 합성 원본에서 부분적인 개선만 관찰했습니다. 정확한 배경 pixel 보존, drift 없는 부분 수정, 결정론적인 닮음이나 여러 인물에서의 일관성을 입증하지 않습니다.
 
 ## 직접 확인하기
 
-- [street-portrait-artist 0.1.1 Release](https://github.com/kyungseo/skillstead/releases/tag/street-portrait-artist/v0.1.1)
-- [한국어 README](https://github.com/kyungseo/skillstead/blob/street-portrait-artist/v0.1.1/skills/street-portrait-artist/README.ko.md)
-- [공개 가능한 합성 Twin Portrait 예시](https://github.com/kyungseo/skillstead/tree/street-portrait-artist/v0.1.1/examples/street-portrait-artist)
+- [street-portrait-artist 0.2.0 Release](https://github.com/kyungseo/skillstead/releases/tag/street-portrait-artist/v0.2.0)
+- [한국어 README](https://github.com/kyungseo/skillstead/blob/street-portrait-artist/v0.2.0/skills/street-portrait-artist/README.ko.md)
+- [공개 가능한 합성 갤러리 예시](https://github.com/kyungseo/skillstead/tree/street-portrait-artist/v0.2.0/examples/street-portrait-artist)
 - [Skillstead 설치 안내](https://github.com/kyungseo/skillstead/blob/main/docs/INSTALL.ko.md)
 
 설치한 뒤에는 이런 식으로 시작할 수 있습니다.

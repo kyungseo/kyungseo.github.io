@@ -4,13 +4,16 @@ slug: meaning-before-fluency
 format: essay
 tags: ["skillstead", "skills", "writing", "editing", "localization"]
 series: []
-summary: "What WQE should preserve and change, why new Korean drafts now use separate instructions, and where observed results still fall short of those principles."
+summary: "How WQE preserves meaning, voice, and the answers readers need, why new Korean drafts use a separate path, and where observed results still fall short."
 toc: true
 date: 2026-08-09
 translated_from: ko
 original_date: 2026-08-09
 edited: false
 updates:
+  - date: "2026-09-12T20:40:01+09:00"
+    kind: update
+    summary: "Added WQE 0.15.0's reader-question and edit-cost boundaries, the limits of its development comparison, and current installation examples."
   - date: "2026-09-06T23:05:50+09:00"
     kind: correction
     summary: "Simplified the title and diagram and grouped historical validation records. Distinguished instructions from observed behavior, and clarified protection of embedded editor instructions and the scope of the new drafting checks."
@@ -112,6 +115,14 @@ Maturity remains `Beta`. Claude Code and Codex are listed as `Supported` within 
 
 Error checks alone cannot tell us whether writing reads naturally. Practical evaluation will continue to record which parts of real drafts needed editing and why.
 
+## Keeping the answers readers need
+
+`writing-quality-editor 0.15.0` checks whether a multi-paragraph draft, document-level assessment, or justified structural revision omits an answer readers need or repeats it across sections. It does not add a question checklist to every edit. A sound explanation order stays intact, and a local change remains local when one or two sentences are enough.
+
+In a technical article or review reply, preserving the reasoning behind a conclusion can matter more than making the passage shorter. The `edit-cost` check therefore asks whether removing an explanation would force readers to reconstruct a relationship, basis, or limitation. Repeated answers can be combined or removed, while explanations needed to understand the decision stay in place.
+
+These instructions do not demonstrate a general improvement in writing quality. A bounded model-only development comparison preserved supplied facts, limitations, and the no-edit case, but showed only a modest difference in paragraph grouping. It did not test faster execution or automatic discovery of an installed skill.
+
 ## Why it is called Adapt rather than translate
 
 Matching sentence count and word order between English and Korean does not guarantee matching meaning. An explanation that reads naturally later in an English paragraph may need to appear earlier in Korean. Commands and identifiers may need to remain untranslated. A single sentence in one language may be clearer and more accurate as two in the other.
@@ -152,15 +163,21 @@ The repository checks passed `282/282`, and the validator reported `0 finding(s)
 
 This was not a complete rerun, and agent output can vary between runs. These results do not establish a general writing-quality advantage; maturity remains `Beta`.
 
+### 0.15.0 — Development comparison for reader questions and edit cost
+
+A bounded model-only comparison exercised the new guidance for multi-paragraph composition, document-level assessment, and structural revision. It preserved the supplied facts, limitations, and no-edit case, while producing only a modest difference in paragraph grouping.
+
+This does not establish a general writing-quality advantage, faster execution, or automatic discovery of an installed skill. Maturity and supported-runtime labels are unchanged.
+
 ## Installation
 
-`writing-quality-editor` is a multi-file package containing `SKILL.md`, the review rubric, and English↔Korean adaptation guidance. Copy the complete `skills/writing-quality-editor/` folder rather than one file. The commands below install `v0.14.0` into a macOS/Linux project. Run only the block for your agent environment.
+`writing-quality-editor` is a multi-file package containing `SKILL.md`, the review rubric, and English↔Korean adaptation guidance. Copy the complete `skills/writing-quality-editor/` folder rather than one file. The commands below install `v0.15.0` into a macOS/Linux project. Run only the block for your agent environment.
 
 Claude Code project:
 
 ```bash
 install_root="$(mktemp -d)"
-git clone --depth 1 --branch writing-quality-editor/v0.14.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
+git clone --depth 1 --branch writing-quality-editor/v0.15.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
 mkdir -p .claude/skills
 cp -R "$install_root/skillstead/skills/writing-quality-editor" .claude/skills/
 ```
@@ -169,11 +186,11 @@ Codex project:
 
 ```bash
 install_root="$(mktemp -d)"
-git clone --depth 1 --branch writing-quality-editor/v0.14.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
+git clone --depth 1 --branch writing-quality-editor/v0.15.0 https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
 mkdir -p .agents/skills
 cp -R "$install_root/skillstead/skills/writing-quality-editor" .agents/skills/
 ```
 
-See the [Skillstead installation guide](https://github.com/kyungseo/skillstead/blob/main/docs/INSTALL.md) for global installation, Windows PowerShell, updates, and the latest pinned tag. The [0.14.0 English README](https://github.com/kyungseo/skillstead/blob/writing-quality-editor/v0.14.0/skills/writing-quality-editor/README.md) describes the four modes and validation scope, while the [0.14.0 Release](https://github.com/kyungseo/skillstead/releases/tag/writing-quality-editor/v0.14.0) records the changes and known limitations. After installation, name `writing-quality-editor` and describe the result you want. Specify `Assess` only when you want findings without edits.
+See the [Skillstead installation guide](https://github.com/kyungseo/skillstead/blob/main/docs/INSTALL.md) for global installation, Windows PowerShell, updates, and the latest pinned tag. The [0.15.0 English README](https://github.com/kyungseo/skillstead/blob/writing-quality-editor/v0.15.0/skills/writing-quality-editor/README.md) describes the four modes and validation scope, while the [0.15.0 Release](https://github.com/kyungseo/skillstead/releases/tag/writing-quality-editor/v0.15.0) records the changes and known limitations. After installation, name `writing-quality-editor` and describe the result you want. Specify `Assess` only when you want findings without edits.
 
 The full catalog is available in [Skillstead](https://github.com/kyungseo/skillstead).

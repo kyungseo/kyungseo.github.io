@@ -10,6 +10,9 @@ toc: true
 date: 2026-08-17
 edited: false
 updates:
+  - date: "2026-09-12T20:33:52+09:00"
+    kind: update
+    summary: "svg-infographic 0.12.0에서 이미 정한 preflight 선택을 다시 묻지 않는 경계를 설명하고 설치·Release 링크를 갱신했습니다."
   - date: "2026-08-21T14:10:42+09:00"
     kind: update
     summary: "svg-infographic 0.11.0의 presentation projection 예시를 추가하고 설치 안내를 0.11.0 기준으로 갱신했습니다."
@@ -173,17 +176,23 @@ architecture primitive를 확인할 때 제가 처음 세운 목표는 16:9 한 
 
 자신이 가진 배경을 사용하는 것도 가능합니다. 다만 현재는 로컬 raster image와 그 위에서 결과가 들어갈 영역을 선언한 strict manifest가 필요합니다. 웹 주소의 이미지를 바로 가져오거나 결과를 자유롭게 다시 그리는 기능은 아닙니다. 세 가지 기본 예시와 자세한 경계는 [Gallery](https://kyungseo.github.io/skillstead/gallery/)에서 먼저 확인할 수 있습니다.
 
+## 이미 정한 선택은 다시 묻지 않는다
+
+`svg-infographic 0.12.0`에서는 현재 작업에서 사용자가 이미 정한 시각 방향, 출력 경로와 파일 생성 승인을 preflight가 다시 묻지 않습니다. 결과에 영향을 주는 선택이나 쓰기 승인이 실제로 빠졌을 때만 질문합니다. 도구 설치와 sandbox 권한처럼 실행 환경이 관리하는 gate는 이 규칙과 별개입니다.
+
+렌더링 계약과 canonical 결과는 바뀌지 않았습니다. 지침 변경 뒤 한국어·영어 TypePack 예시 18개와 각 예시의 receipt를 canonical 경로로 다시 생성했고, 저장소 검증과 SVG release-artifact gate를 통과했습니다. 이 기록은 새 다이어그램 유형이나 달라진 렌더링 결과를 입증하는 것이 아닙니다.
+
 ## 직접 확인하기
 
-현재 `0.11.0`의 TypePack 결과와 presentation 예시, prompt, receipt는 [svg-infographic Gallery](https://kyungseo.github.io/skillstead/gallery/)에서 볼 수 있습니다. Gallery는 아홉 TypePack 각각의 한국어·영어 canonical example과 선택 기준, 명령 예시, 한 화면에 맞지 않는 경계를 함께 보여 줍니다.
+현재 `0.12.0`의 TypePack 결과와 presentation 예시, prompt, receipt는 [svg-infographic Gallery](https://kyungseo.github.io/skillstead/gallery/)에서 볼 수 있습니다. Gallery는 아홉 TypePack 각각의 한국어·영어 canonical example과 선택 기준, 명령 예시, 한 화면에 맞지 않는 경계를 함께 보여 줍니다.
 
 [![한국어로 선택한 svg-infographic Gallery의 TypePack 고르기 화면. source gate와 TypePack receipt 통과 상태, 18/18 검증 결과, approval-gate·before-after·cards-kpi-grid를 비롯한 canonical example 카드가 보입니다.](./svg-infographic-rebuild-gallery-typepack.ko.jpg)](https://kyungseo.github.io/skillstead/gallery/)
 
-같은 버전을 다시 설치할 수 있도록, 아래 명령은 검증을 마친 0.11.0 버전에서 `svg-infographic` 폴더만 가져옵니다.
+같은 버전을 다시 설치할 수 있도록, 아래 명령은 검증을 마친 0.12.0 버전에서 `svg-infographic` 폴더만 가져옵니다.
 
 ```bash
 install_root="$(mktemp -d)"
-git clone --depth 1 --branch svg-infographic/v0.11.0 \
+git clone --depth 1 --branch svg-infographic/v0.12.0 \
   https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
 mkdir -p .agents/skills
 cp -R "$install_root/skillstead/skills/svg-infographic" .agents/skills/
@@ -200,6 +209,6 @@ agent가 자연어 요청을 semantic input으로 구조화하고, TypePack과 v
 ## 관련 자료
 
 - [svg-infographic Gallery](https://kyungseo.github.io/skillstead/gallery/)
-- [svg-infographic 0.11.0 Release](https://github.com/kyungseo/skillstead/releases/tag/svg-infographic/v0.11.0)
-- [한국어 README](https://github.com/kyungseo/skillstead/blob/svg-infographic/v0.11.0/skills/svg-infographic/README.ko.md)
+- [svg-infographic 0.12.0 Release](https://github.com/kyungseo/skillstead/releases/tag/svg-infographic/v0.12.0)
+- [한국어 README](https://github.com/kyungseo/skillstead/blob/svg-infographic/v0.12.0/skills/svg-infographic/README.ko.md)
 - [이전 글: 다이어그램을 그리기 전에 관계와 여백부터 정하는 이유](https://kyungseo.github.io/posts/draw-with-numbers-first/)

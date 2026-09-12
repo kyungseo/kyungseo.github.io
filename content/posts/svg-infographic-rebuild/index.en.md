@@ -12,6 +12,9 @@ translated_from: ko
 original_date: 2026-08-17
 edited: false
 updates:
+  - date: "2026-09-12T20:33:52+09:00"
+    kind: update
+    summary: "Explained how svg-infographic 0.12.0 reuses settled preflight decisions and updated the installation and Release links."
   - date: "2026-08-21T14:10:42+09:00"
     kind: update
     summary: "Added the svg-infographic 0.11.0 presentation projection example and updated the installation instructions."
@@ -175,17 +178,23 @@ The three bundled surfaces are paper notebook, gallery wall, and portrait monito
 
 A local background can be used as well. The current path requires a local raster image and a strict manifest declaring where the result belongs on that image. It does not fetch an image from a remote URL or freely redraw the verified result. The [Gallery](https://kyungseo.github.io/skillstead/gallery/) shows all three bundled surfaces and the current boundaries.
 
+## Reusing decisions that are already settled
+
+`svg-infographic 0.12.0` no longer asks again about a visual direction, output path, or file-creation authorization the user already settled for the current task. It asks only when a material choice or write authorization is actually missing. Tool installation, sandbox permission, and other host-controlled gates remain separate.
+
+The rendering contract and canonical outputs are unchanged. After the instruction update, all 18 Korean and English TypePack examples and their receipts were regenerated through the canonical path, and both repository validation and the SVG release-artifact gate passed. This does not establish a new diagram type or a different rendered result.
+
 ## See it for yourself
 
-The [svg-infographic Gallery](https://kyungseo.github.io/skillstead/gallery/) shows the current `0.11.0` TypePack outputs and presentation examples, together with their prompts and receipts. For each of the nine TypePacks, it includes Korean and English canonical examples, selection guidance, build commands, and the boundary where the content no longer fits on one page.
+The [svg-infographic Gallery](https://kyungseo.github.io/skillstead/gallery/) shows the current `0.12.0` TypePack outputs and presentation examples, together with their prompts and receipts. For each of the nine TypePacks, it includes Korean and English canonical examples, selection guidance, build commands, and the boundary where the content no longer fits on one page.
 
 [![The svg-infographic Gallery in English, showing the TypePack selection view, source and receipt gates, an 18/18 verification result, and canonical example cards including approval-gate, before-after, and cards-kpi-grid.](./svg-infographic-rebuild-gallery-typepack.en.jpg)](https://kyungseo.github.io/skillstead/gallery/)
 
-The following commands install only the `svg-infographic` folder from the verified 0.11.0 release, making it possible to install the same version again.
+The following commands install only the `svg-infographic` folder from the verified 0.12.0 release, making it possible to install the same version again.
 
 ```bash
 install_root="$(mktemp -d)"
-git clone --depth 1 --branch svg-infographic/v0.11.0 \
+git clone --depth 1 --branch svg-infographic/v0.12.0 \
   https://github.com/kyungseo/skillstead.git "$install_root/skillstead"
 mkdir -p .agents/skills
 cp -R "$install_root/skillstead/skills/svg-infographic" .agents/skills/
@@ -202,6 +211,6 @@ The agent turns the natural-language request into semantic input, selects a Type
 ## Related material
 
 - [svg-infographic Gallery](https://kyungseo.github.io/skillstead/gallery/)
-- [svg-infographic 0.11.0 Release](https://github.com/kyungseo/skillstead/releases/tag/svg-infographic/v0.11.0)
-- [English README](https://github.com/kyungseo/skillstead/blob/svg-infographic/v0.11.0/skills/svg-infographic/README.md)
+- [svg-infographic 0.12.0 Release](https://github.com/kyungseo/skillstead/releases/tag/svg-infographic/v0.12.0)
+- [English README](https://github.com/kyungseo/skillstead/blob/svg-infographic/v0.12.0/skills/svg-infographic/README.md)
 - [Earlier article: Why Relationships and Spacing Come Before Drawing a Diagram](https://kyungseo.github.io/en/posts/draw-with-numbers-first/)
